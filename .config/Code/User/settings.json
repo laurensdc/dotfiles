@@ -1,0 +1,245 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "One Dark Pro",
+  "material-icon-theme.folders.theme": "specific",
+  "git.enableSmartCommit": true,
+  "editor.snippetSuggestions": "top",
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.confirmDragAndDrop": false,
+  "editor.tabSize": 2,
+  "explorer.confirmDelete": false,
+  "editor.lineHeight": 0,
+  "editor.formatOnSave": true,
+  "typescript.tsserver.log": "off",
+  "editor.matchBrackets": "always",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "blade": "html"
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "breadcrumbs.enabled": true,
+  "yaml.format.enable": false,
+  "files.eol": "\n",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+  },
+  "[elm]": {
+    "editor.tabSize": 4
+  },
+  "editor.suggestSelection": "first",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "redhat.telemetry.enabled": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "eslint.format.enable": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.wordWrap": "on",
+  "files.associations": {
+    "*.twig": "html",
+    "*.blade.php": "html"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.cursorBlinking": "smooth",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+  "terminal.external.windowsExec": "c:\\windows\\system32\\wsl.exe",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.profiles.windows": {
+    "C:\\Program Files\\Git\\bin\\bash.exe (migrated)": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": []
+    }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "workbench.editor.untitled.hint": "hidden",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+  "yaml.schemas": {
+    "file:///home/laurens/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "openapi.securityAuditToken": "CiAXp/Uvj0yNQm4ye4FTanEioxNHSFuWFKmRdyS/bjLfEBIYj5qEeY7BsyeL0WNLK2FgVGC+NCWfCWckGn+A/jKWVE2rlsctt22IWt6Zu1pTs+5s5EPlQkjcNExuVW1NDrNkJjg7QKqIVKYI+LIBoPIfF2zVqEbk9BhDwBq6xxaZlYRRXrhn1y8hzzzqDerPEktqYzwf7rNQDOsOCiMQMAfh+RgwPopXnz8JK6vur9UytmDfXKO6D0dCMKrx",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.fontSize": 13,
+  "editor.minimap.size": "fill",
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "/bower.json",
+        "/.bower.json"
+      ],
+      "url": "http://json.schemastore.org/bower"
+    },
+    {
+      "fileMatch": [
+        "/package.json"
+      ],
+      "url": "http://json.schemastore.org/package"
+    },
+    {
+      "fileMatch": [
+        "/project.json"
+      ],
+      "url": "http://json.schemastore.org/project"
+    },
+    {
+      "fileMatch": [
+        "*.schema.json"
+      ],
+      "url": "http://json-schema.org/draft-04/schema#"
+    },
+    {
+      "fileMatch": [
+        "/global.json"
+      ],
+      "url": "http://json.schemastore.org/global"
+    },
+    {
+      "fileMatch": [
+        "/ticino.plugin.json"
+      ],
+      "url": "http://opentools.azurewebsites.net/ticino.plugin.json"
+    },
+    {
+      "fileMatch": [
+        "/tsconfig.json"
+      ],
+      "url": "http://json.schemastore.org/tsconfig"
+    },
+    {
+      "fileMatch": [
+        "/jsconfig.json"
+      ],
+      "url": "http://opentools.azurewebsites.net/jsconfig"
+    },
+    {
+      "fileMatch": [
+        "/.bowerrc"
+      ],
+      "url": "http://json.schemastore.org/bowerrc"
+    },
+    {
+      "fileMatch": [
+        "/.jshintrc"
+      ],
+      "url": "http://json.schemastore.org/jshintrc"
+    },
+    {
+      "fileMatch": [
+        "/.jscsrc"
+      ],
+      "url": "http://json.schemastore.org/jscsrc"
+    },
+    {
+      "fileMatch": [
+        "/config/default.json",
+        "/config/development.json",
+        "/config/production.json"
+      ],
+      "url": "schemastore/config.json"
+    },
+    {
+      "fileMatch": [
+        "/esbuildconfig.json"
+      ],
+      "url": "./packages/id-tools-build/id-build-tools/src/es-build/esbuildconfig-schema.json"
+    }
+  ],
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "git.mergeEditor": true,
+  "git.ignoredRepositories": [
+    "/home/laurens/.vscode/extensions/stepsize.stepsize-0.67.0/resources/demo-repository"
+  ],
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.scopes": [
+    "document"
+  ],
+  "gitlens.codeLens.authors.command": "gitlens.openFileOnRemote",
+  "gitlens.codeLens.recentChange.command": "gitlens.copyRemoteFileUrl",
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.hovers.enabled": false,
+  "gitlens.views.fileHistory.files.compact": false,
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.largeFileOptimizations": false,
+  "codemetrics.basics.ComplexityLevelHigh": 15,
+  "codemetrics.basics.ComplexityLevelNormal": 7,
+  "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "editor.lineNumbers": "relative",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+  "window.zoomLevel": -1,
+  "codemetrics.basics.OverviewRulerModeEnabled": false,
+  "codemetrics.basics.CodeLensEnabled": false,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "settingsSync.keybindingsPerPlatform": false,
+  "window.menuBarVisibility": "toggle",
+  "workbench.tips.enabled": false,
+  "tabnine.experimentalAutoImports": true,
+  "editor.hover.delay": 100,
+  "workbench.activityBar.visible": false,
+  "git.confirmSync": false
+}
