@@ -1,28 +1,36 @@
+" Basic settings
+
 " Line numbers
 set number
 set relativenumber
 
-" Persistent undo
+" Persistent undo through file close
 set undofile
 
-" share system clipboard
+" share system clipboard for yank & paste
 set clipboard+=unnamedplus
 
 " ignore case in search
 set ignorecase
-
 " :noh to remove the highlights
 
-" Plugins will be downloaded under the specified directory.
+" modern vim only
+set nocompatible
+
+" syntax sugar plz
+syntax on
+
+" Plugin stuff
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-" Declare the list of plugins.
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'sheerun/vim-polyglot'
 Plug 'navarasu/onedark.nvim'
-" List ends here. Plugins become visible to Vim after this call.
 
+" List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+" Lua stuff 
 
 lua << EOF
 
