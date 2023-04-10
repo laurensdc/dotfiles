@@ -231,7 +231,7 @@
   },
   "editor.lineNumbers": "relative",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": -2,
   "codemetrics.basics.OverviewRulerModeEnabled": false,
   "codemetrics.basics.CodeLensEnabled": false,
   "terminal.integrated.defaultProfile.linux": "zsh",
