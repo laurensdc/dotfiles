@@ -65,6 +65,12 @@ prompt_context() {
   fi
 }
 
+prompt_aws_vault() {
+  local vault_segment
+  vault_segment="`prompt_aws_vault_segment`"
+  [[ $vault_segment != '' ]] && prompt_segment cyan black "$vault_segment"
+}
+
 # asdf
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
@@ -88,7 +94,10 @@ export LC_ALL=en_US.UTF-8
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 export PATH=~/.local/bin:$PATH
+export PATH=~/bin:$PATH
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

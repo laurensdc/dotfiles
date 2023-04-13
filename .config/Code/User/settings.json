@@ -231,7 +231,6 @@
   },
   "editor.lineNumbers": "relative",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
-  "window.zoomLevel": -2,
   "codemetrics.basics.OverviewRulerModeEnabled": false,
   "codemetrics.basics.CodeLensEnabled": false,
   "terminal.integrated.defaultProfile.linux": "zsh",
@@ -240,6 +239,7 @@
   "workbench.tips.enabled": false,
   "tabnine.experimentalAutoImports": true,
   "editor.hover.delay": 100,
+  "git.confirmSync": false,
   "workbench.activityBar.visible": false,
-  "git.confirmSync": false
+  "window.zoomLevel": -2,
 }
