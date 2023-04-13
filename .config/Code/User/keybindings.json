@@ -847,11 +847,8 @@
   },
   {
     "key": "ctrl+c",
-    "command": "-editor.action.clipboardCopyAction"
-  },
-  {
-    "key": "ctrl+v",
-    "command": "-editor.action.clipboardPasteAction"
+    "command": "editor.action.clipboardCopyAction",
+    "when": "neovim.mode == 'normal'"
   },
   {
     "key": "ctrl+w",
@@ -875,5 +872,13 @@
     "key": "ctrl+u",
     "command": "editor.action.pageUpHover",
     "when": "editorHoverFocused"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "-editor.action.clipboardCopyAction"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "-editor.action.clipboardPasteAction"
   }
 ]
