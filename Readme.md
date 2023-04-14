@@ -41,6 +41,7 @@ The files in the top level of this repo will go straight to the home folder
 
 `.zshrc` for zsh shell config and aliases
 `.gitconfig` for global git config
+`.vimrc` for some old school vim config
 
 # Todo
 Notes to self, this is probably not relevant to you, dear reader
