@@ -1,25 +1,55 @@
 {
+  // VSCode QOL settings
+  "workbench.activityBar.visible": false,
+  "workbench.tips.enabled": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.untitled.hint": "hidden",
+  "window.menuBarVisibility": "toggle",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "breadcrumbs.enabled": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "typescript.tsserver.maxTsServerMemory": 8192,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // Code format
+  "files.eol": "\n",
+  "eslint.format.enable": true,
+  // Theme & icon settings
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "One Dark Pro Darker",
+  "oneDarkPro.vivid": false,
+  "oneDarkPro.editorTheme": "One Dark Pro Darker",
   "material-icon-theme.folders.theme": "specific",
-  "git.enableSmartCommit": true,
+  // Editor settings
+  "editor.lineNumbers": "relative",
+  "editor.hover.delay": 100,
   "editor.snippetSuggestions": "top",
-  "workbench.startupEditor": "newUntitledFile",
-  "explorer.confirmDragAndDrop": false,
   "editor.tabSize": 2,
-  "explorer.confirmDelete": false,
   "editor.lineHeight": 0,
   "editor.formatOnSave": true,
-  "typescript.tsserver.log": "off",
   "editor.matchBrackets": "always",
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "blade": "html"
-  },
   "editor.bracketPairColorization.enabled": true,
-  "breadcrumbs.enabled": true,
-  "yaml.format.enable": false,
-  "files.eol": "\n",
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.wordWrap": "on",
+  "editor.cursorBlinking": "smooth",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.fontSize": 13,
+  "editor.minimap.size": "fill",
+  // Git
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.mergeEditor": true,
+  "git.ignoredRepositories": [
+    "/home/laurens/.vscode/extensions/stepsize.stepsize-0.67.0/resources/demo-repository"
+  ],
+  // Language settings
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features",
     "files.insertFinalNewline": true,
@@ -28,43 +58,12 @@
   "[elm]": {
     "editor.tabSize": 4
   },
-  "editor.suggestSelection": "first",
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
-  },
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
-  },
-  "redhat.telemetry.enabled": false,
-  "security.workspace.trust.untrustedFiles": "open",
-  "eslint.format.enable": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "editor.wordWrap": "on",
-  "files.associations": {
-    "*.twig": "html",
-    "*.blade.php": "html"
-  },
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "editor.cursorBlinking": "smooth",
-  "editor.fontLigatures": true,
-  "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
-  "terminal.external.windowsExec": "c:\\windows\\system32\\wsl.exe",
-  "terminal.integrated.defaultProfile.windows": "Git Bash",
-  "terminal.integrated.profiles.windows": {
-    "C:\\Program Files\\Git\\bin\\bash.exe (migrated)": {
-      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
-      "args": []
-    }
-  },
   "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "workbench.editor.untitled.hint": "hidden",
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -79,13 +78,39 @@
       "other": "off"
     }
   },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "files.associations": {
+    "*.twig": "html",
+    "*.blade.php": "html"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "blade": "html"
+  },
+  // Security & telemetry
+  "editor.accessibilitySupport": "off",
+  "extensions.ignoreRecommendations": true,
+  "typescript.surveys.enabled": false,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "update.mode": "start",
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.enableExperiments": false,
+  "telemetry.telemetryLevel": "crash",
+  "redhat.telemetry.enabled": false,
+  // Schemas and yaml settings
+  "yaml.format.enable": false,
   "yaml.schemas": {
-    "file:///home/laurens/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///home/laurens/.vscode/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "openapi.securityAuditToken": "CiAXp/Uvj0yNQm4ye4FTanEioxNHSFuWFKmRdyS/bjLfEBIYj5qEeY7BsyeL0WNLK2FgVGC+NCWfCWckGn+A/jKWVE2rlsctt22IWt6Zu1pTs+5s5EPlQkjcNExuVW1NDrNkJjg7QKqIVKYI+LIBoPIfF2zVqEbk9BhDwBq6xxaZlYRRXrhn1y8hzzzqDerPEktqYzwf7rNQDOsOCiMQMAfh+RgwPopXnz8JK6vur9UytmDfXKO6D0dCMKrx",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.fontSize": 13,
-  "editor.minimap.size": "fill",
   "json.schemas": [
     {
       "fileMatch": [
@@ -194,19 +219,22 @@
     "!ImportValue",
     "!ImportValue sequence",
     "!Select",
-    "!Select sequence",
+    "!Split sequence",
     "!Split",
     "!Split sequence"
   ],
-  "git.mergeEditor": true,
-  "git.ignoredRepositories": [
-    "/home/laurens/.vscode/extensions/stepsize.stepsize-0.67.0/resources/demo-repository"
-  ],
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": false
+  // Terminal
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.external.windowsExec": "c:\\windows\\system32\\wsl.exe",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.profiles.windows": {
+    "C:\\Program Files\\Git\\bin\\bash.exe (migrated)": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": []
+    }
   },
+  // Extensions
+  // Gitlens
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.codeLens.scopes": [
@@ -217,30 +245,29 @@
   "gitlens.codeLens.recentChange.enabled": false,
   "gitlens.hovers.enabled": false,
   "gitlens.views.fileHistory.files.compact": false,
-  "js/ts.implicitProjectConfig.checkJs": true,
-  "typescript.tsserver.maxTsServerMemory": 4096,
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "editor.largeFileOptimizations": false,
+  // Codemetrics
   "codemetrics.basics.ComplexityLevelHigh": 15,
   "codemetrics.basics.ComplexityLevelNormal": 7,
+  "codemetrics.basics.OverviewRulerModeEnabled": false,
+  "codemetrics.basics.CodeLensEnabled": false,
+  // VSCode-neovim
   "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
-  "editor.lineNumbers": "relative",
-  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
-  "codemetrics.basics.OverviewRulerModeEnabled": false,
-  "codemetrics.basics.CodeLensEnabled": false,
-  "terminal.integrated.defaultProfile.linux": "zsh",
+  // Atlassian
+  "atlascode.jira.enabled": false,
+  "atlascode.helpExplorerEnabled": false,
+  "atlascode.bitbucket.explorer.relatedJiraIssues.enabled": false,
+  "atlascode.bitbucket.explorer.relatedBitbucketIssues.enabled": false,
+  "atlascode.bitbucket.explorer.notifications.pullRequestCreated": false,
+  "atlascode.bitbucket.explorer.refreshInterval": 20,
+  "atlascode.bitbucket.pipelines.explorerEnabled": false,
+  "atlascode.bitbucket.issues.explorerEnabled": false,
+  "atlascode.showWelcomeOnInstall": false,
+  "atlascode.bitbucket.contextMenus.enabled": false,
+  // Other
+  "window.zoomLevel": -1,
   "settingsSync.keybindingsPerPlatform": false,
-  "window.menuBarVisibility": "toggle",
-  "workbench.tips.enabled": false,
-  "tabnine.experimentalAutoImports": true,
-  "editor.hover.delay": 100,
-  "git.confirmSync": false,
-  "workbench.activityBar.visible": false,
-  "oneDarkPro.vivid": false,
-  "oneDarkPro.editorTheme": "One Dark Pro Darker",
 }

@@ -847,12 +847,17 @@
   },
   {
     "key": "ctrl+c",
-    "command": "editor.action.clipboardCopyAction",
-    "when": "neovim.mode == 'normal'"
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.clipboardCopyAction",
+        "vscode-neovim.escape",
+      ]
+    }
   },
   {
-    "key": "ctrl+w",
-    "command": "-workbench.action.closeActiveEditor"
+    "key": "ctrl+c",
+    "command": "-editor.action.clipboardCopyAction"
   },
   {
     "key": "ctrl+h",
@@ -874,11 +879,64 @@
     "when": "editorHoverFocused"
   },
   {
-    "key": "ctrl+c",
-    "command": "-editor.action.clipboardCopyAction"
-  },
-  {
     "key": "ctrl+v",
     "command": "-editor.action.clipboardPasteAction"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "-notification.acceptPrimaryAction",
+    "when": "notificationToastsVisible"
+  },
+  {
+    "key": "ctrl+shift+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "-editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "atlascode.views.bb.pullrequestsTreeView.focus"
+  },
+  {
+    "key": "ctrl+shift+alt+a",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "key": "ctrl+shift+v",
+    "command": "editor.action.clipboardPasteAction"
+  },
+  {
+    "key": "ctrl+shift+m",
+    "command": "-workbench.actions.view.problems",
+    "when": "workbench.panel.markers.view.active"
+  },
+  {
+    "key": "ctrl+shift+m",
+    "command": "markdown.showPreview",
+    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+  },
+  {
+    "key": "ctrl+shift+v",
+    "command": "-markdown.showPreview",
+    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+  },
+  {
+    "key": "ctrl+k v",
+    "command": "-markdown.showPreviewToSide",
+    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "workbench.action.toggleCommenting",
+    "when": "editorfocus"
   }
 ]
