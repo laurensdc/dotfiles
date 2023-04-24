@@ -24,6 +24,9 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
+-- jk as escape key
+vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true })
+
 -- Leader key is space, set this
 -- before loading any plugins that use it 
 vim.g.mapleader = " "
@@ -47,6 +50,13 @@ require("lazy").setup({
   "ThePrimeagen/vim-be-good",
   "sheerun/vim-polyglot",
   "navarasu/onedark.nvim",
+  { 
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup()
+    end,
+
+  }
 })
 
 -- Theme config & load
@@ -55,4 +65,10 @@ require('onedark').setup {
 }
 require('onedark').load()
 
-
+-- Better escape options
+require("better_escape").setup {
+  mapping = {"jk"}, -- a table with mappings to use
+  timeout = 100,-- the time in which the keys must be hit in ms. Use option timeoutlen by default
+  clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+ }
+ 
