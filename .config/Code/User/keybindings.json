@@ -1,4 +1,3 @@
-// Place your key bindings in this file to overwrite the defaults
 [
   // -- Unbind: Gitlens nonsense binds
   {
@@ -425,6 +424,50 @@
   },
   // -- Unbind others
   {
+    "key": "ctrl+w",
+    "command": "-workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-notebook.centerActiveCell",
+    "when": "notebookEditorFocused"
+  },
+  {
+    "key": "f4",
+    "command": "-search.action.focusNextSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "shift+f4",
+    "command": "-search.action.focusPreviousSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "shift+f4",
+    "command": "-references-view.prev",
+    "when": "reference-list.hasResult && references-view.canNavigate"
+  },
+  {
+    "key": "f4",
+    "command": "-references-view.next",
+    "when": "reference-list.hasResult && references-view.canNavigate"
+  },
+  {
+    "key": "f4",
+    "command": "-goToNextReference",
+    "when": "inReferenceSearchEditor || referenceSearchVisible"
+  },
+  {
+    "key": "shift+f4",
+    "command": "-goToPreviousReference",
+    "when": "inReferenceSearchEditor || referenceSearchVisible"
+  },
+  {
     "key": "ctrl+d",
     "command": "-editor.action.addSelectionToNextFindMatch",
     "when": "editorFocus"
@@ -673,42 +716,41 @@
   },
   // nvim-esque window management
   {
-    "key": "ctrl+alt+k ctrl+alt+l",
-    "command": "workbench.action.splitEditorRight"
-  },
-  {
-    "key": "ctrl+alt+k ctrl+alt+j",
-    "command": "workbench.action.splitEditorDown"
-  },
-  {
-    "key": "ctrl+alt+k ctrl+alt+h",
-    "command": "workbench.action.splitEditorLeft"
-  },
-  {
-    "key": "ctrl+alt+k ctrl+alt+k",
-    "command": "workbench.action.splitEditorUp"
-  },
-  {
-    "key": "ctrl+k ctrl+l",
-    "command": "workbench.action.focusRightGroup"
-  },
-  {
-    "key": "ctrl+k ctrl+h",
+    "key": "ctrl+w ctrl+h",
     "command": "workbench.action.focusLeftGroup"
   },
   {
-    "key": "ctrl+k ctrl+k",
-    "command": "workbench.action.focusAboveGroup"
+    "key": "ctrl+w ctrl+l",
+    "command": "workbench.action.focusRightGroup"
   },
   {
-    "key": "ctrl+k ctrl+j",
+    "key": "ctrl+w ctrl+j",
     "command": "workbench.action.focusBelowGroup"
   },
   {
-    "key": "ctrl+alt+k ctrl+alt+w",
+    "key": "ctrl+w ctrl+k",
+    "command": "workbench.action.focusAboveGroup"
+  },
+  {
+    "key": "ctrl+w ctrl+c",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+w ctrl+d",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+w ctrl+u",
     "command": "workbench.action.joinAllGroups"
   },
-  // Vimify VSCode hover menu handling
+  {
+    "key": "ctrl+w ctrl+s",
+    "command": "workbench.action.splitEditorDown"
+  },
+  {
+    "key": "ctrl+w ctrl+v",
+    "command": "workbench.action.splitEditorRight"
+  },
   {
     "key": "j",
     "command": "editor.action.scrollDownHover",
@@ -745,12 +787,7 @@
     "when": "editorHoverFocused"
   },
   {
-    "key": "ctrl+k ctrl+h",
-    "command": "list.collapseAll",
-    "when": "listFocus && !inputFocus"
-  },
-  {
-    "key": "ctrl+alt+k ctrl+alt+h",
+    "key": "ctrl+h",
     "command": "list.collapseAll",
     "when": "listFocus && !inputFocus"
   },
@@ -911,6 +948,75 @@
     "key": "ctrl+alt+`",
     "command": "workbench.action.toggleMaximizedPanel"
   },
+  // -- Git workflow
+  {
+    "key": "ctrl+g ctrl+m",
+    "command": "extension.showGitmoji"
+  },
+  {
+    "key": "ctrl+g ctrl+g",
+    "command": "extension.showGitmoji"
+  },
+  {
+    "key": "shift+f7",
+    "command": "-editor.action.diffReview.prev",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "f7",
+    "command": "-editor.action.diffReview.next",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "l",
+    "command": "editor.action.diffReview.next",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "h",
+    "command": "editor.action.diffReview.prev",
+    "when": "isInDiffEditor"
+  },
+  {
+    // d for Diff
+    "key": "ctrl+g ctrl+d",
+    "command": "git.openChange"
+  },
+  {
+    "key": "ctrl+g ctrl+o",
+    "command": "git.openAllChanges"
+  },
+  {
+    "key": "ctrl+g ctrl+-",
+    "command": "git.unstage"
+  },
+  {
+    "key": "ctrl+g ctrl+=",
+    "command": "git.stage"
+  },
+  {
+    "key": "ctrl+g ctrl+u",
+    "command": "git.unstageAll"
+  },
+  {
+    "key": "ctrl+g ctrl+a",
+    "command": "git.stageAll"
+  },
+  {
+    "key": "ctrl+k ctrl+n",
+    "command": "-git.unstageSelectedRanges",
+    "when": "isInDiffEditor && !operationInProgress"
+  },
+  {
+    "key": "alt+f3",
+    "command": "-editor.action.dirtydiff.next",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
+  {
+    "key": "shift+alt+f3",
+    "command": "-editor.action.dirtydiff.previous",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
   // -- Editor
   {
     "key": "meta+n",
@@ -923,15 +1029,6 @@
   {
     "key": "ctrl+shift+tab",
     "command": "workbench.action.previousEditorInGroup"
-  },
-  {
-    "key": "ctrl+w",
-    "command": "workbench.action.closeActiveEditor"
-  },
-  // -- Other
-  {
-    "key": "ctrl+g",
-    "command": "extension.showGitmoji"
   },
   {
     "key": "ctrl+shift+m",
@@ -947,5 +1044,9 @@
     "key": "ctrl+shift+/",
     "command": "editor.action.blockComment",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "f4",
+    "command": "workbench.action.closeActiveEditor"
   },
 ]
