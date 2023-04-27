@@ -6,7 +6,8 @@ vim.opt.relativenumber = true
 vim.opt.undofile = true
 
 -- share system clipboard for yank & paste
-vim.opt.clipboard = unnamedplus
+-- need xclip on Linux
+vim.opt.clipboard = "unnamedplus"
 
 -- ignore case in search
 -- :noh to remove the highlights

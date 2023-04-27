@@ -613,10 +613,6 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+c",
-    "command": "-editor.action.clipboardCopyAction"
-  },
-  {
     "key": "ctrl+h",
     "command": "-editor.action.startFindReplaceAction",
     "when": "editorFocus || editorIsOpen"
@@ -676,17 +672,6 @@
     "when": "editorTextFocus && neovim.ctrlKeysNormal && neovim.init && neovim.mode != 'insert'",
     "args": "<C-/>"
   },
-  // Copy selection and also escape nvim
-  {
-    "key": "ctrl+c",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        "editor.action.clipboardCopyAction",
-        "vscode-neovim.escape",
-      ]
-    }
-  },
   // Escape hatch for derping paste behavior
   {
     "key": "ctrl+shift+v",
@@ -737,6 +722,14 @@
   },
   {
     "key": "ctrl+w ctrl+d",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+w d",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+w c",
     "command": "workbench.action.closeActiveEditor"
   },
   {
@@ -1040,6 +1033,7 @@
     "command": "workbench.action.toggleCommenting",
     "when": "editorfocus"
   },
+  // Atlassian thing
   {
     "key": "ctrl+shift+/",
     "command": "editor.action.blockComment",
@@ -1048,5 +1042,5 @@
   {
     "key": "f4",
     "command": "workbench.action.closeActiveEditor"
-  },
+  }
 ]
