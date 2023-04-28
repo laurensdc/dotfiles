@@ -1069,8 +1069,51 @@
     "key": "f4",
     "command": "workbench.action.closeActiveEditor"
   },
-  // {
-  //   "key": "ctrl+w v",
-  //   "command": "workbench.action.splitEditorRight"
-  // }
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "shift+cmd+a",
+    "command": "-notification.acceptPrimaryAction",
+    "when": "notificationToastsVisible"
+  },
+  {
+    "key": "shift+cmd+a",
+    "command": "atlascode.views.bb.pullrequestsTreeView.focus"
+  },
+  {
+    "key": "ctrl+shift+cmd+x",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "key": "ctrl+shift+cmd+e",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "key": "ctrl+shift+cmd+a",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "key": "ctrl+shift+cmd+g",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "key": "ctrl+shift+cmd+f",
+    "command": "workbench.action.closeAuxiliaryBar"
+  },
+  {
+    "key": "ctrl+shift+cmd+o",
+    "command": "workbench.action.closeAuxiliaryBar"
+  }
 ]
