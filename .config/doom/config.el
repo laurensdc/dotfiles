@@ -13,6 +13,9 @@
 (after! org
   (set-company-backend! 'org-mode nil))
 
+(add-hook! 'org-mode-hook
+  (setq-local flyspell-mode nil))
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
