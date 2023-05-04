@@ -895,8 +895,14 @@
   // -- Sidebar toggles
   {
     "key": "ctrl+shift+g",
-    "command": "workbench.view.scm",
-    "when": "workbench.scm.active"
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.view.scm",
+        "list.focusFirst",
+        "list.select",
+      ]
+    },
   },
   {
     "key": "ctrl+shift+b",
