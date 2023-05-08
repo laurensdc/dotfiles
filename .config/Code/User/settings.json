@@ -17,7 +17,7 @@
   "eslint.format.enable": true,
   // Theme & icon settings
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.colorTheme": "doom-one",
   "oneDarkPro.vivid": false,
   "oneDarkPro.editorTheme": "One Dark Pro Darker",
   "material-icon-theme.folders.theme": "specific",
@@ -108,7 +108,7 @@
   // Schemas and yaml settings
   "yaml.format.enable": false,
   "yaml.schemas": {
-    "file:///home/laurens/.vscode/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///c%3A/Users/CoredusK/.vscode/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "openapi.securityAuditToken": "CiAXp/Uvj0yNQm4ye4FTanEioxNHSFuWFKmRdyS/bjLfEBIYj5qEeY7BsyeL0WNLK2FgVGC+NCWfCWckGn+A/jKWVE2rlsctt22IWt6Zu1pTs+5s5EPlQkjcNExuVW1NDrNkJjg7QKqIVKYI+LIBoPIfF2zVqEbk9BhDwBq6xxaZlYRRXrhn1y8hzzzqDerPEktqYzwf7rNQDOsOCiMQMAfh+RgwPopXnz8JK6vur9UytmDfXKO6D0dCMKrx",
   "json.schemas": [
@@ -267,7 +267,6 @@
   "atlascode.bitbucket.issues.explorerEnabled": false,
   "atlascode.showWelcomeOnInstall": false,
   "atlascode.bitbucket.contextMenus.enabled": false,
-  // Other
-  "window.zoomLevel": -1,
   "settingsSync.keybindingsPerPlatform": false,
+  "editor.linkedEditing": true,
 }
