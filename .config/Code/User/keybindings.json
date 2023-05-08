@@ -1048,6 +1048,21 @@
     "command": "explorer.newFile"
   },
   {
+    "key": "space f n",
+    "command": "explorer.newFile",
+    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space b n",
+    "command": "openEditors.newUntitledFile",
+    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space f s",
+    "command": "workbench.action.files.save",
+    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditorInGroup"
   },
