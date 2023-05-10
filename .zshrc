@@ -1,18 +1,10 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -26,7 +18,7 @@ ZSH_THEME="agnoster"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -67,24 +59,19 @@ prompt_context() {
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
 
-# Users configuration
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# User configuration
 export EDITOR='nvim'
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Android studio path variables
-export ANDROID_HOME=$HOME/Android/Sdk
+# Android studio path variables for MacOS and Linux
+if [[ "$(uname)" == "Darwin" ]]; then
+    export ANDROID_HOME="$HOME/Library/Android/sdk"
+else
+    export ANDROID_HOME="$HOME/Android/Sdk"
+fi
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
@@ -105,9 +92,18 @@ alias vpn='echo "Enter MFA token for Pulse VPN: "; read TOKEN; sudo killall -SIG
 
 # Prints `git checkout -b [BRANCH_NAME]`
 alias branch="git status | grep 'On branch' |  sed 's/On branch \(.*\)/git checkout \1/'"
-alias cpbranch="branch | xclip -selection clipboard && branch"
+
+# Copy to clipboard for MacOS and x11 Linux 
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias cpbranch="branch | pbcopy && branch"
+else
+  alias cpbranch="branch | xclip -selection clipboard && branch"
+fi
+
+# Checkout to master, pull it, and rebase the active branch on top of it
 alias REBASE='BRANCH=$(git status | grep "On branch" | sed "s/On branch \(.*\)/\1/") && echo On branch $BRANCH && git checkout master && git pull origin master && git checkout $BRANCH && echo Rebasing $BRANCH on master && git rebase master'
 
+# List git commits
 alias log="git log --oneline -12"
 
 # Design studio build monorepo
