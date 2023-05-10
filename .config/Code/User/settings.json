@@ -269,4 +269,7 @@
   "atlascode.bitbucket.contextMenus.enabled": false,
   "settingsSync.keybindingsPerPlatform": false,
   "editor.linkedEditing": true,
+  "window.zoomLevel": -1,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.external.osxExec": "iTerm.app",
 }
