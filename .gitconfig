@@ -7,9 +7,6 @@
 	default = current
 [core]
 	editor = nvim
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
 [init]
 	defaultBranch = main
 [url "https://github.com/"]

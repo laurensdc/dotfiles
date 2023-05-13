@@ -176,10 +176,6 @@
     "command": "-workbench.action.gotoSymbol"
   },
   {
-    "key": "ctrl+s",
-    "command": "-workbench.action.files.save"
-  },
-  {
     "key": "ctrl+tab",
     "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
     "when": "!activeEditorGroupEmpty"
@@ -253,18 +249,9 @@
     "command": "-workbench.action.closeWindow"
   },
   {
-    "key": "ctrl+j",
-    "command": "-workbench.action.togglePanel"
-  },
-  {
     "key": "ctrl+shift+m",
     "command": "-workbench.actions.view.problems",
     "when": "workbench.panel.markers.view.active"
-  },
-  {
-    "key": "ctrl+shift+c",
-    "command": "-workbench.action.terminal.openNativeConsole",
-    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+k ctrl+\\",
@@ -691,6 +678,24 @@
   // Save and escape insert mode
   {
     "key": "ctrl+s",
+    "command": "-workbench.action.files.save"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.files.save",
+        "vscode-neovim.escape"
+      ]
+    }
+  },
+  {
+    "key": "cmd+s",
+    "command": "-workbench.action.files.save"
+  },
+  {
+    "key": "cmd+s",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -943,6 +948,19 @@
   // -- Terminal panel
   {
     "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+j",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
@@ -952,6 +970,10 @@
   },
   {
     "key": "ctrl+alt+`",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
+    "key": "alt+cmd+j",
     "command": "workbench.action.toggleMaximizedPanel"
   },
   // -- Git workflow
@@ -966,12 +988,12 @@
     "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
-    "key": "l",
+    "key": "ctrl+l",
     "command": "editor.action.diffReview.next",
     "when": "isInDiffEditor"
   },
   {
-    "key": "h",
+    "key": "ctrl+h",
     "command": "editor.action.diffReview.prev",
     "when": "isInDiffEditor"
   },
@@ -1048,6 +1070,21 @@
     "command": "explorer.newFile"
   },
   {
+    "key": "space f n",
+    "command": "explorer.newFile",
+    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space b n",
+    "command": "openEditors.newUntitledFile",
+    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space f s",
+    "command": "workbench.action.files.save",
+    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditorInGroup"
   },
@@ -1062,6 +1099,21 @@
   },
   {
     "key": "ctrl+shift+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "workbench.action.toggleCommenting",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+shift+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "cmd+shift+c",
     "command": "workbench.action.toggleCommenting",
     "when": "editorFocus"
   },
@@ -1074,15 +1126,6 @@
   {
     "key": "f4",
     "command": "workbench.action.closeActiveEditor"
-  },
-  {
-    "key": "cmd+j",
-    "command": "-workbench.action.togglePanel"
-  },
-  {
-    "key": "cmd+j",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
   },
   {
     "key": "shift+cmd+g",
@@ -1121,5 +1164,24 @@
   {
     "key": "ctrl+shift+cmd+o",
     "command": "workbench.action.closeAuxiliaryBar"
+  },
+  {
+    "key": "shift+cmd+w",
+    "command": "-workbench.action.closeWindow"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeWindow",
+    "when": "!editorIsOpen && !multipleEditorGroups"
+  },
+  {
+    "key": "shift+cmd+m",
+    "command": "markdown.showPreview",
+    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+  },
+  {
+    "key": "ctrl+u",
+    "command": "-cursorUndo",
+    "when": "textInputFocus"
   }
 ]
