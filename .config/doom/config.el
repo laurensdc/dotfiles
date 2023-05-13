@@ -10,8 +10,10 @@
       user-mail-address "")
 
 ;; Disable spell check & autocomplete in org mode
-(after! org
-  (set-company-backend! 'org-mode nil))
+;; (after! org
+;;    (set-company-backend! 'org-mode nil))
+(setq company-backends (delete 'company-ispell company-backends))
+
 
 (add-hook! 'org-mode-hook
   (setq-local flyspell-mode nil))
