@@ -68,7 +68,7 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[markdown]": {
     "editor.wordWrap": "on",
@@ -269,7 +269,8 @@
   "atlascode.bitbucket.contextMenus.enabled": false,
   "settingsSync.keybindingsPerPlatform": false,
   "editor.linkedEditing": true,
-  "window.zoomLevel": -1,
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.external.osxExec": "iTerm.app",
+  "keyboard.dispatch": "keyCode",
+  "window.zoomLevel": -1
 }
