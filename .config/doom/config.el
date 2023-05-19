@@ -12,8 +12,12 @@
 ;; Find an escape delay that works for fast Dutch typing and evil escape attempts
 (setq evil-escape-delay 0.05)
 
-;; Attempt to disable spell check & autocomplete in org mode, unfortunately nothing works
-(set-company-backend! 'org-mode nil)
+;; Disable spell check & autocomplete in org mode
+(after! org
+  (set-company-backend! 'org-mode nil))
+
+;; Soft wrap lines
+(setq visual-line-mode t)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;

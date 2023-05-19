@@ -1,5 +1,9 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
+;; Movement happens in visual lines instead of absolute lines
+;; https://github.com/doomemacs/doomemacs/issues/401#issuecomment-588502773
+(setq evil-respect-visual-line-mode t)
+
 ;; This file controls what Doom modules are enabled and what order they load
 ;; in. Remember to run 'doom sync' after modifying it!
 

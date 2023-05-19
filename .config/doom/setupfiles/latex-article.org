@@ -1,0 +1,23 @@
+# Most important document settings
+#+OPTIONS: toc:nil
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [11pt,a4paper,titlepage]
+
+# Latin Modern improved fonts
+#+LaTeX_HEADER: \usepackage{lmodern}
+
+# Set A4 paper size and improve page layout
+#+LaTeX_HEADER: \usepackage[a4paper]{geometry} %paper size all the way
+
+# Disable indentation and add paragraph spacing
+#+LaTeX_HEADER: \usepackage{parskip}
+
+# Disable page numbers
+#+LaTeX_HEADER: \pagestyle{empty}
+
+# Add formatted date & time
+# #+LaTeX_HEADER: \usepackage{datetime2}
+
+# Set a wider a4 page
+# #+LaTeX_HEADER: \usepackage{a4wide}
+
