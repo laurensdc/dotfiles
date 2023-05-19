@@ -16,9 +16,6 @@
 ;; Soft wrap lines
 (setq visual-line-mode t)
 
-;; Movement happens in visual lines instead of absolute lines
-(setq evil-respect-visual-line-mode t)
-
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
