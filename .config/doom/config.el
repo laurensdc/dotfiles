@@ -10,13 +10,14 @@
       user-mail-address "")
 
 ;; Disable spell check & autocomplete in org mode
- (after! org
-    (set-company-backend! 'org-mode nil))
-;; (setq company-backends (delete 'company-ispell company-backends))
+(after! org
+  (set-company-backend! 'org-mode nil))
 
+;; Soft wrap lines
+(setq visual-line-mode t)
 
-;; (add-hook! 'org-mode-hook
-  ;; (setq-local flyspell-mode nil))
+;; Movement happens in visual lines instead of absolute lines
+(setq evil-respect-visual-line-mode t)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
