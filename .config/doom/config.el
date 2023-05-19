@@ -1,4 +1,4 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
@@ -9,14 +9,11 @@
 (setq user-full-name "Laurens DC"
       user-mail-address "")
 
-;; Disable spell check & autocomplete in org mode
-;; (after! org
-;;    (set-company-backend! 'org-mode nil))
-(setq company-backends (delete 'company-ispell company-backends))
+;; Find an escape delay that works for fast Dutch typing and evil escape attempts
+(setq evil-escape-delay 0.05)
 
-
-(add-hook! 'org-mode-hook
-  (setq-local flyspell-mode nil))
+;; Attempt to disable spell check & autocomplete in org mode, unfortunately nothing works
+(set-company-backend! 'org-mode nil)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
