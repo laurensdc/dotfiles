@@ -14,15 +14,19 @@
 
 ;; Disable spell check & autocomplete in org mode
 (after! org
-  (set-company-backend! 'org-mode nil))
+  (set-company-backend! 'org-mode nil)
+)
 
 ;; Soft wrap lines
 (setq visual-line-mode t)
 
 ;; Boot in fullscreen mode
 (add-hook 'window-setup-hook #'toggle-frame-maximized)
-;; (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
+;; Enable mixed-pitch-mode in all text modes
+(use-package! mixed-pitch
+  :hook
+  (text-mode . mixed-pitch-mode))
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -34,11 +38,10 @@
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
-;;
-;; (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
-;;
+;; accept.
+(setq doom-font (font-spec :family "Fira Code" :size 15 :weight 'normal)
+      doom-variable-pitch-font (font-spec :family "Iosevka Aile" :size 15 :weight 'normal))
+
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely

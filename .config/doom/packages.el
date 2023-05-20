@@ -32,6 +32,9 @@
 ;; Add Thesaurus backend for synonym lookup
 (package! synosaurus)
 
+;; Sans serif fonts for most stuff, nerd font for code stuff and line numbers
+(package! mixed-pitch)
+
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe
 ;; from Doom or MELPA/ELPA/Emacsmirror:
