@@ -19,6 +19,11 @@
 ;; Soft wrap lines
 (setq visual-line-mode t)
 
+;; Boot in fullscreen mode
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
+;; (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
+
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use

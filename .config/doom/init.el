@@ -1,4 +1,4 @@
-;;; init.el -*- lexical-binding: t; -*-
+;;; init.el -*- lexical-binding: t; -test= *-
 
 ;; Movement happens in visual lines instead of absolute lines
 ;; https://github.com/doomemacs/doomemacs/issues/401#issuecomment-588502773
@@ -98,7 +98,7 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
-       lookup              ; navigate your code and its documentation
+       (lookup +dictionary +offline +docsets)              ; navigate your code and its documentation
        lsp               ; M-x vscode
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
