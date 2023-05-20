@@ -13,14 +13,16 @@
 
 ;; Disable spell check & autocomplete in org mode
 (after! org
-  (set-company-backend! 'org-mode nil)
-)
+  (set-company-backend! 'org-mode nil))
 
 ;; Soft wrap lines
 (setq visual-line-mode t)
 
 ;; Boot in fullscreen mode
 (add-hook 'window-setup-hook #'toggle-frame-maximized)
+
+;; Disable quit warning
+(setq confirm-kill-emacs nil)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
