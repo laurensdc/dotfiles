@@ -3,7 +3,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Laurens DC"
@@ -23,11 +22,6 @@
 ;; Boot in fullscreen mode
 (add-hook 'window-setup-hook #'toggle-frame-maximized)
 
-;; Enable mixed-pitch-mode in all text modes
-(use-package! mixed-pitch
-  :hook
-  (text-mode . mixed-pitch-mode))
-
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -39,8 +33,13 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept.
-(setq doom-font (font-spec :family "Fira Code" :size 15 :weight 'normal)
-      doom-variable-pitch-font (font-spec :family "Iosevka Aile" :size 15 :weight 'normal))
+(setq doom-font (font-spec :family "Fira Code" :size 15)
+      doom-variable-pitch-font (font-spec :family "Iosevka Aile"))
+
+;; Enable mixed-pitch-mode in all text modes
+(use-package! mixed-pitch
+  :hook
+  (text-mode . mixed-pitch-mode))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
