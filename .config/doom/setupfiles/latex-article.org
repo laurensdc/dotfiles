@@ -1,4 +1,4 @@
-# Most important document settings
+# Toc, type of document, paper settings
 #+OPTIONS: toc:nil
 #+LaTeX_CLASS: article
 #+LaTeX_CLASS_OPTIONS: [11pt,a4paper,titlepage]
@@ -9,13 +9,13 @@
 # Set A4 paper size and improve page layout
 #+LaTeX_HEADER: \usepackage[a4paper]{geometry} %paper size all the way
 
-# Disable indentation and add paragraph spacing
+# Disable first word indentation and add paragraph spacing
 #+LaTeX_HEADER: \usepackage{parskip}
 
 # Disable page numbers
-#+LaTeX_HEADER: \pagestyle{empty}
+# #+LaTeX_HEADER: \pagestyle{empty}
 
-# Add formatted date & time
+# Can insert formatted date & time
 # #+LaTeX_HEADER: \usepackage{datetime2}
 
 # Set a wider a4 page
