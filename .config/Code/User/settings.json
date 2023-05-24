@@ -272,5 +272,6 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.external.osxExec": "iTerm.app",
   "keyboard.dispatch": "keyCode",
+  "git.autofetch": true,
   "window.zoomLevel": -1
 }

@@ -1277,4 +1277,14 @@
     "command": "-workbench.view.debug",
     "when": "viewContainer.workbench.view.debug.enabled"
   },
+  {
+    "key": "ctrl+l",
+    "command": "merge.goToNextUnhandledConflict",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "merge.goToPreviousUnhandledConflict",
+    "when": "editorTextFocus"
+  },
 ]
