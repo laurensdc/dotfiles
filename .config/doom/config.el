@@ -11,12 +11,15 @@
 ;; Find an escape delay that works for fast Dutch typing and evil escape attempts
 (setq evil-escape-delay 0.06)
 
-;; Disable spell check & autocomplete in org mode
+;; Attempts to disable spell check & autocomplete in org mode
 ;; (set-company-backend! 'org-mode nil) ; doesn't work
-(use-package! company
-  :config
-  (setq +company-backend-alist (assq-delete-all 'text-mode +company-backend-alist))
-  (add-to-list '+company-backend-alist '(text-mode (:separate company-dabbrev company-yasnippet))))
+
+;(use-package! company
+;  :config
+(setq +company-backend-alist (assq-delete-all 'text-mode +company-backend-alist))
+; (add-to-list '+company-backend-alist '(text-mode (:separate company-dabbrev company-yasnippet)))
+;)
+
 
 ;; Soft wrap lines
 (setq visual-line-mode t)
