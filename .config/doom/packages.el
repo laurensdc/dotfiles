@@ -26,8 +26,9 @@
 ;; with the `:disable' property:
 ;(package! builtin-package :disable t)
 
-;; Disable spelling autocompletion
-(package! company-dict :disable t)
+;; Attempts to disable spelling autocompletion
+;(package! company-dict :disable t)
+;(package! company-ispell :disable t)
 
 ;; Add Thesaurus backend for synonym lookup
 (package! synosaurus)
