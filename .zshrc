@@ -109,6 +109,25 @@ alias log="git log --oneline -12"
 # Design studio build monorepo
 alias BUILD="source scripts/codeartifact/export-token.sh && yarn && aws-vault exec codeartifact -- nx run-many --target=bundle --all --parallel"
 
+# BUILD alias based on the directory
+build() {
+  current_folder=$(pwd)
+
+  if [[ "$current_folder" == *"banqup"* ]]; then
+    yarn
+    bundle install
+    npx pod-install
+  elif [[ "$current_folder" == *"design-studio"* ]]; then
+    source scripts/codeartifact/export-token.sh
+    yarn
+    aws-vault exec codeartifact -- nx run-many --target=bundle --all --parallel 
+  else
+    echo "No build alias defined for directory $current_folder"
+  fi
+}
+
+alias BUILD="build"
+
 # nvim aliases
 alias vim=nvim
 alias vi=nvim
