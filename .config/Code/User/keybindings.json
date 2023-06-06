@@ -959,7 +959,15 @@
     "command": "workbench.action.closeSidebar"
   },
   {
+    "key": "cmd+shift+alt+a",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
     "key": "ctrl+shift+alt+o",
+    "command": "workbench.action.closeAuxiliaryBar"
+  },
+  {
+    "key": "cmd+shift+alt+o",
     "command": "workbench.action.closeAuxiliaryBar"
   },
   {
@@ -967,7 +975,15 @@
     "command": "workbench.action.closeAuxiliaryBar"
   },
   {
+    "key": "cmd+shift+alt+f",
+    "command": "workbench.action.closeAuxiliaryBar"
+  },
+  {
     "key": "ctrl+shift+alt+e",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "key": "cmd+shift+alt+e",
     "command": "workbench.action.closeSidebar"
   },
   {
@@ -975,7 +991,15 @@
     "command": "workbench.action.closeSidebar"
   },
   {
+    "key": "cmd+shift+alt+g",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
     "key": "ctrl+shift+alt+x",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "key": "cmd+shift+alt+x",
     "command": "workbench.action.closeSidebar"
   },
   // -- Terminal panel
@@ -1069,6 +1093,18 @@
   {
     "key": "space g shift+a",
     "command": "git.stageAll",
+    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space g c",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.view.scm",
+        "list.focusFirst",
+        "list.select",
+      ]
+    },
     "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
   },
   // Git unbinds
@@ -1175,30 +1211,6 @@
     "command": "atlascode.views.bb.pullrequestsTreeView.focus"
   },
   {
-    "key": "ctrl+shift+cmd+x",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+cmd+e",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+cmd+a",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+cmd+g",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+cmd+f",
-    "command": "workbench.action.closeAuxiliaryBar"
-  },
-  {
-    "key": "ctrl+shift+cmd+o",
-    "command": "workbench.action.closeAuxiliaryBar"
-  },
-  {
     "key": "shift+cmd+w",
     "command": "-workbench.action.closeWindow"
   },
@@ -1216,11 +1228,6 @@
     "key": "ctrl+u",
     "command": "-cursorUndo",
     "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+space",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
   },
   {
     "key": "ctrl+shift+k",
