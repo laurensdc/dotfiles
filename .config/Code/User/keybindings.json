@@ -898,19 +898,35 @@
     "command": "vscode-harpoon.gotoEditor3"
   },
   {
-    "key": "shift+alt+1",
+    "key": "alt+cmd+1",
     "command": "vscode-harpoon.addEditor1"
   },
   {
-    "key": "shift+alt+2",
+    "key": "alt+cmd+2",
     "command": "vscode-harpoon.addEditor2"
   },
   {
-    "key": "shift+alt+3",
+    "key": "alt+cmd+3",
     "command": "vscode-harpoon.addEditor3"
   },
   {
-    "key": "shift+alt+4",
+    "key": "alt+cmd+4",
+    "command": "vscode-harpoon.addEditor4"
+  },
+  {
+    "key": "alt+ctrl+1",
+    "command": "vscode-harpoon.addEditor1"
+  },
+  {
+    "key": "alt+ctrl+2",
+    "command": "vscode-harpoon.addEditor2"
+  },
+  {
+    "key": "alt+ctrl+3",
+    "command": "vscode-harpoon.addEditor3"
+  },
+  {
+    "key": "alt+ctrl+4",
     "command": "vscode-harpoon.addEditor4"
   },
   {
@@ -929,6 +945,17 @@
   // -- Sidebar toggles
   {
     "key": "ctrl+shift+g",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.view.scm",
+        "list.focusFirst",
+        "list.select",
+      ]
+    },
+  },
+  {
+    "key": "cmd+shift+g",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -959,7 +986,15 @@
     "command": "workbench.action.closeSidebar"
   },
   {
+    "key": "cmd+shift+alt+a",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
     "key": "ctrl+shift+alt+o",
+    "command": "workbench.action.closeAuxiliaryBar"
+  },
+  {
+    "key": "cmd+shift+alt+o",
     "command": "workbench.action.closeAuxiliaryBar"
   },
   {
@@ -967,7 +1002,15 @@
     "command": "workbench.action.closeAuxiliaryBar"
   },
   {
+    "key": "cmd+shift+alt+f",
+    "command": "workbench.action.closeAuxiliaryBar"
+  },
+  {
     "key": "ctrl+shift+alt+e",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "key": "cmd+shift+alt+e",
     "command": "workbench.action.closeSidebar"
   },
   {
@@ -975,7 +1018,15 @@
     "command": "workbench.action.closeSidebar"
   },
   {
+    "key": "cmd+shift+alt+g",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
     "key": "ctrl+shift+alt+x",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "key": "cmd+shift+alt+x",
     "command": "workbench.action.closeSidebar"
   },
   // -- Terminal panel
@@ -1071,6 +1122,18 @@
     "command": "git.stageAll",
     "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
   },
+  {
+    "key": "space g c",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.view.scm",
+        "list.focusFirst",
+        "list.select",
+      ]
+    },
+    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+  },
   // Git unbinds
   {
     "key": "shift+f7",
@@ -1161,11 +1224,6 @@
     "command": "workbench.action.closeActiveEditor"
   },
   {
-    "key": "shift+cmd+g",
-    "command": "workbench.view.scm",
-    "when": "workbench.scm.active"
-  },
-  {
     "key": "shift+cmd+a",
     "command": "-notification.acceptPrimaryAction",
     "when": "notificationToastsVisible"
@@ -1173,30 +1231,6 @@
   {
     "key": "shift+cmd+a",
     "command": "atlascode.views.bb.pullrequestsTreeView.focus"
-  },
-  {
-    "key": "ctrl+shift+cmd+x",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+cmd+e",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+cmd+a",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+cmd+g",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+cmd+f",
-    "command": "workbench.action.closeAuxiliaryBar"
-  },
-  {
-    "key": "ctrl+shift+cmd+o",
-    "command": "workbench.action.closeAuxiliaryBar"
   },
   {
     "key": "shift+cmd+w",
@@ -1216,11 +1250,6 @@
     "key": "ctrl+u",
     "command": "-cursorUndo",
     "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+space",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
   },
   {
     "key": "ctrl+shift+k",
@@ -1287,4 +1316,39 @@
     "command": "merge.goToPreviousUnhandledConflict",
     "when": "editorTextFocus"
   },
+  {
+    "key": "ctrl+d",
+    "command": "list.focusPageDown",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "-search.action.replace",
+    "when": "isEditableItem && matchFocus && replaceActive && searchViewletVisible"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "-editor.action.replaceOne",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "-search.action.replaceAllInFile",
+    "when": "fileMatchFocus && isEditableItem && replaceActive && searchViewletVisible"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "-search.action.replaceAllInFolder",
+    "when": "folderMatchFocus && isEditableItem && replaceActive && searchViewletVisible"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.compareEditor.previousChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.compareEditor.nextChange",
+    "when": "textCompareEditorVisible"
+  }
 ]

@@ -4,7 +4,6 @@
   "workbench.tips.enabled": false,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.editor.untitled.hint": "hidden",
-  "window.menuBarVisibility": "toggle",
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "breadcrumbs.enabled": true,
@@ -68,7 +67,7 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[markdown]": {
     "editor.wordWrap": "on",
@@ -273,5 +272,5 @@
   "terminal.external.osxExec": "iTerm.app",
   "keyboard.dispatch": "keyCode",
   "git.autofetch": true,
-  "window.zoomLevel": -1
+  "diffEditor.renderIndicators": false
 }
