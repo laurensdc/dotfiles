@@ -106,9 +106,6 @@ alias REBASE='BRANCH=$(git status | grep "On branch" | sed "s/On branch \(.*\)/\
 # List git commits
 alias log="git log --oneline -12"
 
-# Design studio build monorepo
-alias BUILD="source scripts/codeartifact/export-token.sh && yarn && aws-vault exec codeartifact -- nx run-many --target=bundle --all --parallel"
-
 # BUILD alias based on the directory
 build() {
   current_folder=$(pwd)
@@ -117,6 +114,8 @@ build() {
     yarn
     bundle install
     npx pod-install
+    yarn run prepare:all
+    yarn storybook:build
   elif [[ "$current_folder" == *"design-studio"* ]]; then
     source scripts/codeartifact/export-token.sh
     yarn
