@@ -1,3 +1,6 @@
+# Usage:
+# #+SETUPFILE: ~/dotfiles/.config/doom/setupfiles/latex-article.org
+
 # Toc, type of document, paper settings
 #+OPTIONS: toc:nil
 #+LaTeX_CLASS: article

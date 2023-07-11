@@ -9,7 +9,10 @@
       user-mail-address "")
 
 ;; Find an escape delay that works for fast Dutch typing and evil escape attempts
-(setq evil-escape-delay 0.06)
+(setq evil-escape-delay 0.1)
+
+;; Change escape key sequence so we can still type "moeilijke" Dutch words fast
+(setq evil-escape-key-sequence "jl")
 
 ;; Disable spell check & autocomplete in org mode
 (setq company-global-modes '(not text-mode org-mode))
@@ -86,8 +89,3 @@
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
-;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
-;; etc).
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.

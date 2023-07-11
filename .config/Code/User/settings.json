@@ -272,5 +272,6 @@
   "terminal.external.osxExec": "iTerm.app",
   "keyboard.dispatch": "keyCode",
   "git.autofetch": true,
-  "diffEditor.renderIndicators": false
+  "diffEditor.renderIndicators": false,
+  "window.zoomLevel": -1
 }

@@ -25,8 +25,8 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
--- jk as escape key
-vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true })
+-- jl as escape key
+vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
 
 -- Leader key is space, set this
 -- before loading any plugins that use it 
@@ -68,7 +68,7 @@ require('onedark').load()
 
 -- Better escape options
 require("better_escape").setup {
-  mapping = {"jk"}, -- a table with mappings to use
+  mapping = {"jl"}, -- a table with mappings to use
   timeout = 100,-- the time in which the keys must be hit in ms. Use option timeoutlen by default
   clear_empty_lines = false, -- clear line after escaping if there is only whitespace
  }
