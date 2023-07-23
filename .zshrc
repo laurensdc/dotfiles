@@ -38,11 +38,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-  nvm
 	zsh-aws-vault
 )
-
-zstyle ':omz:plugins:nvm' lazy yes
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,7 +85,8 @@ export PATH=~/.config/emacs/bin:$PATH
 # For a full list of active aliases, run `alias`.
 
 # UP VPN with openconnect
-alias vpn='echo "Enter MFA token for Pulse VPN: "; read TOKEN; sudo killall -SIGINT openconnect; cat ~/.config/pulserc | sed "s/TOKEN/$TOKEN/g" | sudo openconnect vpn.unifiedpost.com --protocol=nc -b'
+# For running the cmd in the background, add -b flag
+alias vpn='echo "Enter MFA token for Pulse VPN: "; read TOKEN; sudo killall -SIGINT openconnect; cat ~/.config/pulserc | sed "s/TOKEN/$TOKEN/g" | sudo openconnect vpn.unifiedpost.com --protocol=nc' 
 
 # Prints `git checkout -b [BRANCH_NAME]`
 alias branch="git status | grep 'On branch' |  sed 's/On branch \(.*\)/git checkout \1/'"
@@ -119,7 +117,7 @@ build() {
   elif [[ "$current_folder" == *"design-studio"* ]]; then
     source scripts/codeartifact/export-token.sh
     yarn
-    aws-vault exec codeartifact -- nx run-many --target=bundle --all --parallel 
+    aws-vault exec codeartifact -- nx run-many --target=bundle --all --parallel=16 
   else
     echo "No build alias defined for directory $current_folder"
   fi
@@ -134,4 +132,7 @@ alias v=nvim
 
 # MacOS preview from terminal
 alias preview="qlmanage -p"
+
+# Link Docker to Minikube
+eval $(minikube -p minikube docker-env)
 
