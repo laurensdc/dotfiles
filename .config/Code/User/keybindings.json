@@ -1,6 +1,146 @@
 [
   // -- Unbind: Gitlens nonsense binds
   {
+    "key": "cmd+c",
+    "command": "-gitlens.views.branches.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.branches/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.commits.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.commits/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.contributors.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.contributors/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.fileHistory.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.fileHistory/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.lineHistory.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.lineHistory/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.remotes.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.remotes/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.repositories.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.repositories/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.searchAndCompare.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.searchAndCompare\\b/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.stashes.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.stashes/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.tags.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.tags/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.workspaces.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.workspaces/"
+  },
+  {
+    "key": "cmd+c",
+    "command": "-gitlens.views.worktrees.copy",
+    "when": "gitlens:enabled && focusedView =~ /^gitlens\\.views\\.worktrees/"
+  },
+  {
+    "key": "alt+cmd+g /",
+    "command": "-gitlens.gitCommands",
+    "when": "!gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "alt+cmd+g .",
+    "command": "-gitlens.diffWithNext",
+    "when": "editorTextFocus && !isInDiffEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /revision/"
+  },
+  {
+    "key": "alt+cmd+g .",
+    "command": "-gitlens.diffWithNextInDiffLeft",
+    "when": "editorTextFocus && isInDiffEditor && !isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /revision/"
+  },
+  {
+    "key": "alt+cmd+g .",
+    "command": "-gitlens.diffWithNextInDiffRight",
+    "when": "editorTextFocus && isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /revision/"
+  },
+  {
+    "key": "alt+cmd+g ,",
+    "command": "-gitlens.diffWithPrevious",
+    "when": "editorTextFocus && !isInDiffEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
+  },
+  {
+    "key": "alt+cmd+g ,",
+    "command": "-gitlens.diffWithPreviousInDiffLeft",
+    "when": "editorTextFocus && isInDiffEditor && !isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
+  },
+  {
+    "key": "alt+cmd+g ,",
+    "command": "-gitlens.diffWithPreviousInDiffRight",
+    "when": "editorTextFocus && isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
+  },
+  {
+    "key": "alt+cmd+g shift+.",
+    "command": "-gitlens.diffWithWorking",
+    "when": "editorTextFocus && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /revision/"
+  },
+  {
+    "key": "alt+cmd+g shift+,",
+    "command": "-gitlens.diffLineWithPrevious",
+    "when": "editorTextFocus && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
+  },
+  {
+    "key": "alt+cmd+g c",
+    "command": "-gitlens.showQuickCommitFileDetails",
+    "when": "editorTextFocus && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "alt+cmd+g shift+h",
+    "command": "-gitlens.showQuickRepoHistory",
+    "when": "!gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "alt+cmd+g h",
+    "command": "-gitlens.showQuickFileHistory",
+    "when": "!gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "alt+cmd+g s",
+    "command": "-gitlens.showQuickRepoStatus",
+    "when": "!gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "alt+cmd+g b",
+    "command": "-gitlens.toggleFileBlame",
+    "when": "editorTextFocus && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /blameable/"
+  },
+  {
+    "key": "alt+cmd+g shift+b",
+    "command": "-gitlens.toggleCodeLens",
+    "when": "editorTextFocus && !gitlens:disabled && !gitlens:disabledToggleCodeLens && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "cmd+k cmd+n",
+    "command": "-git.unstageSelectedRanges",
+    "when": "isInDiffEditor && !operationInProgress"
+  },
+  {
     "key": "ctrl+shift+g h",
     "command": "-gitlens.showQuickFileHistory",
     "when": "!gitlens:disabled && config.gitlens.keymap == 'chorded'"
@@ -170,7 +310,7 @@
     "command": "-gitlens.toggleCodeLens",
     "when": "editorTextFocus && !gitlens:disabled && !gitlens:disabledToggleCodeLens && config.gitlens.keymap == 'chorded'"
   },
-  // -- Unbind: Workbench 
+  // -- Unbind: Workbench
   {
     "key": "cmd+shift+o",
     "command": "-workbench.action.gotoSymbol"
@@ -207,41 +347,9 @@
     "command": "-workbench.action.focusSecondEditorGroup"
   },
   {
-    "key": "ctrl+1",
-    "command": "-workbench.action.focusFirstEditorGroup"
-  },
-  {
-    "key": "ctrl+3",
-    "command": "-workbench.action.focusThirdEditorGroup"
-  },
-  {
-    "key": "ctrl+4",
-    "command": "-workbench.action.focusFourthEditorGroup"
-  },
-  {
-    "key": "ctrl+5",
-    "command": "-workbench.action.focusFifthEditorGroup"
-  },
-  {
     "key": "ctrl+shift+5",
     "command": "-workbench.action.terminal.splitInstance",
     "when": "terminalProcessSupported && terminalTabsFocus"
-  },
-  {
-    "key": "ctrl+6",
-    "command": "-workbench.action.focusSixthEditorGroup"
-  },
-  {
-    "key": "ctrl+7",
-    "command": "-workbench.action.focusSeventhEditorGroup"
-  },
-  {
-    "key": "ctrl+8",
-    "command": "-workbench.action.focusEighthEditorGroup"
-  },
-  {
-    "key": "ctrl+9",
-    "command": "-workbench.action.lastEditorInGroup"
   },
   {
     "key": "alt+down",
@@ -251,6 +359,15 @@
   {
     "key": "ctrl+shift+w",
     "command": "-workbench.action.closeWindow"
+  },
+  {
+    "key": "shift+cmd+w",
+    "command": "-workbench.action.closeWindow"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeWindow",
+    "when": "!editorIsOpen && !multipleEditorGroups"
   },
   {
     "key": "ctrl+shift+m",
@@ -414,6 +531,46 @@
     "when": "taskCommandsRegistered"
   },
   // -- Unbind others
+  {
+    "key": "ctrl+u",
+    "command": "-cursorUndo",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "-deleteRight",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "-workbench.view.debug",
+    "when": "viewContainer.workbench.view.debug.enabled"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "-search.action.replace",
+    "when": "isEditableItem && matchFocus && replaceActive && searchViewletVisible"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "-editor.action.replaceOne",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "-search.action.replaceAllInFile",
+    "when": "fileMatchFocus && isEditableItem && replaceActive && searchViewletVisible"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "-search.action.replaceAllInFolder",
+    "when": "folderMatchFocus && isEditableItem && replaceActive && searchViewletVisible"
+  },
+  {
+    "key": "shift+cmd+b",
+    "command": "-workbench.action.tasks.build",
+    "when": "taskCommandsRegistered"
+  },
   {
     "key": "ctrl+w",
     "command": "-workbench.action.closeActiveEditor"
@@ -712,62 +869,62 @@
   {
     "key": "space w o",
     "command": "workbench.action.closeOtherEditors",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w k",
     "command": "workbench.action.focusAboveGroup",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w j",
     "command": "workbench.action.focusBelowGroup",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w h",
     "command": "workbench.action.focusLeftGroup",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w l",
     "command": "workbench.action.focusRightGroup",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w u",
     "command": "workbench.action.joinAllGroups",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w s",
     "command": "workbench.action.splitEditorDown",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w v",
     "command": "workbench.action.splitEditorRight",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w c",
     "command": "workbench.action.closeActiveEditor",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w d",
     "command": "workbench.action.closeActiveEditor",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w n",
     "command": "workbench.action.nextEditorInGroup",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space w p",
     "command": "workbench.action.previousEditorInGroup",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   // VSCode hover navigation with vim motions
   {
@@ -804,6 +961,17 @@
     "key": "ctrl+u",
     "command": "editor.action.pageUpHover",
     "when": "editorHoverFocused"
+  },
+  // Show function parameter hints
+  {
+    "key": "ctrl+shift+k",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "cmd+shift+k",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   // Vimify list & terminal handling
   {
@@ -862,11 +1030,6 @@
     "when": "terminalFocus && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
   },
   {
-    "key": "ctrl+shift+k",
-    "command": "workbench.action.terminal.scrollUp",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
-  },
-  {
     "key": "cmd+shift+j",
     "command": "workbench.action.terminal.scrollDown",
     "when": "terminalFocus && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
@@ -876,15 +1039,79 @@
     "command": "workbench.action.terminal.scrollUp",
     "when": "terminalFocus && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
   },
+  {
+    "key": "shift+cmd+k",
+    "command": "-editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  // Vimify dropdowns and hover menus
+  {
+    "key": "ctrl+j",
+    "command": "selectNextCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "list.focusPageDown",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "merge.goToNextUnhandledConflict",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "merge.goToPreviousUnhandledConflict",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.compareEditor.previousChange",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.compareEditor.nextChange",
+    "when": "isInDiffEditor"
+  },
+  // Focus / zoom in on the diff change
+  // {
+  //   "key": "ctrl+l",
+  //   "command": "editor.action.diffReview.next",
+  //   "when": "isInDiffEditor"
+  // },
+  // {
+  //   "key": "ctrl+h",
+  //   "command": "editor.action.diffReview.prev",
+  //   "when": "isInDiffEditor"
+  // },
   // -- Harpoon
-  {
-    "key": "shift+alt+p",
-    "command": "vscode-harpoon.editEditors"
-  },
-  {
-    "key": "alt+p",
-    "command": "vscode-harpoon.editorQuickPick"
-  },
   {
     "key": "alt+1",
     "command": "vscode-harpoon.gotoEditor1"
@@ -898,42 +1125,30 @@
     "command": "vscode-harpoon.gotoEditor3"
   },
   {
-    "key": "alt+cmd+1",
-    "command": "vscode-harpoon.addEditor1"
-  },
-  {
-    "key": "alt+cmd+2",
-    "command": "vscode-harpoon.addEditor2"
-  },
-  {
-    "key": "alt+cmd+3",
-    "command": "vscode-harpoon.addEditor3"
-  },
-  {
-    "key": "alt+cmd+4",
-    "command": "vscode-harpoon.addEditor4"
-  },
-  {
-    "key": "alt+ctrl+1",
-    "command": "vscode-harpoon.addEditor1"
-  },
-  {
-    "key": "alt+ctrl+2",
-    "command": "vscode-harpoon.addEditor2"
-  },
-  {
-    "key": "alt+ctrl+3",
-    "command": "vscode-harpoon.addEditor3"
-  },
-  {
-    "key": "alt+ctrl+4",
-    "command": "vscode-harpoon.addEditor4"
-  },
-  {
     "key": "alt+4",
     "command": "vscode-harpoon.gotoEditor4"
   },
-  // -- Bookmarks
+  {
+    "key": "space h 1",
+    "command": "vscode-harpoon.addEditor1",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space h 2",
+    "command": "vscode-harpoon.addEditor2",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space h 3",
+    "command": "vscode-harpoon.addEditor3",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space h 4",
+    "command": "vscode-harpoon.addEditor4",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  // -- Sidebar toggles
   {
     "key": "ctrl+alt+b",
     "command": "bookmarks.toggleLabeled"
@@ -942,7 +1157,6 @@
     "key": "ctrl+shift+alt+b",
     "command": "bookmarks.toggle"
   },
-  // -- Sidebar toggles
   {
     "key": "ctrl+shift+g",
     "command": "runCommands",
@@ -964,6 +1178,10 @@
         "list.select",
       ]
     },
+  },
+  {
+    "key": "cmd+shift+b",
+    "command": "bookmarksExplorer.focus"
   },
   {
     "key": "ctrl+shift+b",
@@ -1029,6 +1247,32 @@
     "key": "cmd+shift+alt+x",
     "command": "workbench.action.closeSidebar"
   },
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "alt+cmd+b",
+    "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "cmd+[",
+    "command": "-editor.action.outdentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+]",
+    "command": "-editor.action.indentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
   // -- Terminal panel
   {
     "key": "ctrl+j",
@@ -1037,7 +1281,7 @@
   {
     "key": "ctrl+j",
     "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
+    "when": "terminal.active && !inQuickOpen"
   },
   {
     "key": "cmd+j",
@@ -1064,63 +1308,53 @@
   {
     "key": "space g m",
     "command": "extension.showGitmoji",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space g g",
     "command": "extension.showGitmoji",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "editor.action.diffReview.next",
-    "when": "isInDiffEditor"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "editor.action.diffReview.prev",
-    "when": "isInDiffEditor"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     // d for Diff
     "key": "space g d",
     "command": "git.openChange",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space g o",
     "command": "git.openAllChanges",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space g -",
     "command": "git.unstage",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space g u",
     "command": "git.unstage",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space g =",
     "command": "git.stage",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space g a",
     "command": "git.stage",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space g shift+u",
     "command": "git.unstageAll",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space g shift+a",
     "command": "git.stageAll",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space g c",
@@ -1132,7 +1366,7 @@
         "list.select",
       ]
     },
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   // Git unbinds
   {
@@ -1162,23 +1396,28 @@
   },
   // -- Editor
   {
+    "key": "cmd+r",
+    "command": "editor.action.rename",
+    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+  },
+  {
     "key": "meta+n",
     "command": "explorer.newFile"
   },
   {
     "key": "space f n",
     "command": "explorer.newFile",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space b n",
     "command": "openEditors.newUntitledFile",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "space f s",
     "command": "workbench.action.files.save",
-    "when": "editorFocus && neovim.mode != insert && neovim.mode != replace"
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
     "key": "ctrl+tab",
@@ -1190,6 +1429,11 @@
   },
   {
     "key": "ctrl+shift+m",
+    "command": "markdown.showPreview",
+    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+  },
+  {
+    "key": "cmd+shift+m",
     "command": "markdown.showPreview",
     "when": "!notebookEditorFocused && editorLangId == 'markdown'"
   },
@@ -1212,6 +1456,75 @@
     "key": "cmd+shift+c",
     "command": "workbench.action.toggleCommenting",
     "when": "editorFocus"
+  },
+  // Focus editor tabs
+  {
+    "key": "cmd+8",
+    "command": "-workbench.action.focusEighthEditorGroup"
+  },
+  {
+    "key": "cmd+5",
+    "command": "-workbench.action.focusFifthEditorGroup"
+  },
+  {
+    "key": "cmd+4",
+    "command": "-workbench.action.focusFourthEditorGroup"
+  },
+  {
+    "key": "cmd+2",
+    "command": "-workbench.action.focusSecondEditorGroup"
+  },
+  {
+    "key": "cmd+7",
+    "command": "-workbench.action.focusSeventhEditorGroup"
+  },
+  {
+    "key": "cmd+6",
+    "command": "-workbench.action.focusSixthEditorGroup"
+  },
+  {
+    "key": "cmd+3",
+    "command": "-workbench.action.focusThirdEditorGroup"
+  },
+  {
+    "key": "cmd+1",
+    "command": "-workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "cmd+1",
+    "command": "workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "cmd+2",
+    "command": "workbench.action.openEditorAtIndex2"
+  },
+  {
+    "key": "cmd+3",
+    "command": "workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "cmd+4",
+    "command": "workbench.action.openEditorAtIndex4"
+  },
+  {
+    "key": "ctrl+5",
+    "command": "-workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "ctrl+6",
+    "command": "-workbench.action.openEditorAtIndex6"
+  },
+  {
+    "key": "ctrl+7",
+    "command": "-workbench.action.openEditorAtIndex7"
+  },
+  {
+    "key": "ctrl+8",
+    "command": "-workbench.action.openEditorAtIndex8"
+  },
+  {
+    "key": "ctrl+9",
+    "command": "-workbench.action.openEditorAtIndex9"
   },
   // Atlassian thing
   {
@@ -1232,123 +1545,5 @@
     "key": "shift+cmd+a",
     "command": "atlascode.views.bb.pullrequestsTreeView.focus"
   },
-  {
-    "key": "shift+cmd+w",
-    "command": "-workbench.action.closeWindow"
-  },
-  {
-    "key": "cmd+w",
-    "command": "-workbench.action.closeWindow",
-    "when": "!editorIsOpen && !multipleEditorGroups"
-  },
-  {
-    "key": "shift+cmd+m",
-    "command": "markdown.showPreview",
-    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
-  },
-  {
-    "key": "ctrl+u",
-    "command": "-cursorUndo",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+k",
-    "command": "editor.action.triggerParameterHints",
-    "when": "editorHasSignatureHelpProvider && editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  },
-  {
-    "key": "cmd+shift+k",
-    "command": "editor.action.triggerParameterHints",
-    "when": "editorHasSignatureHelpProvider && editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  },
-  {
-    "key": "cmd+r",
-    "command": "editor.action.rename",
-    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "selectNextCodeAction",
-    "when": "codeActionMenuVisible"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "selectPrevCodeAction",
-    "when": "codeActionMenuVisible"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "selectNextSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "ctrl+d",
-    "command": "-deleteRight",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+d",
-    "command": "-workbench.view.debug",
-    "when": "viewContainer.workbench.view.debug.enabled"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "merge.goToNextUnhandledConflict",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "merge.goToPreviousUnhandledConflict",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+d",
-    "command": "list.focusPageDown",
-    "when": "listFocus && !inputFocus"
-  },
-  {
-    "key": "ctrl+shift+1",
-    "command": "-search.action.replace",
-    "when": "isEditableItem && matchFocus && replaceActive && searchViewletVisible"
-  },
-  {
-    "key": "ctrl+shift+1",
-    "command": "-editor.action.replaceOne",
-    "when": "editorFocus && findWidgetVisible"
-  },
-  {
-    "key": "ctrl+shift+1",
-    "command": "-search.action.replaceAllInFile",
-    "when": "fileMatchFocus && isEditableItem && replaceActive && searchViewletVisible"
-  },
-  {
-    "key": "ctrl+shift+1",
-    "command": "-search.action.replaceAllInFolder",
-    "when": "folderMatchFocus && isEditableItem && replaceActive && searchViewletVisible"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.compareEditor.previousChange",
-    "when": "textCompareEditorVisible"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.compareEditor.nextChange",
-    "when": "textCompareEditorVisible"
-  }
+  // Unsorted
 ]
