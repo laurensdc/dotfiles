@@ -1148,15 +1148,23 @@
     "command": "vscode-harpoon.addEditor4",
     "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
+  // Add bookmarks
+  {
+    "key": "space b a",
+    "command": "bookmarks.toggleLabeled",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space b t",
+    "command": "bookmarks.toggle",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space b d",
+    "command": "bookmarks.toggle",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
   // -- Sidebar toggles
-  {
-    "key": "ctrl+alt+b",
-    "command": "bookmarks.toggleLabeled"
-  },
-  {
-    "key": "ctrl+shift+alt+b",
-    "command": "bookmarks.toggle"
-  },
   {
     "key": "ctrl+shift+g",
     "command": "runCommands",
