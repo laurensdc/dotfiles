@@ -310,6 +310,32 @@
     "command": "-gitlens.toggleCodeLens",
     "when": "editorTextFocus && !gitlens:disabled && !gitlens:disabledToggleCodeLens && config.gitlens.keymap == 'chorded'"
   },
+  // -- Unbind: Git stuff
+  {
+    "key": "shift+f7",
+    "command": "-editor.action.diffReview.prev",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "f7",
+    "command": "-editor.action.diffReview.next",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "ctrl+k ctrl+n",
+    "command": "-git.unstageSelectedRanges",
+    "when": "isInDiffEditor && !operationInProgress"
+  },
+  {
+    "key": "alt+f3",
+    "command": "-editor.action.dirtydiff.next",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
+  {
+    "key": "shift+alt+f3",
+    "command": "-editor.action.dirtydiff.previous",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
   // -- Unbind: Workbench
   {
     "key": "cmd+shift+o",
@@ -829,12 +855,7 @@
   {
     "key": "ctrl+a",
     "command": "-vscode-neovim.send",
-    "when": "editorTextFocus && neovim.ctrlKeysNormal && neovim.init && neovim.mode != 'insert'"
-  },
-  {
-    "key": "ctrl+a",
-    "command": "-vscode-neovim.send",
-    "when": "editorTextFocus && neovim.ctrlKeysInsert && neovim.mode == 'insert'"
+    "when": "editorTextFocus && neovim.ctrlKeysNormal && neovim.init"
   },
   // Save and escape insert mode
   {
@@ -1381,33 +1402,7 @@
     },
     "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
-  // Git unbinds
-  {
-    "key": "shift+f7",
-    "command": "-editor.action.diffReview.prev",
-    "when": "isInDiffEditor"
-  },
-  {
-    "key": "f7",
-    "command": "-editor.action.diffReview.next",
-    "when": "isInDiffEditor"
-  },
-  {
-    "key": "ctrl+k ctrl+n",
-    "command": "-git.unstageSelectedRanges",
-    "when": "isInDiffEditor && !operationInProgress"
-  },
-  {
-    "key": "alt+f3",
-    "command": "-editor.action.dirtydiff.next",
-    "when": "editorTextFocus && !textCompareEditorActive"
-  },
-  {
-    "key": "shift+alt+f3",
-    "command": "-editor.action.dirtydiff.previous",
-    "when": "editorTextFocus && !textCompareEditorActive"
-  },
-  // -- Editor
+  // -- File management
   {
     "key": "cmd+r",
     "command": "editor.action.rename",
@@ -1432,6 +1427,17 @@
     "command": "workbench.action.files.save",
     "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
+  {
+    "key": "space f f",
+    "command": "workbench.action.files.openFileFolder",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space f r",
+    "command": "workbench.action.openRecent",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  // -- Editor
   {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditorInGroup"
@@ -1469,6 +1475,15 @@
     "key": "cmd+shift+c",
     "command": "workbench.action.toggleCommenting",
     "when": "editorFocus"
+  },
+  {
+    "key": "f4",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "shift+cmd+m",
+    "command": "-workbench.actions.view.problems",
+    "when": "workbench.panel.markers.view.active"
   },
   // Focus editor tabs
   {
@@ -1546,10 +1561,6 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "f4",
-    "command": "workbench.action.closeActiveEditor"
-  },
-  {
     "key": "shift+cmd+a",
     "command": "-notification.acceptPrimaryAction",
     "when": "notificationToastsVisible"
@@ -1557,11 +1568,6 @@
   {
     "key": "shift+cmd+a",
     "command": "atlascode.views.bb.pullrequestsTreeView.focus"
-  },
-  {
-    "key": "shift+cmd+m",
-    "command": "-workbench.actions.view.problems",
-    "when": "workbench.panel.markers.view.active"
   },
   // Unsorted
 ]
