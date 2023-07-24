@@ -25,8 +25,11 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
--- jl as escape key
-vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
+-- Composite escape - not necessary as we're using the better_escape plugin
+-- vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
+
+-- D when text is selected won't send text to paste register
+vim.api.nvim_set_keymap('v', 'D', '"_d', { noremap = true})
 
 -- Leader key is space, set this
 -- before loading any plugins that use it 
