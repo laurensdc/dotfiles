@@ -1289,7 +1289,7 @@
   {
     "key": "ctrl+j",
     "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active && !inQuickOpen"
+    "when": "terminal.active && !inQuickOpen && !suggestWidgetVisible"
   },
   {
     "key": "cmd+j",
@@ -1298,7 +1298,7 @@
   {
     "key": "cmd+j",
     "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
+    "when": "terminal.active && !inQuickOpen && !suggestWidgetVisible"
   },
   {
     "key": "ctrl+alt+j",
@@ -1347,6 +1347,11 @@
   {
     "key": "space g =",
     "command": "git.stage",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space g r",
+    "command": "git.clean",
     "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
@@ -1552,6 +1557,11 @@
   {
     "key": "shift+cmd+a",
     "command": "atlascode.views.bb.pullrequestsTreeView.focus"
+  },
+  {
+    "key": "shift+cmd+m",
+    "command": "-workbench.actions.view.problems",
+    "when": "workbench.panel.markers.view.active"
   },
   // Unsorted
 ]

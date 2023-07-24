@@ -1,6 +1,4 @@
 {
-  // VSCode QOL settings
-  "workbench.activityBar.visible": false,
   "workbench.tips.enabled": false,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.editor.untitled.hint": "hidden",
@@ -33,13 +31,11 @@
   "editor.wordWrap": "on",
   "editor.cursorBlinking": "smooth",
   "editor.fontLigatures": true,
-  "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
   "editor.quickSuggestions": {
     "other": true,
     "comments": false,
     "strings": false
   },
-  "editor.fontSize": 13,
   "editor.minimap.size": "fill",
   // Git
   "git.confirmSync": false,
@@ -273,5 +269,9 @@
   "keyboard.dispatch": "keyCode",
   "git.autofetch": true,
   "diffEditor.renderIndicators": false,
+  "editor.fontFamily": "'Comic Code Ligatures', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.codeLensFontFamily": "'Comic Code Ligatures'",
+  "markdown.preview.fontFamily": "'Iosevka Aile', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+  "editor.minimap.enabled": false,
   "window.zoomLevel": -1
 }
