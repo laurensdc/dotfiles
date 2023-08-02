@@ -103,7 +103,7 @@
   // Schemas and yaml settings
   "yaml.format.enable": false,
   "yaml.schemas": {
-    "file:///Users/Laurens/.vscode/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///c%3A/Users/CoredusK/.vscode/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "openapi.securityAuditToken": "CiAXp/Uvj0yNQm4ye4FTanEioxNHSFuWFKmRdyS/bjLfEBIYj5qEeY7BsyeL0WNLK2FgVGC+NCWfCWckGn+A/jKWVE2rlsctt22IWt6Zu1pTs+5s5EPlQkjcNExuVW1NDrNkJjg7QKqIVKYI+LIBoPIfF2zVqEbk9BhDwBq6xxaZlYRRXrhn1y8hzzzqDerPEktqYzwf7rNQDOsOCiMQMAfh+RgwPopXnz8JK6vur9UytmDfXKO6D0dCMKrx",
   "json.schemas": [
@@ -269,9 +269,9 @@
   "keyboard.dispatch": "keyCode",
   "git.autofetch": true,
   "diffEditor.renderIndicators": false,
-  "editor.fontFamily": "'Comic Code Ligatures', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Comic Code Ligatures Light', 'Fira Code', Consolas, 'Courier New', monospace",
   "editor.codeLensFontFamily": "'Comic Code Ligatures'",
   "markdown.preview.fontFamily": "'Iosevka Aile', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
   "editor.minimap.enabled": false,
-  "window.zoomLevel": -1
+  "workbench.activityBar.visible": false,
 }

@@ -312,24 +312,9 @@
   },
   // -- Unbind: Git stuff
   {
-    "key": "shift+f7",
-    "command": "-editor.action.diffReview.prev",
-    "when": "isInDiffEditor"
-  },
-  {
-    "key": "f7",
-    "command": "-editor.action.diffReview.next",
-    "when": "isInDiffEditor"
-  },
-  {
     "key": "ctrl+k ctrl+n",
     "command": "-git.unstageSelectedRanges",
     "when": "isInDiffEditor && !operationInProgress"
-  },
-  {
-    "key": "alt+f3",
-    "command": "-editor.action.dirtydiff.next",
-    "when": "editorTextFocus && !textCompareEditorActive"
   },
   {
     "key": "shift+alt+f3",
@@ -1112,28 +1097,6 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+h",
-    "command": "workbench.action.compareEditor.previousChange",
-    "when": "isInDiffEditor"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.compareEditor.nextChange",
-    "when": "isInDiffEditor"
-  },
-  // Focus / zoom in on the diff change
-  // {
-  //   "key": "ctrl+l",
-  //   "command": "editor.action.diffReview.next",
-  //   "when": "isInDiffEditor"
-  // },
-  // {
-  //   "key": "ctrl+h",
-  //   "command": "editor.action.diffReview.prev",
-  //   "when": "isInDiffEditor"
-  // },
-  // -- Harpoon
-  {
     "key": "alt+1",
     "command": "vscode-harpoon.gotoEditor1"
   },
@@ -1167,6 +1130,11 @@
   {
     "key": "space h 4",
     "command": "vscode-harpoon.addEditor4",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "space h p",
+    "command": "vscode-harpoon.editorQuickPick",
     "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   // Add bookmarks
@@ -1227,54 +1195,6 @@
   {
     "key": "ctrl+shift+a",
     "command": "atlascode.views.bb.pullrequestsTreeView.focus"
-  },
-  {
-    "key": "ctrl+shift+alt+a",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "cmd+shift+alt+a",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+alt+o",
-    "command": "workbench.action.closeAuxiliaryBar"
-  },
-  {
-    "key": "cmd+shift+alt+o",
-    "command": "workbench.action.closeAuxiliaryBar"
-  },
-  {
-    "key": "ctrl+shift+alt+f",
-    "command": "workbench.action.closeAuxiliaryBar"
-  },
-  {
-    "key": "cmd+shift+alt+f",
-    "command": "workbench.action.closeAuxiliaryBar"
-  },
-  {
-    "key": "ctrl+shift+alt+e",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "cmd+shift+alt+e",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+alt+g",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "cmd+shift+alt+g",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "ctrl+shift+alt+x",
-    "command": "workbench.action.closeSidebar"
-  },
-  {
-    "key": "cmd+shift+alt+x",
-    "command": "workbench.action.closeSidebar"
   },
   {
     "key": "cmd+[",
@@ -1569,5 +1489,72 @@
     "key": "shift+cmd+a",
     "command": "atlascode.views.bb.pullrequestsTreeView.focus"
   },
-  // Unsorted
+  {
+    "key": "ctrl+alt+cmd+[",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "shift+cmd+e",
+    "command": "workbench.files.action.showActiveFileInExplorer"
+  },
+  {
+    "key": "shift+cmd+e",
+    "command": "-workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
+    "key": "cmd+l",
+    "command": "breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "cmd+h",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "alt+l",
+    "command": "editor.action.marker.next",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+h",
+    "command": "editor.action.marker.prev",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+h",
+    "command": "-testing.toggleTestingPeekHistory",
+    "when": "testing.isPeekVisible"
+  },
+  {
+    "key": "shift+alt+f5",
+    "command": "-workbench.action.editor.previousChange",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
+  {
+    "key": "alt+f3",
+    "command": "-editor.action.dirtydiff.next",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
+  {
+    "key": "alt+h",
+    "command": "editor.action.diffReview.prev",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "shift+f7",
+    "command": "-editor.action.diffReview.prev",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "alt+l",
+    "command": "editor.action.diffReview.next",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "f7",
+    "command": "-editor.action.diffReview.next",
+    "when": "isInDiffEditor"
+  }
 ]
