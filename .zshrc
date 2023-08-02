@@ -63,6 +63,9 @@ export EDITOR='nvim'
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# vi mode in terminal
+set -o vi
+
 # Android studio path variables for MacOS and Linux
 if [[ "$(uname)" == "Darwin" ]]; then
     export ANDROID_HOME="$HOME/Library/Android/sdk"
@@ -126,13 +129,8 @@ build() {
 alias BUILD="build"
 
 # nvim aliases
-alias vim=nvim
-alias vi=nvim
 alias v=nvim
 
 # MacOS preview from terminal
 alias preview="qlmanage -p"
-
-# Link Docker to Minikube
-eval $(minikube -p minikube docker-env)
 
