@@ -25,6 +25,7 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
+
 -- Composite escape - not necessary as we're using the better_escape plugin
 -- vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
 
@@ -59,8 +60,8 @@ require("lazy").setup({
     config = function()
       require("better_escape").setup()
     end,
-
-  }
+  },
+  "tpope/vim-surround"
 })
 
 -- Theme config & load
