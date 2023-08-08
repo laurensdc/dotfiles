@@ -1616,5 +1616,14 @@
     "key": "cmd+enter",
     "command": "-search.action.openInEditor",
     "when": "hasSearchResult && searchViewletFocus"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "-workbench.action.newWindow"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "openEditors.newUntitledFile",
+    "when": "editorTextFocus && neovim.mode != 'insert' && neovim.mode != 'replace'"
   }
 ]
