@@ -273,4 +273,5 @@
   "markdown.preview.fontFamily": "'Iosevka Aile', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
   "editor.minimap.enabled": false,
   "breadcrumbs.symbolPath": "last",
+  "workbench.activityBar.visible": false,
 }
