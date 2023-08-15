@@ -1399,10 +1399,6 @@
     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
   },
   {
-    "key": "meta+n",
-    "command": "explorer.newFile"
-  },
-  {
     "key": "space f n",
     "command": "explorer.newFile",
     "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
@@ -1686,6 +1682,27 @@
     "key": "cmd+enter",
     "command": "-search.action.openInEditor",
     "when": "hasSearchResult && searchViewletFocus"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "-workbench.action.newWindow"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "openEditors.newUntitledFile",
+    "when": "editorTextFocus && neovim.mode != 'insert' && neovim.mode != 'replace'"
+  },
+  {
+    "key": "alt+cmd+n",
+    "command": "-extension.advancedNewFile"
+  },
+  {
+    "key": "cmd+n",
+    "command": "newFile.createNewFile"
+  },
+  {
+    "key": "alt+cmd+n",
+    "command": "-newFile.createNewFile"
   },
   {
     "key": "ctrl+alt+[",
