@@ -1,0 +1,29 @@
+:title:
+#+TITLE:     An awesome presentation
+#+AUTHOR:    Laurens DC
+#+EMAIL:     @
+#+DATE:      01/05/2020
+:end:
+:beamer_setup:
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:https://orgmode.org/org-info.js
+
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+
+#+HTML_LINK_UP:
+#+HTML_LINK_HOME:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [bigger]
+
+# Metropolis theme
+#+LaTeX_HEADER: \mode<beamer>{\usetheme{metropolis}}
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+:end:
+
+* Introduction
+** Title slide
