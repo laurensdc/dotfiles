@@ -38,7 +38,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	zsh-aws-vault
+	# zsh-aws-vault
+  asdf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -51,10 +52,6 @@ prompt_context() {
     prompt_segment black default "%(!.%{%F{yellow}%}.)$Users"
   fi
 }
-
-# asdf
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
 
 # User configuration
 export EDITOR='nvim'
