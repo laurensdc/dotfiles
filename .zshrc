@@ -91,6 +91,8 @@ alias vpn='echo "Enter MFA token for Pulse VPN: "; read TOKEN; sudo killall -SIG
 # Prints `git checkout -b [BRANCH_NAME]`
 alias branch="git status | grep 'On branch' |  sed 's/On branch \(.*\)/git checkout \1/'"
 
+alias tf=terraform
+
 # Copy to clipboard for MacOS and x11 Linux 
 if [[ "$(uname)" == "Darwin" ]]; then
   alias cpbranch="branch | pbcopy && branch"

@@ -1,7 +1,6 @@
 {
   "workbench.tips.enabled": false,
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.editor.untitled.hint": "hidden",
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "security.workspace.trust.untrustedFiles": "open",
@@ -13,7 +12,7 @@
   "eslint.format.enable": true,
   // Theme & icon settings
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Night Owl (No Italics)",
+  "workbench.colorTheme": "Tokyo Night",
   "oneDarkPro.vivid": false,
   "oneDarkPro.editorTheme": "One Dark Pro Darker",
   "material-icon-theme.folders.theme": "specific",
@@ -56,7 +55,7 @@
     "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -102,7 +101,7 @@
   // Schemas and yaml settings
   "yaml.format.enable": false,
   "yaml.schemas": {
-    "file:///Users/Laurens/.vscode/extensions/atlassian.atlascode-3.0.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///Users/laurens/.vscode/extensions/atlassian.atlascode-3.0.7/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "openapi.securityAuditToken": "CiAXp/Uvj0yNQm4ye4FTanEioxNHSFuWFKmRdyS/bjLfEBIYj5qEeY7BsyeL0WNLK2FgVGC+NCWfCWckGn+A/jKWVE2rlsctt22IWt6Zu1pTs+5s5EPlQkjcNExuVW1NDrNkJjg7QKqIVKYI+LIBoPIfF2zVqEbk9BhDwBq6xxaZlYRRXrhn1y8hzzzqDerPEktqYzwf7rNQDOsOCiMQMAfh+RgwPopXnz8JK6vur9UytmDfXKO6D0dCMKrx",
   "json.schemas": [
@@ -251,7 +250,7 @@
     "asvetliakov.vscode-neovim": 1
   },
   // Atlassian
-  "atlascode.jira.enabled": false,
+  "atlascode.jira.enabled": true,
   "atlascode.helpExplorerEnabled": false,
   "atlascode.bitbucket.explorer.relatedJiraIssues.enabled": false,
   "atlascode.bitbucket.explorer.relatedBitbucketIssues.enabled": false,
@@ -272,9 +271,27 @@
   "editor.codeLensFontFamily": "'Comic Code Ligatures'",
   "markdown.preview.fontFamily": "'Iosevka Aile', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
   "editor.minimap.enabled": false,
-  "window.zoomLevel": -1,
   "breadcrumbs.symbolPath": "last",
-  "security.workspace.trust.startupPrompt": "never",
-  "security.workspace.trust.banner": "never",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  "workbench.editor.empty.hint": "hidden",
   "security.workspace.trust.enabled": false,
+  "window.commandCenter": false,
+  "atlascode.bitbucket.enabled": false,
+  "atlascode.jira.jqlList": [
+    {
+      "id": "3b6d5af8-4539-4f0a-8455-c7db82f25758",
+      "enabled": true,
+      "name": "My inthepocket Issues",
+      "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+      "siteId": "367a2563-ec2a-4ca2-9f3f-640032573ae5",
+      "monitor": true
+    }
+  ],
+  "workbench.layoutControl.enabled": false,
+  "workbench.editor.showTabs": false,
+  "workbench.activityBar.visible": false,
+  "editor.glyphMargin": false,
 }

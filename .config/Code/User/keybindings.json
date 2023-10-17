@@ -1556,7 +1556,7 @@
     "command": "atlascode.views.bb.pullrequestsTreeView.focus"
   },
   {
-    "key": "ctrl+alt+cmd+[",
+    "key": "shift+alt+cmd+[",
     "command": "workbench.action.toggleActivityBarVisibility"
   },
   {
@@ -1565,8 +1565,8 @@
   },
   {
     "key": "shift+cmd+e",
-    "command": "-workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled"
+    "command": "workbench.view.explorer",
+    "when": "!editorTextFocus"
   },
   {
     "key": "cmd+l",
@@ -1708,4 +1708,47 @@
     "key": "ctrl+alt+[",
     "command": "workbench.action.toggleActivityBarVisibility"
   },
+  {
+    "key": "shift+cmd+[",
+    "command": "-workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "shift+cmd+]",
+    "command": "-workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "shift+alt+l",
+    "command": "workbench.action.compareEditor.nextChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "shift+alt+h",
+    "command": "workbench.action.compareEditor.previousChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "cmd+t",
+    "command": "openEditors.newUntitledFile",
+    "when": "editorTextFocus && neovim.mode != 'insert' && neovim.mode != 'replace'"
+  },
+  {
+    "key": "cmd+t",
+    "command": "-workbench.action.showAllSymbols"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "workbench.view.extension.gitlab-workflow"
+  },
+  {
+    "key": "alt+l",
+    "command": "editor.unfold",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "alt+h",
+    "command": "editor.fold",
+    "when": "editorTextFocus && foldingEnabled"
+  }
 ]
