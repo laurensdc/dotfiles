@@ -101,7 +101,7 @@ else
 fi
 
 # Checkout to master, pull it, and rebase the active branch on top of it
-alias REBASE='BRANCH=$(git status | grep "On branch" | sed "s/On branch \(.*\)/\1/") && echo On branch $BRANCH && git checkout master && git pull origin master && git checkout $BRANCH && echo Rebasing $BRANCH on master && git rebase master'
+alias REBASE='BRANCH=$(git status | grep "On branch" | sed "s/On branch \(.*\)/\1/") && echo On branch $BRANCH && git checkout main && git pull origin main && git checkout $BRANCH && echo Rebasing $BRANCH on main && git rebase main'
 
 # List git commits
 alias log="git log --oneline -12"
