@@ -1,1 +1,275 @@
-../../../../.config/Code/User/settings.json
+{
+  "workbench.tips.enabled": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "typescript.tsserver.maxTsServerMemory": 8192,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // Code format
+  "files.eol": "\n",
+  "eslint.format.enable": true,
+  // Theme & icon settings
+  "workbench.iconTheme": "material-icon-theme",
+  "oneDarkPro.vivid": false,
+  "oneDarkPro.editorTheme": "One Dark Pro Darker",
+  "material-icon-theme.folders.theme": "specific",
+  // Editor settings
+  "editor.lineNumbers": "relative",
+  "editor.hover.delay": 100,
+  "editor.tabSize": 2,
+  "editor.lineHeight": 0,
+  "editor.formatOnSave": true,
+  "editor.matchBrackets": "always",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.wordWrap": "on",
+  "editor.cursorBlinking": "smooth",
+  "editor.fontLigatures": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.minimap.size": "fill",
+  // Git
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.mergeEditor": true,
+  "git.ignoredRepositories": [
+    "/home/laurens/.vscode/extensions/stepsize.stepsize-0.67.0/resources/demo-repository"
+  ],
+  // Language settings
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+  },
+  "[elm]": {
+    "editor.tabSize": 4
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "files.associations": {
+    "*.twig": "html",
+    "*.blade.php": "html"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "blade": "html"
+  },
+  // Security & telemetry
+  "editor.accessibilitySupport": "off",
+  "extensions.ignoreRecommendations": true,
+  "typescript.surveys.enabled": false,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "update.mode": "start",
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.enableExperiments": false,
+  "telemetry.telemetryLevel": "crash",
+  "redhat.telemetry.enabled": false,
+  // Schemas and yaml settings
+  "yaml.format.enable": false,
+  "yaml.schemas": {
+    "file:///Users/laurens/.vscode/extensions/atlassian.atlascode-3.0.7/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "openapi.securityAuditToken": "CiAXp/Uvj0yNQm4ye4FTanEioxNHSFuWFKmRdyS/bjLfEBIYj5qEeY7BsyeL0WNLK2FgVGC+NCWfCWckGn+A/jKWVE2rlsctt22IWt6Zu1pTs+5s5EPlQkjcNExuVW1NDrNkJjg7QKqIVKYI+LIBoPIfF2zVqEbk9BhDwBq6xxaZlYRRXrhn1y8hzzzqDerPEktqYzwf7rNQDOsOCiMQMAfh+RgwPopXnz8JK6vur9UytmDfXKO6D0dCMKrx",
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "/bower.json",
+        "/.bower.json"
+      ],
+      "url": "http://json.schemastore.org/bower"
+    },
+    {
+      "fileMatch": [
+        "/package.json"
+      ],
+      "url": "http://json.schemastore.org/package"
+    },
+    {
+      "fileMatch": [
+        "/project.json"
+      ],
+      "url": "http://json.schemastore.org/project"
+    },
+    {
+      "fileMatch": [
+        "*.schema.json"
+      ],
+      "url": "http://json-schema.org/draft-04/schema#"
+    },
+    {
+      "fileMatch": [
+        "/global.json"
+      ],
+      "url": "http://json.schemastore.org/global"
+    },
+    {
+      "fileMatch": [
+        "/ticino.plugin.json"
+      ],
+      "url": "http://opentools.azurewebsites.net/ticino.plugin.json"
+    },
+    {
+      "fileMatch": [
+        "/tsconfig.json"
+      ],
+      "url": "http://json.schemastore.org/tsconfig"
+    },
+    {
+      "fileMatch": [
+        "/jsconfig.json"
+      ],
+      "url": "http://opentools.azurewebsites.net/jsconfig"
+    },
+    {
+      "fileMatch": [
+        "/.bowerrc"
+      ],
+      "url": "http://json.schemastore.org/bowerrc"
+    },
+    {
+      "fileMatch": [
+        "/.jshintrc"
+      ],
+      "url": "http://json.schemastore.org/jshintrc"
+    },
+    {
+      "fileMatch": [
+        "/.jscsrc"
+      ],
+      "url": "http://json.schemastore.org/jscsrc"
+    },
+    {
+      "fileMatch": [
+        "/config/default.json",
+        "/config/development.json",
+        "/config/production.json"
+      ],
+      "url": "schemastore/config.json"
+    },
+    {
+      "fileMatch": [
+        "/esbuildconfig.json"
+      ],
+      "url": "./packages/id-tools-build/id-build-tools/src/es-build/esbuildconfig-schema.json"
+    }
+  ],
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Split sequence",
+    "!Split",
+    "!Split sequence",
+    "!reference sequence"
+  ],
+  // Terminal
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.external.windowsExec": "c:\\windows\\system32\\wsl.exe",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.profiles.windows": {
+    "C:\\Program Files\\Git\\bin\\bash.exe (migrated)": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": []
+    }
+  },
+  // Extensions
+  // Gitlens
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.scopes": [
+    "document"
+  ],
+  "gitlens.codeLens.authors.command": "gitlens.openFileOnRemote",
+  "gitlens.codeLens.recentChange.command": "gitlens.copyRemoteFileUrl",
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.hovers.enabled": false,
+  "gitlens.views.fileHistory.files.compact": false,
+  // Codemetrics
+  "codemetrics.basics.ComplexityLevelHigh": 15,
+  "codemetrics.basics.ComplexityLevelNormal": 7,
+  "codemetrics.basics.OverviewRulerModeEnabled": false,
+  "codemetrics.basics.CodeLensEnabled": false,
+  // VSCode-neovim
+  "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  // Other
+  "settingsSync.keybindingsPerPlatform": false,
+  "editor.linkedEditing": true,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.external.osxExec": "iTerm.app",
+  "keyboard.dispatch": "keyCode",
+  "git.autofetch": true,
+  "diffEditor.renderIndicators": false,
+  "editor.fontFamily": "'Comic Code Ligatures Light', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.codeLensFontFamily": "'Comic Code Ligatures'",
+  "markdown.preview.fontFamily": "'Iosevka Aile', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+  "editor.minimap.enabled": false,
+  "breadcrumbs.symbolPath": "last",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  "workbench.editor.empty.hint": "hidden",
+  "security.workspace.trust.enabled": false,
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "editor.glyphMargin": false,
+  "workbench.editor.showTabs": "single",
+  "workbench.colorTheme": "Tokyo Night",
+}
