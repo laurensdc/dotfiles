@@ -1,6 +1,7 @@
 [user]
-	email = laurens.decock@unifiedpost.com
+	email = laurens.decock@inthepocket.com
 	name = Laurens
+	signingkey = /Users/laurens/.ssh/id_ed25519.pub
 [pull]
 	rebase = false
 [push]
@@ -11,5 +12,9 @@
 	defaultBranch = main
 [url "https://github.com/"]
 	insteadOf = git://github.com/
-[credential "https://github.com"]
-	helper = !/usr/bin/gh auth git-credential
+[safe]
+	directory = /Applications/XAMPP/xamppfiles/htdocs
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
