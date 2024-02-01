@@ -1460,19 +1460,9 @@
     "when": "!terminalFocus"
   },
   {
-    "key": "ctrl+shift+c",
-    "command": "workbench.action.toggleCommenting",
-    "when": "editorFocus"
-  },
-  {
     "key": "cmd+shift+c",
     "command": "-workbench.action.terminal.openNativeConsole",
     "when": "!terminalFocus"
-  },
-  {
-    "key": "cmd+shift+c",
-    "command": "workbench.action.toggleCommenting",
-    "when": "editorFocus"
   },
   {
     "key": "f4",
@@ -1754,5 +1744,5 @@
     "key": "alt+,",
     "command": "editor.fold",
     "when": "editorTextFocus && foldingEnabled"
-  }
+  },
 ]

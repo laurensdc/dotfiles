@@ -1742,12 +1742,12 @@
     "command": "workbench.view.extension.gitlab-workflow"
   },
   {
-    "key": "alt+l",
+    "key": "alt+.",
     "command": "editor.unfold",
     "when": "editorTextFocus && foldingEnabled"
   },
   {
-    "key": "alt+h",
+    "key": "alt+,",
     "command": "editor.fold",
     "when": "editorTextFocus && foldingEnabled"
   }
