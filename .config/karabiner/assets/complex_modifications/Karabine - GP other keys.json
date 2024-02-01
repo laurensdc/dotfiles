@@ -1,0 +1,124 @@
+{
+  "description": "Other modifiers for Guitar Pro",
+  "manipulators": [
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "d"
+      },
+      "to": [
+        {
+          "key_code": "delete_or_backspace"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "i"
+      },
+      "to": [
+        {
+          "key_code": "equal_sign",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "d",
+        "modifiers": {
+          "mandatory": ["command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "hyphen",
+          "modifiers": ["control"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "i",
+        "modifiers": {
+          "mandatory": ["command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "equal_sign",
+          "modifiers": ["control", "shift"]
+        }
+      ],
+      "type": "basic"
+    },
+
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "u"
+      },
+      "to": [
+        {
+          "key_code": "z",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "r",
+        "modifiers": {
+          "mandatory": ["control"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "z",
+          "modifiers": ["command", "shift"]
+        }
+      ],
+      "type": "basic"
+    }
+  ]
+}

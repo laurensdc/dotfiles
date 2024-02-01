@@ -1,0 +1,498 @@
+{
+  "description": "hjkl for Guitar Pro",
+  "manipulators": [
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "h"
+      },
+      "to": [
+        {
+          "key_code": "left_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "j"
+      },
+      "to": [
+        {
+          "key_code": "down_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "k"
+      },
+      "to": [
+        {
+          "key_code": "up_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "l"
+      },
+      "to": [
+        {
+          "key_code": "right_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "h",
+        "modifiers": {
+          "mandatory": ["command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "left_arrow",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "j",
+        "modifiers": {
+          "mandatory": ["command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "down_arrow",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "k",
+        "modifiers": {
+          "mandatory": ["command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "up_arrow",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "l",
+        "modifiers": {
+          "mandatory": ["command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "right_arrow",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "h",
+        "modifiers": {
+          "mandatory": ["control"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "left_arrow",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "j",
+        "modifiers": {
+          "mandatory": ["control"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "down_arrow",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "k",
+        "modifiers": {
+          "mandatory": ["control"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "up_arrow",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "l",
+        "modifiers": {
+          "mandatory": ["control"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "right_arrow",
+          "modifiers": ["command"]
+        }
+      ],
+      "type": "basic"
+    },
+
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "h",
+        "modifiers": {
+          "mandatory": ["shift"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "left_arrow",
+          "modifiers": ["shift"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "j",
+        "modifiers": {
+          "mandatory": ["shift"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "down_arrow",
+          "modifiers": ["shift"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "k",
+        "modifiers": {
+          "mandatory": ["shift"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "up_arrow",
+          "modifiers": ["shift"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "l",
+        "modifiers": {
+          "mandatory": ["shift"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "right_arrow",
+          "modifiers": ["shift"]
+        }
+      ],
+      "type": "basic"
+    },
+
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "h",
+        "modifiers": {
+          "mandatory": ["shift", "command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "left_arrow",
+          "modifiers": ["shift", "command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "j",
+        "modifiers": {
+          "mandatory": ["shift", "command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "down_arrow",
+          "modifiers": ["shift", "command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "k",
+        "modifiers": {
+          "mandatory": ["shift", "command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "up_arrow",
+          "modifiers": ["shift", "command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "l",
+        "modifiers": {
+          "mandatory": ["shift", "command"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "right_arrow",
+          "modifiers": ["shift", "command"]
+        }
+      ],
+      "type": "basic"
+    },
+
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "h",
+        "modifiers": {
+          "mandatory": ["shift", "control"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "left_arrow",
+          "modifiers": ["shift", "command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "j",
+        "modifiers": {
+          "mandatory": ["shift", "control"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "down_arrow",
+          "modifiers": ["shift", "command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "k",
+        "modifiers": {
+          "mandatory": ["shift", "control"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "up_arrow",
+          "modifiers": ["shift", "command"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.arobas-music\\.guitarpro7"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "l",
+        "modifiers": {
+          "mandatory": ["shift", "control"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "right_arrow",
+          "modifiers": ["shift", "command"]
+        }
+      ],
+      "type": "basic"
+    }
+  ]
+}
