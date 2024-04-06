@@ -145,6 +145,9 @@ alias v=nvim
 # MacOS preview from terminal
 alias preview="qlmanage -p"
 
+# Don't close terminal on ctrl+D
+set -o ignoreeof
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/laurens/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/laurens/Downloads/google-cloud-sdk/path.zsh.inc'; fi
