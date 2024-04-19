@@ -69,6 +69,10 @@ export EDITOR='nvim'
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Fixing nix locale errors on non-NixOS Linux
+# https://nixos.wiki/wiki/Locales
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+
 # vi mode in terminal
 set -o vi
 
@@ -160,3 +164,7 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [ -e /home/laurens/.nix-profile/etc/profile.d/nix.sh ]; then . /home/laurens/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+
