@@ -807,19 +807,6 @@
     "when": "editorTextFocus"
   },
   // -- Neovim
-  // Composite escape
-  {
-    "command": "vscode-neovim.compositeEscape1",
-    "key": "j",
-    "when": "neovim.mode == insert && editorTextFocus",
-    "args": "j"
-  },
-  {
-    "command": "vscode-neovim.compositeEscape2",
-    "key": "l",
-    "when": "neovim.mode == insert && editorTextFocus",
-    "args": "l"
-  },
   // VSCode comment on Visual Mode selection
   {
     "key": "ctrl+/",
@@ -965,8 +952,18 @@
     "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
+    "key": "alt+s",
+    "command": "workbench.action.splitEditorDown",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
     "key": "space w s",
     "command": "workbench.action.splitEditorDown",
+    "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
+  },
+  {
+    "key": "alt+v",
+    "command": "workbench.action.splitEditorRight",
     "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   },
   {
@@ -1749,28 +1746,9 @@
     "key": "cmd+k w",
     "command": "-workbench.action.closeEditorsInGroup"
   },
-  {
-    "key": "ctrl+u",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        {
-          "command": "editorScroll",
-          "args": {
-            "to": "up",
-            "by": "halfPage"
-          }
-        },
-        {
-          "command": "cursorMove",
-          "args": {
-            "to": "viewPortCenter"
-          }
-        }
-      ]
-    },
-    "when": "editorTextFocus && neovim.mode != 'replace' && !editorHoverFocused"
-  },
+  // Try to center view when scrolling
+  // mimick ctrl+u zz and ctrl+d zz
+  // using wrappedLine scroll to keep folds closed when scrolling over them
   {
     "key": "ctrl+d",
     "command": "runCommands",
@@ -1780,7 +1758,8 @@
           "command": "editorScroll",
           "args": {
             "to": "down",
-            "by": "halfPage"
+            "by": "wrappedLine",
+            "value": 20
           }
         },
         {
@@ -1794,7 +1773,7 @@
     "when": "editorTextFocus && neovim.mode != 'replace' && !editorHoverFocused"
   },
   {
-    "key": "ctrl+b",
+    "key": "ctrl+u",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -1802,7 +1781,8 @@
           "command": "editorScroll",
           "args": {
             "to": "up",
-            "by": "page"
+            "by": "wrappedLine",
+            "value": 20
           }
         },
         {
@@ -1824,7 +1804,31 @@
           "command": "editorScroll",
           "args": {
             "to": "down",
-            "by": "page"
+            "by": "wrappedLine",
+            "value": 40
+          }
+        },
+        {
+          "command": "cursorMove",
+          "args": {
+            "to": "viewPortCenter"
+          }
+        }
+      ]
+    },
+    "when": "editorTextFocus && neovim.mode != 'replace' && !editorHoverFocused"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        {
+          "command": "editorScroll",
+          "args": {
+            "to": "up",
+            "by": "wrappedLine",
+            "value": 40
           }
         },
         {
@@ -1855,4 +1859,47 @@
     "command": "-workbench.action.focusActiveEditorGroup",
     "when": "terminalFocus"
   },
+  {
+    "key": "f1",
+    "command": "-workbench.action.showCommands"
+  },
+  {
+    "key": "ctrl+alt+space",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+space",
+    "command": "-editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus"
+  },
+  {
+    "key": "alt+cmd+c",
+    "command": "-workbench.action.terminal.toggleFindCaseSensitive",
+    "when": "terminalFindVisible && terminalHasBeenCreated || terminalFindVisible && terminalProcessSupported"
+  },
+  {
+    "key": "alt+cmd+c",
+    "command": "-search.action.copyPath",
+    "when": "fileMatchOrFolderMatchWithResourceFocus"
+  },
+  {
+    "key": "alt+cmd+c",
+    "command": "-toggleFindCaseSensitive",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+cmd+c",
+    "command": "-toggleSearchCaseSensitive",
+    "when": "searchViewletFocus && !fileMatchOrFolderMatchFocus"
+  },
+  {
+    "key": "alt+cmd+c",
+    "command": "-toggleSearchEditorCaseSensitive",
+    "when": "inSearchEditor && searchInputBoxFocus"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "codeium.chatPanelView.focus"
+  }
 ]
