@@ -68,6 +68,10 @@ export EDITOR='nvim'
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Fixing nix locale errors on non-NixOS Linux
+# https://nixos.wiki/wiki/Locales
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+
 # vi mode in terminal
 set -o vi
 
