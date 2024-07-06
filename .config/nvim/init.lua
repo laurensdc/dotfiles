@@ -90,6 +90,51 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Persistent undo through file close
+vim.opt.undofile = true
+
+-- share system clipboard for yank & paste
+-- need xclip on Linux
+vim.opt.clipboard = 'unnamedplus'
+
+-- ignore case in search
+-- :noh to remove the highlights
+vim.opt.ignorecase = true
+
+-- modern vim only
+vim.opt.compatible = false
+
+-- syntax sugar plz
+vim.opt.syntax = 'on'
+
+-- 2 spaces for tab
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+
+-- zz after page scrolls
+vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-f>', '<C-f>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-b>', '<C-b>zz', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
+
+-- Composite escape - not necessary as we're using the better_escape plugin
+-- vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
+
+-- D when text is selected won't send text to paste register
+vim.api.nvim_set_keymap('v', 'D', '"_d', { noremap = true })
+
+-- end of my settings
+-- TODO: Remove duplicates
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
@@ -885,7 +930,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
