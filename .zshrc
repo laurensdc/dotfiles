@@ -121,6 +121,9 @@ alias preview="qlmanage -p"
 # GitHub Copilot CLI aliases
 alias cop="gh copilot explain"
 
+# Gitmoji alias
+alias gm="gitmoji -c"
+
 # Don't close terminal on ctrl+D
 set -o ignoreeof
 
