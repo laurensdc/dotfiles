@@ -46,7 +46,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	# zsh-aws-vault
   asdf
 )
 
@@ -72,21 +71,9 @@ export LC_ALL=en_US.UTF-8
 # vi mode in terminal
 set -o vi
 
-# Android studio path variables for MacOS and Linux
-if [[ "$(uname)" == "Darwin" ]]; then
-    export ANDROID_HOME="$HOME/Library/Android/sdk"
-else
-    export ANDROID_HOME="$HOME/Android/Sdk"
-fi
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 # Home folders and local folders
 export PATH=~/.local/bin:$PATH
 export PATH=~/bin:$PATH
-
-# Doom emacs
-export PATH=~/.config/emacs/bin:$PATH
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -118,41 +105,25 @@ alias REBASE='BRANCH=$(git status | grep "On branch" | sed "s/On branch \(.*\)/\
 # List git commits
 alias log="git log --oneline -12"
 
-# BUILD alias based on the directory
-build() {
-  current_folder=$(pwd)
+# Get batching token
+alias batchingtoken="gcloud config set project colruyt-give-forward-staging && gcloud auth print-identity-token | pbcopy"
 
-  if [[ "$current_folder" == *"banqup"* ]]; then
-    yarn
-    bundle install
-    npx pod-install
-    yarn run prepare:all
-    yarn storybook:build
-  elif [[ "$current_folder" == *"design-studio"* ]]; then
-    source scripts/codeartifact/export-token.sh
-    yarn
-    aws-vault exec codeartifact -- nx run-many --target=bundle --all --parallel=16 
-  else
-    echo "No build alias defined for directory $current_folder"
-  fi
-}
-
-alias BUILD="build"
-
-# nvim aliases
+# nvim alias
 alias v=nvim
 
 # MacOS preview from terminal
 alias preview="qlmanage -p"
 
+# GitHub Copilot CLI aliases
+alias cop="gh copilot explain"
+
 # Don't close terminal on ctrl+D
 set -o ignoreeof
 
-
-# The next line updates PATH for the Google Cloud SDK.
+# Update PATH for the Google Cloud SDK.
 if [ -f '/Users/laurens/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/laurens/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
+# Enable shell command completion for gcloud.
 if [ -f '/Users/laurens/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/laurens/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 autoload -U +X bashcompinit && bashcompinit
@@ -160,3 +131,7 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Warpify subshells -> enable Warp everywhere
+printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash" }}\x9c'
+
