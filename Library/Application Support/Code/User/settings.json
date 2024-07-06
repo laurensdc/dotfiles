@@ -20,7 +20,6 @@
   "editor.hover.delay": 100,
   "editor.tabSize": 2,
   "editor.lineHeight": 0,
-  "editor.formatOnSave": true,
   "editor.matchBrackets": "always",
   "editor.bracketPairColorization.enabled": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
@@ -98,7 +97,7 @@
   "update.mode": "start",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.enableExperiments": false,
-  "telemetry.telemetryLevel": "crash",
+  "telemetry.telemetryLevel": "all",
   "redhat.telemetry.enabled": false,
   // Schemas and yaml settings
   "yaml.format.enable": false,
@@ -241,10 +240,6 @@
   "gitlens.codeLens.recentChange.enabled": false,
   "gitlens.hovers.enabled": false,
   "gitlens.views.fileHistory.files.compact": false,
-  // Codemetrics
-  "codemetrics.basics.ComplexityLevelHigh": 15,
-  "codemetrics.basics.ComplexityLevelNormal": 7,
-  "codemetrics.basics.OverviewRulerModeEnabled": false,
   "codemetrics.basics.CodeLensEnabled": false,
   // VSCode-neovim
   "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
@@ -260,7 +255,7 @@
   "keyboard.dispatch": "keyCode",
   "git.autofetch": true,
   "diffEditor.renderIndicators": false,
-  "editor.fontFamily": "'Comic Code Ligatures Light', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Comic Code Ligatures', 'Fira Code', Consolas, 'Courier New', monospace",
   "editor.codeLensFontFamily": "'Comic Code Ligatures'",
   "markdown.preview.fontFamily": "'Iosevka Aile', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
   "editor.minimap.enabled": false,
@@ -276,9 +271,7 @@
   "git.openDiffOnClick": false,
   "cSpell.language": "nl,en-GB",
   "elmLS.elmReviewDiagnostics": "warning",
-  "editor.defaultFormatter": "elmTooling.elm-ls-vscode",
   "security.promptForLocalFileProtocolHandling": false,
-  "workbench.colorTheme": "Material Theme High Contrast",
   "svelte.enable-ts-plugin": true,
   "powermode.enabled": true,
   "powermode.combo.location": "off",
@@ -287,8 +280,37 @@
   "powermode.explosions.duration": 2000,
   "powermode.explosions.frequency": 5,
   "powermode.explosions.maxExplosions": 10,
-  "workbench.activityBar.location": "hidden",
   "cSpell.userWords": [
-    "fastify"
-  ]
+    "anymore",
+    "Bonnencel",
+    "colruyt",
+    "Colruyt",
+    "coupongroup",
+    "datocms",
+    "Enseignes",
+    "fastify",
+    "pino",
+    "postgres",
+    "Rijssel",
+    "typebox",
+    "typeorm",
+    "Typeorm",
+    "XTRA"
+  ],
+  "codemetrics.basics.ComplexityLevelHigh": 15,
+  "codemetrics.basics.ComplexityLevelNormal": 7,
+  "codemetrics.basics.FileSizeLimitMB": 2,
+  "codemetrics.basics.ComplexityLevelExtremeDescription": "Bro...",
+  "codemetrics.basics.OverviewRulerModeEnabled": false,
+  "vscode-neovim.compositeKeys": {
+    "jl": {
+      "command": "vscode-neovim.escape"
+    }
+  },
+  "workbench.colorTheme": "Omni",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "codeium.enableCodeLens": false,
+  "vscode-neovim.statusLineSeparator": " | ",
+  "debug.javascript.autoAttachFilter": "disabled",
+  "workbench.activityBar.location": "hidden"
 }
