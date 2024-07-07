@@ -48,4 +48,5 @@ return {
     },
     config = true,
   },
+  { 'wakatime/vim-wakatime', lazy = false },
 }
