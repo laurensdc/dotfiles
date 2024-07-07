@@ -115,6 +115,9 @@ alias batchingtoken="gcloud config set project colruyt-give-forward-staging && g
 # nvim alias
 alias v=nvim
 
+# neovide alias, fork process and don't block terminal
+alias nv="neovide --fork"
+
 # MacOS preview from terminal
 alias preview="qlmanage -p"
 
