@@ -6,7 +6,7 @@ return {
   {
     'max397574/better-escape.nvim',
     opts = {
-      timeout = 80,
+      timeout = 100,
       mappings = {
         i = {
           j = {

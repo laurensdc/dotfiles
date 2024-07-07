@@ -21,6 +21,12 @@
 =====================================================================
 --]]
 
+--[[
+-- TODO: Set up Copilot
+-- TODO: Check if we can do live code sharing
+-- TODO: Harpoon?
+--]]
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -155,11 +161,30 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Ctrl + backspace deletes word
 vim.keymap.set('i', '<C-BS>', '<C-w>')
+-- Option + backspace deletes word
 vim.keymap.set('i', '<M-BS>', '<C-w>')
 
 -- Open Neogit
 vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = 'Open Neogit', silent = true })
+
+-- Neovide configuration
+if vim.g.neovide then
+  vim.o.guifont = 'Comic Code Ligatures,FiraCode Nerd Font Mono'
+  vim.g.neovide_window_blurred = true
+  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_scroll_animation_length = 0.10
+  vim.g.neovide_position_animation_length = 0.02
+  vim.g.neovide_cursor_animation_length = 0.02
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_input_macos_option_key_is_meta = 'both'
+  vim.g.neovide_refresh_rate = 120
+  vim.g.neovide_fullscreen = true
+
+  -- Cmd + V to paste
+  vim.keymap.set('i', '<D-v>', '<C-r>*')
+end
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -333,6 +358,7 @@ require('lazy').setup({
           path_display = {
             'smart',
           },
+          dynamic_preview_title = true,
         },
         -- pickers = {}
         extensions = {
@@ -351,7 +377,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
       vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
-      vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[F]ind [S]elect Telescope' })
+      vim.keymap.set('n', '<leader>fa', builtin.builtin, { desc = '[F]ind [A]ll Telescope pickers' })
       vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })

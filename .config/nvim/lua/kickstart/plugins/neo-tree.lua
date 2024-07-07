@@ -18,6 +18,9 @@ return {
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          ['<C-k>'] = 'navigate_up',
+          ['l'] = 'open',
+          ['h'] = 'open',
         },
       },
     },
