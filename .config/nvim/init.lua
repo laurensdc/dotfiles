@@ -184,6 +184,24 @@ if vim.g.neovide then
 
   -- Cmd + V to paste
   vim.keymap.set('i', '<D-v>', '<C-r>*')
+
+  -- Option + hjkl to focus windows
+  -- In a normal terminal, these key inputs don't work
+  vim.keymap.set('n', '<M-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+  vim.keymap.set('n', '<M-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+  vim.keymap.set('n', '<M-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+  vim.keymap.set('n', '<M-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+  vim.keymap.set('n', '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
+  vim.keymap.set('n', '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
+
+  -- Cmd + w to close window
+  -- vim.keymap.set('n', '<D-w>', '<C-w><C-q>', { desc = 'Close window' })
+
+  -- Scale font with cmd+ and cmd-
+  vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.2,  2)<CR>', { silent = true })
+  vim.api.nvim_set_keymap('n', '<D-->', ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.2,  0.5)<CR>', { silent = true })
+  vim.api.nvim_set_keymap('n', '<D-0>', ':lua vim.g.neovide_scale_factor = 1<CR>', { silent = true })
 end
 
 -- [[ Basic Autocommands ]]
