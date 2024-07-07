@@ -24,7 +24,6 @@
 --[[
 -- TODO: Set up Copilot
 -- TODO: Check if we can do live code sharing
--- TODO: Harpoon?
 --]]
 
 -- Set <space> as the leader key
@@ -163,7 +162,7 @@ vim.keymap.set('i', '<M-BS>', '<C-w>')
 -- Open Neogit
 vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = 'Open Neogit', silent = true })
 
--- Neovide configuration
+-- [[ Neovide configuration ]]
 if vim.g.neovide then
   vim.o.guifont = 'Comic Code Ligatures,FiraCode Nerd Font Mono'
   vim.g.neovide_window_blurred = true
@@ -189,8 +188,11 @@ if vim.g.neovide then
   vim.keymap.set('n', '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
   vim.keymap.set('n', '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
 
+  -- Cmd + s to save
+  vim.keymap.set({ 'i', 'n', 'v', 'x' }, '<D-s>', '<cmd>w<cr><esc>', { desc = 'Save file', silent = true })
+
   -- Cmd + w to close window
-  -- vim.keymap.set('n', '<D-w>', '<C-w><C-q>', { desc = 'Close window' })
+  vim.keymap.set('n', '<D-w>', '<C-w><C-q>', { desc = 'Close window' })
 
   -- Scale font with cmd+ and cmd-
   vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.2,  2)<CR>', { silent = true })
@@ -371,6 +373,11 @@ require('lazy').setup({
             'smart',
           },
           dynamic_preview_title = true,
+          -- layout_strategy = 'flex',
+          layout_config = {
+            width = { padding = 0 },
+            height = { padding = 0 },
+          },
         },
         -- pickers = {}
         extensions = {
@@ -386,18 +393,28 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+      -- Everything!
+      vim.keymap.set('n', '<leader>fa', builtin.builtin, { desc = '[F]ind [A]ll Telescope pickers' })
+
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
+      vim.keymap.set('n', '<leader>fn', builtin.resume, { desc = '[F]ind [N]ext' })
+
       vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
-      vim.keymap.set('n', '<leader>fa', builtin.builtin, { desc = '[F]ind [A]ll Telescope pickers' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
       vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = '[F]ind [P]roblems' })
-      vim.keymap.set('n', '<leader>fn', builtin.resume, { desc = '[F]ind [N]ext' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind [.] Recent Files' })
-      vim.keymap.set('n', '<leader><leader>', function()
+      vim.keymap.set('n', '<leader>fr', function()
         builtin.git_files { show_untracked = true }
-      end, { desc = '[ ] Find files in current git repo' })
+      end, { desc = '[F]ind files in current git [R]epo' })
+      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = '[F]ind LSP document [S]ymbols' })
+
+      vim.keymap.set('n', '<leader>fws', builtin.lsp_workspace_symbols, { desc = '[F]ind LSP [W]orkspace [S]ymbols' })
+
+      -- TODO: Get something to search git branches, that is AWESOME, builtin.git_branches
+      -- or maybe I don't need it at all cuz the gg, bb does the same thing and fuzzy finds too! :O
+      -- there's telescope builtin.git_status too, but the gg dd does the same I think
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -418,9 +435,9 @@ require('lazy').setup({
       end, { desc = '[F]ind [/] in Open Files' })
 
       -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>fn', function()
+      vim.keymap.set('n', '<leader>fc', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[F]ind [N]eovim files' })
+      end, { desc = '[F]ind Neovim [C]onfiguration files' })
     end,
   },
 
@@ -745,7 +762,7 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<Tab>'] = cmp.mapping.confirm { select = true },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
