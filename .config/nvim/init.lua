@@ -132,8 +132,8 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>fpp', vim.diagnostic.goto_prev, { desc = '[F]ind [P]revious [P]roblem' })
+vim.keymap.set('n', '<leader>fnp', vim.diagnostic.goto_next, { desc = '[F]ind [N]ext [P]roblem' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -176,23 +176,25 @@ if vim.g.neovide then
   vim.g.neovide_fullscreen = true
 
   -- Cmd + V to paste
-  vim.keymap.set('i', '<D-v>', '<C-r>*')
+  vim.keymap.set({ 'n', 'i' }, '<D-v>', '<C-r>*')
 
   -- Option + hjkl to focus windows
-  -- In a normal terminal, these key inputs don't work
-  vim.keymap.set('n', '<M-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-  vim.keymap.set('n', '<M-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-  vim.keymap.set('n', '<M-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-  vim.keymap.set('n', '<M-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+  -- In a normal terminal, these key inputs don't work, but Neovide rules and allows us to use the option key! 🎉
+  vim.keymap.set({ 'n' }, '<M-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+  vim.keymap.set({ 'n' }, '<M-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+  vim.keymap.set({ 'n' }, '<M-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+  vim.keymap.set({ 'n' }, '<M-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-  vim.keymap.set('n', '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
-  vim.keymap.set('n', '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
+  vim.keymap.set({ 'n' }, '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
+  vim.keymap.set({ 'n' }, '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
 
-  -- Cmd + s to save
+  -- Cmd + s to save and escape
   vim.keymap.set({ 'i', 'n', 'v', 'x' }, '<D-s>', '<cmd>w<cr><esc>', { desc = 'Save file', silent = true })
 
   -- Cmd + w to close window
   vim.keymap.set('n', '<D-w>', '<C-w><C-q>', { desc = 'Close window' })
+  -- Option + w also, when splitting and moving, it's easier
+  vim.keymap.set('n', '<M-w>', '<C-w><C-q>', { desc = 'Close window' })
 
   -- Scale font with cmd+ and cmd-
   vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.2,  2)<CR>', { silent = true })
@@ -338,10 +340,6 @@ require('lazy').setup({
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
-      -- Telescope is a fuzzy finder that comes with a lot of different things that
-      -- it can fuzzy find! It's more than just a "file finder", it can search
-      -- many different aspects of Neovim, your workspace, LSP, and more!
-      --
       -- The easiest way to use Telescope, is to start by doing something like:
       --  :Telescope help_tags
       --
@@ -362,12 +360,6 @@ require('lazy').setup({
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
         defaults = {
           path_display = {
             'smart',
@@ -377,6 +369,13 @@ require('lazy').setup({
           layout_config = {
             width = { padding = 0 },
             height = { padding = 0 },
+          },
+          mappings = {
+            n = {
+              ['q'] = require('telescope.actions').close,
+              ['<C-c>'] = require('telescope.actions').close,
+              ['<D-w'] = require('telescope.actions').close,
+            },
           },
         },
         -- pickers = {}
@@ -400,21 +399,17 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
       vim.keymap.set('n', '<leader>fn', builtin.resume, { desc = '[F]ind [N]ext' })
 
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles in cwd' })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
       vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = '[F]ind [P]roblems' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind [.] Recent Files' })
       vim.keymap.set('n', '<leader>fr', function()
         builtin.git_files { show_untracked = true }
-      end, { desc = '[F]ind files in current git [R]epo' })
+      end, { desc = '[F]ind in current [R]epo' })
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = '[F]ind LSP document [S]ymbols' })
 
       vim.keymap.set('n', '<leader>fws', builtin.lsp_workspace_symbols, { desc = '[F]ind LSP [W]orkspace [S]ymbols' })
-
-      -- TODO: Get something to search git branches, that is AWESOME, builtin.git_branches
-      -- or maybe I don't need it at all cuz the gg, bb does the same thing and fuzzy finds too! :O
-      -- there's telescope builtin.git_status too, but the gg dd does the same I think
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -516,21 +511,25 @@ require('lazy').setup({
           --  the definition of its *type*, not where it was *defined*.
           map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
 
+          -- TODO: I think I double mapped these with "spc fs" and "space fws"
+          -- so.. -> delete?
+          --
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          -- map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
+          -- TODO: Map this to something else?
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+          map('<leader>.', vim.lsp.buf.code_action, 'Code Action (like VSCode cmd+.)')
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
@@ -755,11 +754,15 @@ require('lazy').setup({
           -- Select the [p]revious item
           ['<C-p>'] = cmp.mapping.select_prev_item(),
 
-          -- Scroll the documentation window [b]ack / [f]orward
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          -- Scroll the documentation window [u]p / [d]own
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
-          -- Accept ([y]es) the completion.
+          -- Scroll a lot with [b]ack / [f]orward
+          ['<C-b>'] = cmp.mapping.scroll_docs(-8),
+          ['<C-f>'] = cmp.mapping.scroll_docs(8),
+
+          -- Accept the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
           ['<Tab>'] = cmp.mapping.confirm { select = true },
