@@ -21,6 +21,10 @@
 
 --[[
 -- TODO: Check if we can do live code sharing
+-- TODO: Copy relative path
+-- NOTE: Remember <leader>. and remember gc and gcb
+-- TODO: Prettie on save -> Maybe it should just be ESlint?
+-- TODO: Conflict of CoPilot autocomplete tab with the other autocomplete
 --]]
 
 -- Set <space> as the leader key
@@ -66,6 +70,14 @@ vim.api.nvim_set_keymap('n', '<C-b>', '<C-b>zz', { noremap = true, silent = true
 vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
 
+-- -- Navigate buffers
+-- vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', { noremap = true, silent = true, desc = '[B]uffer: [P]revious' })
+-- vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true, desc = '[B]uffer: [N]ext' })
+-- -- Close current buffer
+-- vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true, desc = '[B]uffer: [D]elete' })
+-- -- Close other buffers
+-- vim.api.nvim_set_keymap('n', '<leader>bo', ':%bd|e#<CR>', { noremap = true, silent = true, desc = '[B]uffer: [O]nly' })
+
 -- Composite escape - not necessary as we're using the better_escape plugin
 -- vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
 
@@ -82,7 +94,7 @@ vim.g.have_nerd_font = true
 
 -- Automatically change project root when switching buffer or switching file
 -- can set it by hitting dot while using neotree
--- vim.opt.autochdir = true
+vim.opt.autochdir = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -130,8 +142,7 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>fpp', vim.diagnostic.goto_prev, { desc = '[F]ind [P]revious [P]roblem' })
-vim.keymap.set('n', '<leader>fnp', vim.diagnostic.goto_next, { desc = '[F]ind [N]ext [P]roblem' })
+-- TODO: Revise these
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -158,20 +169,37 @@ vim.keymap.set('i', '<C-BS>', '<C-w>')
 vim.keymap.set('i', '<M-BS>', '<C-w>')
 
 -- Open Neogit
-vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = 'Open Neogit', silent = true })
+vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = '[G]oto Neo[G]it', silent = true })
+
+-- TODO: Check integration with Neotree and the snippet there that doesn't work
+--
+-- Copy relative path of file to clipboard
+vim.keymap.set('n', '<leader>cr', ':let @+=expand("%:p")<CR>', { desc = '[C]opy [R]elative Path to clipboard' })
+-- Copy absolute path of file to clipboard
+vim.keymap.set('n', '<leader>ca', ':let @+=expand("%:f")<CR>', { desc = '[C]opy [A]bsolute Path to clipboard' })
+-- Copy filename to clipboard
+vim.keymap.set('n', '<leader>cf', ':let @+=expand("%:t")<CR>', { desc = '[C]opy [F]ilename to clipboard' })
 
 -- [[ Neovide configuration ]]
 if vim.g.neovide then
   vim.o.guifont = 'Comic Code Ligatures,FiraCode Nerd Font Mono'
+
+  -- Eye candy and beautiful Neovim
   vim.g.neovide_window_blurred = true
   vim.g.neovide_transparency = 0.9
   vim.g.neovide_scroll_animation_length = 0.10
   vim.g.neovide_position_animation_length = 0.02
   vim.g.neovide_cursor_animation_length = 0.02
-  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_cursor_smooth_blink = true
+
+  -- Usability
+  vim.g.neovide_hide_mouse_when_typing = false
   vim.g.neovide_input_macos_option_key_is_meta = 'both'
   vim.g.neovide_refresh_rate = 120
+
+  -- Window size stuff
   vim.g.neovide_fullscreen = true
+  vim.g.neovide_remember_window_size = true
 
   -- Cmd + V to paste
   vim.keymap.set({ 'n', 'i', 'v', 'c', 't' }, '<D-v>', '<C-r>*')
@@ -188,8 +216,8 @@ if vim.g.neovide then
   vim.keymap.set({ 'n' }, '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
   vim.keymap.set({ 'n' }, '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
 
-  -- Cmd + s to save and escape
-  vim.keymap.set({ 'i', 'n', 'v', 'x' }, '<D-s>', '<cmd>w<cr><esc>', { desc = 'Save file', silent = true })
+  -- Cmd + s to save, format and escape
+  vim.keymap.set({ 'i', 'n', 'v', 'x' }, '<D-s>', '<cmd>w<CR><esc>', { desc = 'Save file', silent = true })
 
   -- Cmd + w to close window
   vim.keymap.set('n', '<D-w>', '<C-w><C-q>', { desc = 'Close window' })
@@ -251,7 +279,23 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  -- "gb" to comment blocks
+  -- Can also use count & motion, e.g.
+  -- gc[count](motion)
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      toggler = {
+        line = '<leader>cc',
+        block = '<leader>cb',
+      },
+      opleader = {
+        line = '<leader>c',
+        -- Let's leave <leader>b open for now, probably will just use visual mode and leader cb it right
+        --  block = '<leader>b',
+      },
+    },
+  },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -397,9 +441,13 @@ require('lazy').setup({
 
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
-      vim.keymap.set('n', '<leader>fn', builtin.resume, { desc = '[F]ind [N]ext' })
 
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles in cwd' })
+      -- TODO: Come back to this
+      -- vim.keymap.set('n', '<leader>fn', builtin.resume, { desc = '[F]ind [N]ext' })
+
+      vim.keymap.set('n', '<leader>ff', function()
+        builtin.find_files { hidden = true }
+      end, { desc = '[F]ind [F]iles in cwd' })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
       vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = '[F]ind [P]roblems' })
@@ -407,9 +455,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fr', function()
         builtin.git_files { show_untracked = true }
       end, { desc = '[F]ind in current [R]epo' })
-      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = '[F]ind LSP document [S]ymbols' })
-
-      vim.keymap.set('n', '<leader>fws', builtin.lsp_workspace_symbols, { desc = '[F]ind LSP [W]orkspace [S]ymbols' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -494,38 +539,34 @@ require('lazy').setup({
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+          local builtin = require 'telescope.builtin'
+
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-
-          -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-
-          -- Jump to the implementation of the word under your cursor.
-          --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('gD', builtin.lsp_type_definitions, '[G]oto Type [D]efinition')
 
-          -- TODO: I think I double mapped these with "spc fs" and "space fws"
-          -- so.. -> delete?
-          --
-          -- Fuzzy find all the symbols in your current document.
-          --  Symbols are things like variables, functions, types, etc.
-          -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          -- Find references for the word under your cursor.
+          map('gr', builtin.lsp_references, '[G]oto [R]eferences')
 
-          -- Fuzzy find all the symbols in your current workspace.
-          --  Similar to document symbols, except searches over your entire project.
-          -- map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          -- Jump to the implementation of the word under your cursor.
+          --  Useful when your language has ways of declaring types without an actual implementation.
+          map('gI', builtin.lsp_implementations, '[G]oto [I]mplementation')
 
-          -- TODO: Map this to something else?
+          -- Find symbols
+          map('<leader>fs', builtin.lsp_document_symbols, '[F]ind [S]ymbol in document')
+          map('<leader>fws', builtin.lsp_workspace_symbols, '[F]ind [W]orkspace [S]ymbols')
+
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          -- Cmd + r also to rename
+          map('<D-r>', vim.lsp.buf.rename, 'Rename')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
@@ -537,7 +578,7 @@ require('lazy').setup({
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -553,11 +594,16 @@ require('lazy').setup({
               callback = vim.lsp.buf.document_highlight,
             })
 
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.clear_references,
-            })
+            -- Disable this so that we don't get warning popups in VSCode
+            -- there, lsp.buf.clear_references does not exist
+            -- working around by just enabling in neovide
+            if vim.g.neovide then
+              vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                buffer = event.buf,
+                group = highlight_augroup,
+                callback = vim.lsp.buf.clear_references,
+              })
+            end
 
             vim.api.nvim_create_autocmd('LspDetach', {
               group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
@@ -572,11 +618,11 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
-          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, '[T]oggle Inlay [H]ints')
-          end
+          -- if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+          --   map('<leader>th', function()
+          --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          --   end, '[T]oggle Inlay [H]ints')
+          -- end
         end,
       })
 
@@ -689,7 +735,8 @@ require('lazy').setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettierd', 'prettier' } },
+        typescript = { { 'prettierd', 'prettier' } },
       },
     },
   },
@@ -912,7 +959,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
