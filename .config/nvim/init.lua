@@ -21,10 +21,9 @@
 
 --[[
 -- TODO: Check if we can do live code sharing
--- TODO: Copy relative path
+-- TODO: Copy relative path improvements?
 -- NOTE: Remember <leader>. and remember gc and gcb
--- TODO: Prettie on save -> Maybe it should just be ESlint?
--- TODO: Conflict of CoPilot autocomplete tab with the other autocomplete
+-- TODO: Conflict of CoPilot autocomplete tab with cmp
 --]]
 
 -- Set <space> as the leader key
@@ -132,7 +131,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 3
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -199,7 +198,6 @@ if vim.g.neovide then
 
   -- Window size stuff
   vim.g.neovide_fullscreen = true
-  vim.g.neovide_remember_window_size = true
 
   -- Cmd + V to paste
   vim.keymap.set({ 'n', 'i', 'v', 'c', 't' }, '<D-v>', '<C-r>*')
@@ -216,7 +214,7 @@ if vim.g.neovide then
   vim.keymap.set({ 'n' }, '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
   vim.keymap.set({ 'n' }, '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
 
-  -- Cmd + s to save, format and escape
+  -- Cmd + s to save and escape
   vim.keymap.set({ 'i', 'n', 'v', 'x' }, '<D-s>', '<cmd>w<CR><esc>', { desc = 'Save file', silent = true })
 
   -- Cmd + w to close window
@@ -267,7 +265,16 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  'github/copilot.vim',
+
+  -- 'github/copilot.vim',
+  { 'zbirenbaum/copilot.lua', opts = {
+    suggestion = {
+      auto_trigger = true,
+      keymap = {
+        accept = '<Tab>',
+      },
+    },
+  } },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -685,6 +692,8 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'eslint_d',
+        'prettierd',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -718,6 +727,30 @@ require('lazy').setup({
     },
     opts = {
       notify_on_error = false,
+
+      -- format_on_save = function(bufnr)
+      --   local slow_format_filetypes = {}
+      --
+      --   if slow_format_filetypes[vim.bo[bufnr].filetype] then
+      --     return
+      --   end
+      --   local function on_format(err)
+      --     if err and err:match 'timeout$' then
+      --       slow_format_filetypes[vim.bo[bufnr].filetype] = true
+      --     end
+      --   end
+      --
+      --   return { timeout_ms = 200, lsp_format = 'fallback' }, on_format
+      -- end,
+      --
+      -- format_after_save = function(bufnr)
+      --   local slow_format_filetypes = {}
+      --
+      --   if not slow_format_filetypes[vim.bo[bufnr].filetype] then
+      --     return
+      --   end
+      --   return { lsp_format = 'fallback' }
+      -- end,
       format_on_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
@@ -735,8 +768,8 @@ require('lazy').setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        javascript = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
+        javascript = { 'prettierd', 'eslint_d' },
+        typescript = { 'prettierd', 'eslint_d' },
       },
     },
   },
@@ -958,7 +991,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
