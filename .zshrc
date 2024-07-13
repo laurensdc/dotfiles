@@ -64,6 +64,9 @@ prompt_context() {
 # User configuration
 export EDITOR='nvim'
 
+# Add nvim to path on WSL
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -146,3 +149,5 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 # Warpify subshells -> enable Warp everywhere
 printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash" }}\x9c'
 
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
