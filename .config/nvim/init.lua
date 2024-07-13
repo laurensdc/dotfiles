@@ -20,11 +20,8 @@
 --]]
 
 --[[
--- TODO: Check if we can do live code sharing
--- TODO: Copy relative path
+-- TODO: :checkhealth
 -- NOTE: Remember <leader>. and remember gc and gcb
--- TODO: Prettie on save -> Maybe it should just be ESlint?
--- TODO: Conflict of CoPilot autocomplete tab with the other autocomplete
 --]]
 
 -- Set <space> as the leader key
@@ -337,6 +334,7 @@ require('lazy').setup({
       require('which-key').setup()
 
       -- Document existing key chains
+      -- TODO: Update to new format
       require('which-key').register {
         ['<leader>g'] = { name = '[G]oto', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
