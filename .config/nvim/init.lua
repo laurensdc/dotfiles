@@ -181,7 +181,7 @@ vim.keymap.set('n', '<leader>cf', ':let @+=expand("%:t")<CR>', { desc = '[C]opy 
 
 -- [[ Neovide configuration ]]
 if vim.g.neovide then
-  vim.o.guifont = 'Comic Code Ligatures,FiraCode Nerd Font Mono'
+  vim.o.guifont = 'Comic Code Ligatures,FiraCode Nerd Font Mono:h14'
 
   -- Eye candy and beautiful Neovim
   vim.g.neovide_window_blurred = true
@@ -223,8 +223,8 @@ if vim.g.neovide then
   vim.keymap.set('n', '<M-w>', '<C-w><C-q>', { desc = 'Close window' })
 
   -- Scale font with cmd+ and cmd-
-  vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.2,  2)<CR>', { silent = true })
-  vim.api.nvim_set_keymap('n', '<D-->', ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.2,  0.5)<CR>', { silent = true })
+  vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  1.5)<CR>', { silent = true })
+  vim.api.nvim_set_keymap('n', '<D-->', ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.5)<CR>', { silent = true })
   vim.api.nvim_set_keymap('n', '<D-0>', ':lua vim.g.neovide_scale_factor = 1<CR>', { silent = true })
 end
 
@@ -267,14 +267,19 @@ require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- 'github/copilot.vim',
-  { 'zbirenbaum/copilot.lua', opts = {
-    suggestion = {
-      auto_trigger = true,
-      keymap = {
-        accept = '<Tab>',
+  {
+    'zbirenbaum/copilot.lua',
+    opts = {
+      suggestion = {
+        auto_trigger = true,
+        -- Remapping to tab deletes tab functionality -_- guess I keep it on enter
+        -- also it messes with cmp autocomplete
+        -- keymap = {
+        --   accept = '<Tab>',
+        -- },
       },
     },
-  } },
+  },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
