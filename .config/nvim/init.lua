@@ -175,9 +175,9 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Ctrl + backspace deletes word
-vim.keymap.set('i', '<C-BS>', '<C-w>')
+vim.keymap.set({ 'i', 'c', 't' }, '<C-BS>', '<C-w>')
 -- Option + backspace deletes word
-vim.keymap.set('i', '<M-BS>', '<C-w>')
+vim.keymap.set({ 'i', 'c', 't' }, '<M-BS>', '<C-w>')
 
 -- Open Neogit
 vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = '[G]oto Neo[G]it', silent = true })
@@ -436,6 +436,12 @@ require('lazy').setup({
               ['q'] = require('telescope.actions').close,
               ['<C-c>'] = require('telescope.actions').close,
               ['<D-w'] = require('telescope.actions').close,
+            },
+            i = {
+              -- Delete word on option + backspace
+              ['<M-BS>'] = function()
+                vim.cmd 'normal! db'
+              end,
             },
           },
         },
