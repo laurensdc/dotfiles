@@ -142,9 +142,20 @@ vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
 
 -- Diagnostic keymaps
--- TODO: Revise these
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- NOTE: Calling the open_float() function twice so that we immediately focus the floating window
+vim.keymap.set('n', '<leader>p', function()
+  vim.diagnostic.open_float()
+  vim.diagnostic.open_float()
+end, { desc = 'Show [P]roblems' })
+
+-- NOTE: Disabling this, let's just use Telescope for now
+--
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Jump to next diagnostic
+vim.keymap.set('n', ']p', vim.diagnostic.goto_next, { desc = 'Next [P]roblem' })
+-- Jump to previous diagnostic
+vim.keymap.set('n', '[p', vim.diagnostic.goto_prev, { desc = 'Previous [P]roblem' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -353,18 +364,18 @@ require('lazy').setup({
       -- Document existing key chains
       -- TODO: Update to new format
       require('which-key').register {
-        ['<leader>g'] = { name = '[G]oto', _ = 'which_key_ignore' },
+        ['<leader>g'] = { name = '[G]oto / [G]it', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+        -- ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
         -- TODO: Doesn't work because comment.nvim has a <leader>c mapping
         ['<leader>c'] = { name = '[C]opy / [C]omment', _ = 'which_key_ignore' },
       }
       -- visual mode
       require('which-key').register({
-        ['<leader>h'] = { 'Git [H]unk' },
+        ['<leader>g'] = { '[G]it' },
       }, { mode = 'v' })
     end,
   },
@@ -555,6 +566,7 @@ require('lazy').setup({
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
+          -- TODO: Remap tot Goto [T]ype? But now gt is goto tab, so swap that to cmd+shift+]
           map('gD', builtin.lsp_type_definitions, '[G]oto Type [D]efinition')
 
           -- Find references for the word under your cursor.
@@ -584,7 +596,8 @@ require('lazy').setup({
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
-          map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          -- TODO: Will I ever use this? Comment out for now
+          -- map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
