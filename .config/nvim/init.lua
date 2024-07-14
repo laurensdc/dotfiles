@@ -305,7 +305,8 @@ require('lazy').setup({
       opleader = {
         line = '<leader>c',
         -- Let's leave <leader>b open for now, probably will just use visual mode and leader cb it right
-        block = '<leader>cb',
+        -- If I put <leader>cb it's annoying because now it waits after <leader>c
+        -- block = '<leader>b',
       },
     },
   },
@@ -659,7 +660,6 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
-        --
 
         lua_ls = {
           -- cmd = {...},
@@ -727,41 +727,42 @@ require('lazy').setup({
     opts = {
       notify_on_error = false,
 
-      -- TODO: Get format_on_save working async
+      format_on_save = function(bufnr)
+        local slow_format_filetypes = { typescript = true, javascript = true }
+
+        if slow_format_filetypes[vim.bo[bufnr].filetype] then
+          return
+        end
+        local function on_format(err)
+          if err and err:match 'timeout$' then
+            slow_format_filetypes[vim.bo[bufnr].filetype] = true
+          end
+        end
+
+        return { timeout_ms = 200, lsp_format = 'fallback' }, on_format
+      end,
+
+      format_after_save = function(bufnr)
+        local slow_format_filetypes = { typescript = true, javascript = true }
+
+        if not slow_format_filetypes[vim.bo[bufnr].filetype] then
+          return
+        end
+        return { lsp_format = 'fallback' }
+      end,
+      --
+      -- NOTE: This is the old format_on_save function from kickstart
       --
       -- format_on_save = function(bufnr)
-      --   local slow_format_filetypes = {}
-      --
-      --   if slow_format_filetypes[vim.bo[bufnr].filetype] then
-      --     return
-      --   end
-      --   local function on_format(err)
-      --     if err and err:match 'timeout$' then
-      --       slow_format_filetypes[vim.bo[bufnr].filetype] = true
-      --     end
-      --   end
-      --
-      --   return { timeout_ms = 200, lsp_format = 'fallback' }, on_format
+      --   -- Disable "format_on_save lsp_fallback" for languages that don't
+      --   -- have a well standardized coding style. You can add additional
+      --   -- languages here or re-enable it for the disabled ones.
+      --   local disable_filetypes = { c = true, cpp = true }
+      --   return {
+      --     timeout_ms = 500,
+      --     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+      --   }
       -- end,
-      --
-      -- format_after_save = function(bufnr)
-      --   local slow_format_filetypes = {}
-      --
-      --   if not slow_format_filetypes[vim.bo[bufnr].filetype] then
-      --     return
-      --   end
-      --   return { lsp_format = 'fallback' }
-      -- end,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
-      end,
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
