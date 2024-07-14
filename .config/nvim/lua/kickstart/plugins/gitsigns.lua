@@ -46,7 +46,7 @@ return {
         -- normal mode
         map('n', '<leader>gs', gitsigns.stage_hunk, { desc = '[G]it [S]tage hunk' })
         map('n', '<leader>gr', gitsigns.reset_hunk, { desc = '[G]it [R]eset hunk' })
-        map('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = '[G]it [u]ndo stage hunk' })
+        map('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = '[G]it [U]ndo stage hunk' })
 
         map('n', '<leader>gd', gitsigns.diffthis, { desc = '[G]it [D]iff' })
         map('n', '<leader>ga', gitsigns.stage_buffer, { desc = '[G]it [A]dd current buffer to commit' })
