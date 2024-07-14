@@ -138,6 +138,7 @@ vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true
 vim.api.nvim_set_keymap('n', '<C-f>', '<C-f>zz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-b>', '<C-b>zz', { noremap = true, silent = true })
 
+-- zz after finds
 vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
 
@@ -423,7 +424,10 @@ require('lazy').setup({
         --  All the info you're looking for is in `:help telescope.setup()`
         defaults = {
           path_display = {
-            'smart',
+            shorten = {
+              len = 3,
+              exclude = { -1, -2, -3 },
+            },
           },
           dynamic_preview_title = true,
           -- layout_strategy = 'flex',
@@ -457,6 +461,18 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
 
+      -- TODO: Optimize, a lot of this is copy pasted in ff and fg
+      --
+      -- Return Git project root or cwd
+      local function get_project_root()
+        local git_root = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
+        if git_root and git_root ~= '' then
+          return git_root
+        else
+          return vim.fn.getcwd()
+        end
+      end
+
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
       -- Everything!
@@ -468,16 +484,37 @@ require('lazy').setup({
       -- TODO: Come back to this
       -- vim.keymap.set('n', '<leader>fn', builtin.resume, { desc = '[F]ind [N]ext' })
 
+      -- Find git files if we're in a git repo, otherwise find in current directory
       vim.keymap.set('n', '<leader>ff', function()
-        builtin.find_files { hidden = true }
-      end, { desc = '[F]ind [F]iles in cwd' })
+        local git_root = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
+        local is_git_repo = vim.v.shell_error == 0 and git_root and git_root ~= ''
+        print(is_git_repo)
+
+        if is_git_repo then
+          builtin.git_files { show_untracked = true }
+        else
+          builtin.find_files { hidden = true, cwd = vim.fn.getcwd() }
+        end
+      end, { desc = '[F]ind [F]iles in git repo or cwd' })
+
+      -- Grep in git repo or current directory
+
+      vim.keymap.set('n', '<leader>fg', function()
+        print(get_project_root())
+        builtin.live_grep {
+          cwd = get_project_root(),
+          -- Pass options to ripgrep to
+          -- search files and directories starting with a dot
+          -- but not search in .git directories
+          additional_args = function(opts)
+            return { '--hidden', '--glob=!**/.git/**' }
+          end,
+        }
+      end, { desc = '[F]ind by [G]rep' })
+
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
       vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = '[F]ind [P]roblems' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind [.] Recent Files' })
-      vim.keymap.set('n', '<leader>fr', function()
-        builtin.git_files { show_untracked = true }
-      end, { desc = '[F]ind in current [R]epo' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
