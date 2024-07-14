@@ -464,19 +464,17 @@ require('lazy').setup({
       -- TODO: Optimize, a lot of this is copy pasted in ff and fg
       --
       -- Return Git project root or cwd
-      local function get_project_root()
-        local git_root = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
-        if git_root and git_root ~= '' then
-          return git_root
-        else
-          return vim.fn.getcwd()
-        end
+      local function get_git_root()
+        return vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
+      end
+
+      local function is_git_repo()
+        local git_root = get_git_root()
+        return vim.v.shell_error == 0 and git_root and git_root ~= ''
       end
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      -- Everything!
-      vim.keymap.set('n', '<leader>fa', builtin.builtin, { desc = '[F]ind [A]ll Telescope pickers' })
 
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
@@ -484,33 +482,30 @@ require('lazy').setup({
       -- TODO: Come back to this
       -- vim.keymap.set('n', '<leader>fn', builtin.resume, { desc = '[F]ind [N]ext' })
 
-      -- Find git files if we're in a git repo, otherwise find in current directory
+      -- Find files in git repo or cwd
       vim.keymap.set('n', '<leader>ff', function()
-        local git_root = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
-        local is_git_repo = vim.v.shell_error == 0 and git_root and git_root ~= ''
-        print(is_git_repo)
-
-        if is_git_repo then
+        if is_git_repo() then
           builtin.git_files { show_untracked = true }
         else
-          builtin.find_files { hidden = true, cwd = vim.fn.getcwd() }
+          builtin.find_files { hidden = true }
         end
       end, { desc = '[F]ind [F]iles in git repo or cwd' })
 
-      -- Grep in git repo or current directory
-
+      -- Grep in git repo or cwd
       vim.keymap.set('n', '<leader>fg', function()
-        print(get_project_root())
+        local project_root = is_git_repo() and get_git_root() or vim.fn.getcwd()
+
+        print('Grepping in ' .. project_root)
         builtin.live_grep {
-          cwd = get_project_root(),
-          -- Pass options to ripgrep to
-          -- search files and directories starting with a dot
-          -- but not search in .git directories
-          additional_args = function(opts)
+          cwd = project_root,
+          -- Pass options to ripgrep:
+          --  search files and directories starting with a dot
+          --  but don't search in .git directories
+          additional_args = function()
             return { '--hidden', '--glob=!**/.git/**' }
           end,
         }
-      end, { desc = '[F]ind by [G]rep' })
+      end, { desc = '[F]ind by [G]repping' })
 
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
       vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = '[F]ind [P]roblems' })
