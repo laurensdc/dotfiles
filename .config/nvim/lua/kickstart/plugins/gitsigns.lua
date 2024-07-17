@@ -44,13 +44,13 @@ return {
         end, { desc = '[G]it [R]eset hunk' })
 
         -- normal mode
-        map('n', '<leader>gs', gitsigns.stage_hunk, { desc = '[G]it [S]tage hunk' })
-        map('n', '<leader>gr', gitsigns.reset_hunk, { desc = '[G]it [R]eset hunk' })
-        map('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = '[G]it [U]ndo stage hunk' })
+        map('n', '<leader>ghs', gitsigns.stage_hunk, { desc = '[G]it [H]unk [S]tage' })
+        map('n', '<leader>ghr', gitsigns.reset_hunk, { desc = '[G]it [H]unk [R]eset' })
+        map('n', '<leader>ghu', gitsigns.undo_stage_hunk, { desc = '[G]it [H]unk [U]ndo stage' })
 
         map('n', '<leader>gd', gitsigns.diffthis, { desc = '[G]it [D]iff' })
-        map('n', '<leader>ga', gitsigns.stage_buffer, { desc = '[G]it [A]dd current buffer to commit' })
-        map('n', '<leader>gX', gitsigns.reset_buffer, { desc = '[G]it [R]eset buffer' })
+        map('n', '<leader>gs', gitsigns.stage_buffer, { desc = '[G]it [S]tage current buffer' })
+        map('n', '<leader>grr', gitsigns.reset_buffer, { desc = '[G]it [R]eally [R]eset buffer' })
 
         map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[G]it [P]review changes' })
         map('n', '<leader>gb', gitsigns.blame_line, { desc = '[G]it [B]lame' })
