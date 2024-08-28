@@ -51,6 +51,7 @@ vim.opt.syntax = 'on'
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
+-- Insert spaces when tab is pressed
 vim.opt.expandtab = true
 
 -- Set the terminal type
@@ -109,7 +110,8 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- Old tab symbol: »
+vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -208,9 +210,16 @@ if vim.g.neovide then
   vim.g.neovide_fullscreen = true
 
   -- Cmd + V to paste
-  vim.keymap.set({ 'n', 'i', 'v', 'c', 't' }, '<D-v>', '<C-r>*')
+  vim.keymap.set({ 'n', 'v' }, '<D-v>', '"+p')
+  vim.keymap.set({ 'i', 'c', 't' }, '<D-v>', '<C-r>+')
+
   -- Cmd + C to copy
   vim.keymap.set({ 'v', 't' }, '<D-c>', 'y')
+
+  -- Cmd + Z to undo
+  vim.keymap.set({ 'n', 'v', 'i', 'c', 't' }, '<D-z>', '<cmd>undo<CR>')
+  -- Cmd + Shift + Z to redo
+  vim.keymap.set({ 'n', 'v', 'i', 'c', 't' }, '<D-S-z>', '<cmd>redo<CR>')
 
   -- Option + hjkl to focus windows
   -- In a normal terminal, these key inputs don't work, but Neovide rules and allows us to use the option key! 🎉
@@ -354,25 +363,22 @@ require('lazy').setup({
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
-
-      -- Document existing key chains
-      require('which-key').register {
-        ['<leader>g'] = { name = '[G]oto / [G]it', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        -- ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-        -- TODO: Doesn't work because comment.nvim has a <leader>c mapping
-        ['<leader>c'] = { name = '[C]opy / [C]omment', _ = 'which_key_ignore' },
-      }
-      -- visual mode
-      require('which-key').register({
-        ['<leader>g'] = { '[G]it' },
-      }, { mode = 'v' })
-    end,
+    opts = {
+      spec = {
+        { '<leader>c', group = '[C]opy / [C]omment' },
+        { '<leader>c_', hidden = true },
+        { '<leader>f', group = '[F]ind' },
+        { '<leader>f_', hidden = true },
+        { '<leader>g', group = '[G]oto / [G]it' },
+        { '<leader>g_', hidden = true },
+        { '<leader>r', group = '[R]ename' },
+        { '<leader>r_', hidden = true },
+        { '<leader>t', group = '[T]oggle' },
+        { '<leader>t_', hidden = true },
+        { '<leader>w', group = '[W]orkspace' },
+        { '<leader>w_', hidden = true },
+      },
+    },
   },
 
   -- NOTE: Plugins can specify dependencies.
@@ -473,7 +479,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
 
       -- TODO: Come back to this
-      -- vim.keymap.set('n', '<leader>fn', builtin.resume, { desc = '[F]ind [N]ext' })
+      vim.keymap.set('n', '<leader>fl', builtin.resume, { desc = '[F]ind the [L]ast thing again' })
 
       -- Find files in git repo or cwd
       vim.keymap.set('n', '<leader>ff', function()

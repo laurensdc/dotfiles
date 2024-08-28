@@ -61,9 +61,9 @@ return {
       'nvim-telescope/telescope.nvim', -- Only needed if you want to use sesssion lens
     },
     opts = {
-      auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-      auto_session_enable_last_session = true,
-      auto_session_use_git_branch = true,
+      auto_restore_last_lession = true,
+      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      use_git_branch = true,
     },
   },
 }
