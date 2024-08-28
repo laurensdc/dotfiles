@@ -21,6 +21,10 @@ return {
         visible = true,
         hide_gitignored = true,
       },
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = false
+      },
       window = {
         mappings = {
           ['\\'] = 'close_window',
@@ -28,6 +32,8 @@ return {
           ['l'] = 'open',
           ['h'] = 'close_node',
           ['<C-h>'] = 'close_all_nodes',
+          -- Show hidden files by default and have H jump up in the buffer
+          ['H'] = 'noop',
         },
       },
     },
