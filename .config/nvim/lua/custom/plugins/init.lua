@@ -54,7 +54,8 @@ return {
     },
     config = true,
   },
-  { 'wakatime/vim-wakatime', lazy = false },
+  -- Disabling it for now
+  -- { 'wakatime/vim-wakatime', lazy = false },
   {
     'rmagatti/auto-session',
     dependencies = {
