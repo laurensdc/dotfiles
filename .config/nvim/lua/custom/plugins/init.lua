@@ -28,7 +28,7 @@ return {
         t = {
           j = {
             k = false,
-            l = '<Esc>',
+            l = '<C-\\><C-n>',
           },
         },
         v = {
