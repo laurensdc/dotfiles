@@ -5,13 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -26,7 +23,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -46,15 +43,22 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  asdf
+ # asdf
 )
 
+# Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && 
+# Load autojump
 source $HOME/.autojump/etc/profile.d/autojump.sh
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# No idea what this does anymore
 prompt_context() {
   if [[ "$Users" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$Users"
@@ -71,21 +75,13 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Fixing nix locale errors on non-NixOS Linux
-# https://nixos.wiki/wiki/Locales
-export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
-
-# vi mode in terminal
-set -o vi
+# vi mode in terminal, disabling for now as then it behaves weird
+# when using terminal within nvim
+# set -o vi
 
 # Home folders and local folders
 export PATH=~/.local/bin:$PATH
 export PATH=~/bin:$PATH
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# Users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
 
 # UP VPN with openconnect
 # For running the cmd in the background, add -b flag
@@ -143,11 +139,9 @@ if [ -f '/Users/laurens/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then .
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Warpify subshells -> enable Warp everywhere
 printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash" }}\x9c'
 
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
