@@ -560,6 +560,7 @@
   # Duration format: 1d 2h 3m 4s.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
   # Display number + "ms" if less than 1 second, otherwise use "d h m s" format.
+  # https://github.com/romkatv/powerlevel10k/issues/1729#issuecomment-2382215497
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_CONTENT_EXPANSION='${$((P9K_COMMAND_DURATION_SECONDS < 1 ? int(1000 * P9K_COMMAND_DURATION_SECONDS) : -1)):/-1/$P9K_CONTENT}${${$((P9K_COMMAND_DURATION_SECONDS < 1)):/1/ms}:/0/}'
 
   # Custom icon.

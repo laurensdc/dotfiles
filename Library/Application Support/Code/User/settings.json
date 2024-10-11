@@ -311,6 +311,5 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "codeium.enableCodeLens": false,
   "vscode-neovim.statusLineSeparator": " | ",
-  "debug.javascript.autoAttachFilter": "disabled",
-  "workbench.activityBar.location": "hidden"
+  "debug.javascript.autoAttachFilter": "disabled"
 }
