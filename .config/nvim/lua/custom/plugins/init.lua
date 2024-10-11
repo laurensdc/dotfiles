@@ -56,15 +56,22 @@ return {
   },
   -- Disabling it for now
   -- { 'wakatime/vim-wakatime', lazy = false },
+  -- {
+  --   'rmagatti/auto-session',
+  --   dependencies = {
+  --     'nvim-telescope/telescope.nvim', -- Only needed if you want to use sesssion lens
+  --   },
+  --   opts = {
+  --     auto_restore_last_lession = true,
+  --     suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+  --     use_git_branch = true,
+  --   },
+  -- },
   {
-    'rmagatti/auto-session',
-    dependencies = {
-      'nvim-telescope/telescope.nvim', -- Only needed if you want to use sesssion lens
-    },
+    'chomosuke/term-edit.nvim',
     opts = {
-      auto_restore_last_lession = true,
-      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-      use_git_branch = true,
+      prompt_end = '%$ ',
+      -- feedkeys_delay = 2,
     },
   },
 }
