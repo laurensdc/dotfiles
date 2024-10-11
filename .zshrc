@@ -83,6 +83,12 @@ export LC_ALL=en_US.UTF-8
 export PATH=~/.local/bin:$PATH
 export PATH=~/bin:$PATH
 
+# Add go to path
+export PATH=$PATH:$(go env GOPATH)/bin
+ 
+# Add Deno to path
+. "/Users/laurens/.deno/env"
+
 # UP VPN with openconnect
 # For running the cmd in the background, add -b flag
 alias vpn='echo "Enter MFA token for Pulse VPN: "; read TOKEN; sudo killall -SIGINT openconnect; cat ~/.config/pulserc | sed "s/TOKEN/$TOKEN/g" | sudo openconnect vpn.unifiedpost.com --protocol=nc' 
@@ -142,6 +148,4 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 # Warpify subshells -> enable Warp everywhere
 printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash" }}\x9c'
-
-
 
