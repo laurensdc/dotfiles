@@ -139,6 +139,10 @@ vim.api.nvim_set_keymap('n', '<C-b>', '<C-b>zz', { noremap = true, silent = true
 vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
 
+-- Don't x to clipboard
+vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true })
+vim.api.nvim_set_keymap('n', 'X', '"_X', { noremap = true })
+
 -- Diagnostic keymaps
 -- NOTE: Calling the open_float() function twice so that we immediately focus the floating window
 vim.keymap.set('n', '<leader>p', function()
@@ -172,11 +176,6 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- Ctrl + backspace deletes word
-vim.keymap.set({ 'i', 'c', 't' }, '<C-BS>', '<C-w>')
--- Option + backspace deletes word
-vim.keymap.set({ 'i', 'c', 't' }, '<M-BS>', '<C-w>')
-
 -- Open Neogit
 vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = '[G]oto Neo[G]it', silent = true })
 
@@ -188,6 +187,42 @@ vim.keymap.set('n', '<leader>cr', ':let @+=expand("%:p")<CR>', { desc = '[C]opy 
 vim.keymap.set('n', '<leader>ca', ':let @+=expand("%:f")<CR>', { desc = '[C]opy [A]bsolute Path to clipboard' })
 -- Copy filename to clipboard
 vim.keymap.set('n', '<leader>cf', ':let @+=expand("%:t")<CR>', { desc = '[C]opy [F]ilename to clipboard' })
+
+-- [[ Cmd and option keys ]]
+--
+-- Ctrl + backspace deletes word
+vim.keymap.set({ 'i', 'c', 't' }, '<C-BS>', '<C-w>')
+-- Option + backspace deletes word
+vim.keymap.set({ 'i', 'c', 't' }, '<M-BS>', '<C-w>')
+
+-- Option + hjkl to focus windows
+vim.keymap.set({ 'n' }, '<M-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set({ 'n' }, '<M-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set({ 'n' }, '<M-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set({ 'n' }, '<M-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.keymap.set({ 'n' }, '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
+vim.keymap.set({ 'n' }, '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
+
+-- Cmd + w to close window
+vim.keymap.set('n', '<D-w>', '<C-w><C-q>', { desc = 'Close window' })
+-- Option + w also, when splitting and moving, it's easier
+vim.keymap.set('n', '<M-w>', '<C-w><C-q>', { desc = 'Close window' })
+
+-- Cmd + V to paste
+vim.keymap.set({ 'n', 'v' }, '<D-v>', '"+p')
+vim.keymap.set({ 'i', 'c', 't' }, '<D-v>', '<C-r>+')
+
+-- Cmd + C to copy
+vim.keymap.set({ 'v', 't' }, '<D-c>', 'y')
+
+-- Cmd + Z to undo
+vim.keymap.set({ 'n', 'v', 'i', 'c', 't' }, '<D-z>', '<cmd>undo<CR>')
+-- Cmd + Shift + Z to redo
+vim.keymap.set({ 'n', 'v', 'i', 'c', 't' }, '<D-S-z>', '<cmd>redo<CR>')
+
+-- Cmd + s to save and escape
+vim.keymap.set({ 'i', 'n', 'v', 'x' }, '<D-s>', '<cmd>w<CR><esc>', { desc = 'Save file', silent = true })
 
 -- [[ Neovide configuration ]]
 if vim.g.neovide then
@@ -209,38 +244,8 @@ if vim.g.neovide then
   -- Window size stuff
   vim.g.neovide_fullscreen = true
 
-  -- Cmd + V to paste
-  vim.keymap.set({ 'n', 'v' }, '<D-v>', '"+p')
-  vim.keymap.set({ 'i', 'c', 't' }, '<D-v>', '<C-r>+')
-
-  -- Cmd + C to copy
-  vim.keymap.set({ 'v', 't' }, '<D-c>', 'y')
-
-  -- Cmd + Z to undo
-  vim.keymap.set({ 'n', 'v', 'i', 'c', 't' }, '<D-z>', '<cmd>undo<CR>')
-  -- Cmd + Shift + Z to redo
-  vim.keymap.set({ 'n', 'v', 'i', 'c', 't' }, '<D-S-z>', '<cmd>redo<CR>')
-
-  -- Option + hjkl to focus windows
-  -- In a normal terminal, these key inputs don't work, but Neovide rules and allows us to use the option key! 🎉
-  vim.keymap.set({ 'n' }, '<M-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-  vim.keymap.set({ 'n' }, '<M-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-  vim.keymap.set({ 'n' }, '<M-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-  vim.keymap.set({ 'n' }, '<M-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
-  vim.keymap.set({ 'n' }, '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
-  vim.keymap.set({ 'n' }, '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
-
-  -- Cmd + s to save and escape
-  vim.keymap.set({ 'i', 'n', 'v', 'x' }, '<D-s>', '<cmd>w<CR><esc>', { desc = 'Save file', silent = true })
-
-  -- Cmd + w to close window
-  vim.keymap.set('n', '<D-w>', '<C-w><C-q>', { desc = 'Close window' })
-  -- Option + w also, when splitting and moving, it's easier
-  vim.keymap.set('n', '<M-w>', '<C-w><C-q>', { desc = 'Close window' })
-
   -- Scale font with cmd+ and cmd-
-  vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  1.5)<CR>', { silent = true })
+  vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  2)<CR>', { silent = true })
   vim.api.nvim_set_keymap('n', '<D-->', ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.5)<CR>', { silent = true })
   vim.api.nvim_set_keymap('n', '<D-0>', ':lua vim.g.neovide_scale_factor = 1<CR>', { silent = true })
 end
@@ -727,15 +732,7 @@ require('lazy').setup({
       --  You can press `g?` for help in this menu.
       require('mason').setup()
 
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-        'eslint_d',
-        'prettierd',
-        'markdownlint',
-      })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
@@ -1015,7 +1012,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
+  -- require 'kickstart.plugins.lint', -- Linting with LSP now
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps

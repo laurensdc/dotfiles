@@ -2638,29 +2638,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 		</dict>
-		<key>0x68-0x40000-0x4</key>
-		<dict>
-			<key>Action</key>
-			<integer>18</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
 		<key>0x6a-0x100000-0x26</key>
-		<dict>
-			<key>Action</key>
-			<integer>21</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x6a-0x40000-0x26</key>
 		<dict>
 			<key>Action</key>
 			<integer>21</integer>
@@ -2682,17 +2660,6 @@
 			<key>Version</key>
 			<integer>1</integer>
 		</dict>
-		<key>0x6b-0x40000-0x28</key>
-		<dict>
-			<key>Action</key>
-			<integer>20</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
 		<key>0x6c-0x100000-0x25</key>
 		<dict>
 			<key>Action</key>
@@ -2704,28 +2671,6 @@
 			<key>Version</key>
 			<integer>1</integer>
 		</dict>
-		<key>0x6c-0x40000-0x25</key>
-		<dict>
-			<key>Action</key>
-			<integer>19</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x73-0x40000-0x1</key>
-		<dict>
-			<key>Action</key>
-			<integer>28</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>9630B283-28C2-49A9-B705-3847A4D649CB</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
 		<key>0x75-0x100000-0x20</key>
 		<dict>
 			<key>Action</key>
@@ -2734,17 +2679,6 @@
 			<string></string>
 			<key>Text</key>
 			<string></string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x76-0x40000-0x9</key>
-		<dict>
-			<key>Action</key>
-			<integer>29</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>9630B283-28C2-49A9-B705-3847A4D649CB</string>
 			<key>Version</key>
 			<integer>1</integer>
 		</dict>
@@ -2841,6 +2775,8 @@
 		</dict>
 	</dict>
 	<key>HapticFeedbackForEsc</key>
+	<false/>
+	<key>HideActivityIndicator</key>
 	<false/>
 	<key>HideMenuBarInFullscreen</key>
 	<true/>
@@ -3096,8 +3032,6 @@
 				<key>Red Component</key>
 				<real>0.15686275064945221</real>
 			</dict>
-			<key>Background Image Location</key>
-			<string></string>
 			<key>Background Image Mode</key>
 			<integer>0</integer>
 			<key>Badge Color</key>
@@ -3118,7 +3052,9 @@
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
-			<false/>
+			<true/>
+			<key>Blur Radius</key>
+			<real>19.504521276595746</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -3137,7 +3073,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>104</integer>
+			<integer>110</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -3182,7 +3118,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -3706,6 +3642,8 @@
 			<true/>
 			<key>Normal Font</key>
 			<string>ComicCodeLigatures-Regular 12</string>
+			<key>Only The Default BG Color Uses Transparency</key>
+			<false/>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -3713,7 +3651,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>2</integer>
 			<key>Rows</key>
-			<integer>56</integer>
+			<integer>50</integer>
 			<key>Screen</key>
 			<integer>-2</integer>
 			<key>Scrollback Lines</key>
@@ -3763,7 +3701,7 @@
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.29413231382978722</real>
 			<key>Unicode Version</key>
 			<integer>9</integer>
 			<key>Unlimited Scrollback</key>
@@ -3783,7 +3721,7 @@
 			<key>Visual Bell</key>
 			<false/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>15</integer>
 			<key>Working Directory</key>
 			<string>/Users/Laurens</string>
 		</dict>
@@ -3793,6 +3731,8 @@
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
+	<true/>
+	<key>PerPaneBackgroundImage</key>
 	<true/>
 	<key>PointerActions</key>
 	<dict>
@@ -3833,20 +3773,28 @@
 	<true/>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
+	<key>ShowNewOutputIndicator</key>
+	<true/>
+	<key>ShowPaneTitles</key>
+	<true/>
 	<key>SmartPlacement</key>
 	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.4027814016990291</real>
+	<key>StretchTabsToFillBar</key>
+	<true/>
 	<key>SwitchPaneModifier</key>
-	<integer>5</integer>
+	<integer>9</integer>
 	<key>SwitchTabModifier</key>
 	<integer>9</integer>
 	<key>SwitchWindowModifier</key>
-	<integer>4</integer>
+	<integer>9</integer>
 	<key>TabStyleWithAutomaticOption</key>
-	<integer>5</integer>
+	<integer>1</integer>
+	<key>TabsHaveCloseButton</key>
+	<true/>
 	<key>UseBorder</key>
 	<true/>
 	<key>VisualIndicatorForEsc</key>
