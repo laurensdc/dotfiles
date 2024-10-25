@@ -465,12 +465,23 @@ require('lazy').setup({
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          gitmoji = {
+            action = function(entry)
+              local emoji = entry.value.text -- entry.value.value for the emoji
+              vim.api.nvim_put({ emoji .. ' ' }, 'c', true, true)
+
+              -- hit 'a' to insert mode after character
+              vim.api.nvim_feedkeys('a', 'n', false)
+            end,
+          },
         },
       }
 
       -- Enable Telescope extensions if they are installed
-      pcall(require('telescope').load_extension, 'fzf')
-      pcall(require('telescope').load_extension, 'ui-select')
+      -- Does this even do anything? Let's try without?
+      -- pcall(require('telescope').load_extension, 'fzf')
+      -- pcall(require('telescope').load_extension, 'ui-select')
+      -- pcall(require('telescope').load_extension, 'gitmoji')
 
       local function get_git_root()
         return vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
@@ -491,6 +502,11 @@ require('lazy').setup({
 
       -- TODO: Come back to this
       vim.keymap.set('n', '<leader>fl', builtin.resume, { desc = '[F]ind the [L]ast thing again' })
+
+      -- Gitmoji!
+      vim.keymap.set('n', '<leader>fm', function()
+        require('telescope').extensions.gitmoji.gitmoji()
+      end, { desc = '[F]ind git[M]oji' })
 
       -- Find files in git repo or cwd
       vim.keymap.set('n', '<leader>ff', function()

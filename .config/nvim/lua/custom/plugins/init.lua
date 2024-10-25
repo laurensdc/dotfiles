@@ -3,9 +3,6 @@
 --
 -- See the kickstart.nvim README for more information
 
--- Options for session
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
-
 return {
   {
     'max397574/better-escape.nvim',
@@ -56,22 +53,18 @@ return {
   },
   -- Disabling it for now
   -- { 'wakatime/vim-wakatime', lazy = false },
-  -- {
-  --   'rmagatti/auto-session',
-  --   dependencies = {
-  --     'nvim-telescope/telescope.nvim', -- Only needed if you want to use sesssion lens
-  --   },
-  --   opts = {
-  --     auto_restore_last_lession = true,
-  --     suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-  --     use_git_branch = true,
-  --   },
-  -- },
   {
     'chomosuke/term-edit.nvim',
     opts = {
       prompt_end = '%$ ',
       -- feedkeys_delay = 2,
     },
+  },
+  {
+    'olacin/telescope-gitmoji.nvim',
+    config = function()
+      require('telescope').load_extension 'gitmoji'
+    end,
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
   },
 }
