@@ -467,7 +467,7 @@ require('lazy').setup({
           },
           gitmoji = {
             action = function(entry)
-              local emoji = entry.value.text -- entry.value.value for the emoji
+              local emoji = entry.value.value -- entry.value.value for the emoji, entry.value.text for the text
               vim.api.nvim_put({ emoji .. ' ' }, 'c', true, true)
 
               -- hit 'a' to insert mode after character
