@@ -43,7 +43,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
- # asdf
 )
 
 # Load oh-my-zsh
@@ -53,11 +52,19 @@ source $ZSH/oh-my-zsh.sh
 [ -f $HOME/.autojump/etc/profile.d/autojump.sh ] && . $HOME/.autojump/etc/profile.d/autojump.sh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
  
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# Load p10k - To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Set up fzf key bindings and fuzzy completion
+# Load fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+ 
+# Load nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  
+ 
+# Load Deno 
+[ -f $HOME/.deno.env ] &&  . $HOME/.deno/env
 
 # No idea what this does anymore
 prompt_context() {
@@ -66,7 +73,7 @@ prompt_context() {
   fi
 }
 
-# User configuration
+# One editor to rule them all
 export EDITOR='nvim'
 
 # Add nvim to path on WSL
@@ -87,13 +94,6 @@ export PATH=~/bin:$PATH
 # Add go to path
 export PATH=$PATH:$(go env GOPATH)/bin
  
-# Add Deno to path
-[ -f $HOME/.deno.env ] &&  . $HOME/.deno/env
-
-# UP VPN with openconnect
-# For running the cmd in the background, add -b flag
-alias vpn='echo "Enter MFA token for Pulse VPN: "; read TOKEN; sudo killall -SIGINT openconnect; cat ~/.config/pulserc | sed "s/TOKEN/$TOKEN/g" | sudo openconnect vpn.unifiedpost.com --protocol=nc' 
-
 # Prints `git checkout -b [BRANCH_NAME]`
 alias branch="git status | grep 'On branch' |  sed 's/On branch \(.*\)/git checkout \1/'"
 
@@ -115,9 +115,6 @@ alias REBASE='BRANCH=$(git status | grep "On branch" | sed "s/On branch \(.*\)/\
 # List git commits
 alias log="git log --oneline -12"
 
-# Get batching token
-alias batchingtoken="gcloud config set project colruyt-give-forward-staging && gcloud auth print-identity-token | pbcopy"
-
 # nvim alias
 alias v=nvim
 
@@ -127,34 +124,16 @@ alias nv="neovide --fork"
 # MacOS preview from terminal
 alias preview="qlmanage -p"
 
-# GitHub Copilot CLI aliases
-alias cop="gh copilot explain"
-
 # Gitmoji alias
 alias gm="gitmoji -c"
 
 # Don't close terminal on ctrl+D
 set -o ignoreeof
 
-# Update PATH for the Google Cloud SDK.
-if [ -f '/Users/laurens/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/laurens/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+# WSL aliases to make life less miserable on Windows
 
-# Enable shell command completion for gcloud.
-if [ -f '/Users/laurens/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/laurens/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Autocompletions for terraform
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
-
-
-# Warpify subshells -> enable Warp everywhere
-printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash" }}\x9c'
-
-# WSL stuff to make life not miserable on Windows
-# 
 # Edit ahk script on windows
 alias editahk="nvim /mnt/c/Users/CoredusK/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/Keys_*.ahk"
 # Cd to code on windows
 alias cdwincode="cd /mnt/c/Code"
-
 
