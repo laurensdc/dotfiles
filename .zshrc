@@ -50,8 +50,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Load autojump
-source $HOME/.autojump/etc/profile.d/autojump.sh
-
+[ -f $HOME/.autojump/etc/profile.d/autojump.sh ] && . $HOME/.autojump/etc/profile.d/autojump.sh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+ 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -87,7 +88,7 @@ export PATH=~/bin:$PATH
 export PATH=$PATH:$(go env GOPATH)/bin
  
 # Add Deno to path
-. "/Users/laurens/.deno/env"
+[ -f $HOME/.deno.env ] &&  . $HOME/.deno/env
 
 # UP VPN with openconnect
 # For running the cmd in the background, add -b flag
