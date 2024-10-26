@@ -150,3 +150,11 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 # Warpify subshells -> enable Warp everywhere
 printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash" }}\x9c'
 
+# WSL stuff to make life not miserable on Windows
+# 
+# Edit ahk script on windows
+alias editahk="nvim /mnt/c/Users/CoredusK/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/Keys_*.ahk"
+# Cd to code on windows
+alias cdwincode="cd /mnt/c/Code"
+
+

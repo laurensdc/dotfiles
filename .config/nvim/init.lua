@@ -57,20 +57,6 @@ vim.opt.expandtab = true
 -- Set the terminal type
 vim.env.TERM = 'xterm-256color'
 
--- -- Navigate buffers
--- vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', { noremap = true, silent = true, desc = '[B]uffer: [P]revious' })
--- vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true, desc = '[B]uffer: [N]ext' })
--- -- Close current buffer
--- vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true, desc = '[B]uffer: [D]elete' })
--- -- Close other buffers
--- vim.api.nvim_set_keymap('n', '<leader>bo', ':%bd|e#<CR>', { noremap = true, silent = true, desc = '[B]uffer: [O]nly' })
-
--- Composite escape - not necessary as we're using the better_escape plugin
--- vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
-
--- D when text is selected won't send text to paste register
-vim.api.nvim_set_keymap('v', 'D', '"_d', { noremap = true })
-
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -143,12 +129,31 @@ vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true })
 vim.api.nvim_set_keymap('n', 'X', '"_X', { noremap = true })
 
+-- Q instead of q for macros
+vim.api.nvim_set_keymap('n', 'Q', 'q', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'q', '<Nop>', { noremap = true })
+
 -- Diagnostic keymaps
 -- NOTE: Calling the open_float() function twice so that we immediately focus the floating window
 vim.keymap.set('n', '<leader>p', function()
   vim.diagnostic.open_float()
   vim.diagnostic.open_float()
 end, { desc = 'Show [P]roblems' })
+
+-- -- Navigate buffers
+-- vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', { noremap = true, silent = true, desc = '[B]uffer: [P]revious' })
+-- vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true, desc = '[B]uffer: [N]ext' })
+-- -- Close current buffer
+-- vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true, desc = '[B]uffer: [D]elete' })
+-- -- Close other buffers
+-- vim.api.nvim_set_keymap('n', '<leader>bo', ':%bd|e#<CR>', { noremap = true, silent = true, desc = '[B]uffer: [O]nly' })
+
+-- Composite escape - not necessary as we're using the better_escape plugin
+-- vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
+
+-- D when text is selected won't send text to paste register
+
+vim.api.nvim_set_keymap('v', 'D', '"_d', { noremap = true })
 
 -- NOTE: Disabling this, let's just use Telescope for now
 --
@@ -231,7 +236,7 @@ if vim.g.neovide then
 
   -- Eye candy and beautiful Neovim
   vim.g.neovide_window_blurred = true
-  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_transparency = 0.8
   vim.g.neovide_scroll_animation_length = 0.10
   vim.g.neovide_position_animation_length = 0.02
   vim.g.neovide_cursor_animation_length = 0.02
@@ -241,9 +246,10 @@ if vim.g.neovide then
   vim.g.neovide_hide_mouse_when_typing = false
   vim.g.neovide_input_macos_option_key_is_meta = 'both'
   vim.g.neovide_refresh_rate = 120
+  vim.g.neovide_hide_mouse_when_typing = true
 
   -- Window size stuff
-  vim.g.neovide_fullscreen = true
+  vim.g.neovide_remember_window_size = true
 
   -- Scale font with cmd+ and cmd-
   vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  2)<CR>', { silent = true })
@@ -460,12 +466,23 @@ require('lazy').setup({
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          gitmoji = {
+            action = function(entry)
+              local emoji = entry.value.value -- entry.value.value for the emoji, entry.value.text for the text
+              vim.api.nvim_put({ emoji .. ' ' }, 'c', true, true)
+
+              -- hit 'a' to insert mode after character
+              vim.api.nvim_feedkeys('a', 'n', false)
+            end,
+          },
         },
       }
 
       -- Enable Telescope extensions if they are installed
-      pcall(require('telescope').load_extension, 'fzf')
-      pcall(require('telescope').load_extension, 'ui-select')
+      -- Does this even do anything? Let's try without?
+      -- pcall(require('telescope').load_extension, 'fzf')
+      -- pcall(require('telescope').load_extension, 'ui-select')
+      -- pcall(require('telescope').load_extension, 'gitmoji')
 
       local function get_git_root()
         return vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
@@ -486,6 +503,11 @@ require('lazy').setup({
 
       -- TODO: Come back to this
       vim.keymap.set('n', '<leader>fl', builtin.resume, { desc = '[F]ind the [L]ast thing again' })
+
+      -- Gitmoji!
+      vim.keymap.set('n', '<leader>fm', function()
+        require('telescope').extensions.gitmoji.gitmoji()
+      end, { desc = '[F]ind git[M]oji' })
 
       -- Find files in git repo or cwd
       vim.keymap.set('n', '<leader>ff', function()
@@ -791,6 +813,7 @@ require('lazy').setup({
         if slow_format_filetypes[vim.bo[bufnr].filetype] then
           return
         end
+
         local function on_format(err)
           if err and err:match 'timeout$' then
             slow_format_filetypes[vim.bo[bufnr].filetype] = true
@@ -810,14 +833,14 @@ require('lazy').setup({
       end,
 
       formatters_by_ft = {
-        lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        javascript = { 'prettierd', 'eslint_d' },
-        typescript = { 'prettierd', 'eslint_d' },
+        lua = { 'stylua' },
+        javascript = { 'prettierd' },
+        typescript = { 'prettierd' },
         json = { 'prettierd' },
         markdown = { 'markdownlint' },
         css = { 'prettierd' },
