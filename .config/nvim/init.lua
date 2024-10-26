@@ -226,7 +226,8 @@ vim.keymap.set({ 'i', 'n', 'v', 'x' }, '<D-s>', '<cmd>w<CR><esc>', { desc = 'Sav
 
 -- [[ Neovide configuration ]]
 if vim.g.neovide then
-  vim.o.guifont = 'Comic Code Ligatures,FiraCode Nerd Font Mono:h14'
+  -- vim.o.guifont = 'Comic Code Ligatures,FiraCode Nerd Font Mono:h14'
+  vim.o.guifont = 'Comic Code Ligatures,MesloLGS NF:h14'
 
   -- Eye candy and beautiful Neovim
   vim.g.neovide_window_blurred = true
