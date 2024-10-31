@@ -844,6 +844,7 @@ require('lazy').setup({
         json = { 'prettierd' },
         markdown = { 'markdownlint' },
         css = { 'prettierd' },
+        go = { 'revive '}
       },
     },
   },
