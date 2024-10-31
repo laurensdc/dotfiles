@@ -184,13 +184,22 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Open Neogit
 vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = '[G]oto Neo[G]it', silent = true })
 
--- TODO: Check integration with Neotree and the snippet there that doesn't work
---
--- Copy relative path of file to clipboard
-vim.keymap.set('n', '<leader>cr', ':let @+=expand("%:p")<CR>', { desc = '[C]opy [R]elative Path to clipboard' })
--- Copy absolute path of file to clipboard
-vim.keymap.set('n', '<leader>ca', ':let @+=expand("%:f")<CR>', { desc = '[C]opy [A]bsolute Path to clipboard' })
--- Copy filename to clipboard
+-- Copy file paths to clipboard
+vim.keymap.set('n', '<leader>cr', function()
+  -- Get the Git root directory
+  local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+
+  -- If we’re inside a Git repository, compute the relative path
+  if git_root and git_root ~= '' then
+    local file_path = vim.fn.expand '%:p' -- Absolute path of the current file
+    local relative_path = file_path:sub(#git_root + 2) -- Strip Git root path + '/' (1 extra character)
+    vim.fn.setreg('+', relative_path)
+  else
+    -- Else, copy file path
+    vim.fn.setreg('+', vim.fn.expand '%')
+  end
+end, { desc = '[C]opy [R]elative Path to clipboard' })
+vim.keymap.set('n', '<leader>ca', ':let @+=expand("%:p")<CR>', { desc = '[C]opy [A]bsolute Path to clipboard' })
 vim.keymap.set('n', '<leader>cf', ':let @+=expand("%:t")<CR>', { desc = '[C]opy [F]ilename to clipboard' })
 
 -- [[ Cmd and option keys ]]
