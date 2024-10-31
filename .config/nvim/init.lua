@@ -514,9 +514,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fl', builtin.resume, { desc = '[F]ind the [L]ast thing again' })
 
       -- Gitmoji!
-      vim.keymap.set('n', '<leader>fm', function()
+      vim.keymap.set('n', '<leader>gm', function()
         require('telescope').extensions.gitmoji.gitmoji()
-      end, { desc = '[F]ind git[M]oji' })
+      end, { desc = '[G]it [M]oji picker!' })
 
       -- Find files in git repo or cwd
       vim.keymap.set('n', '<leader>ff', function()
@@ -853,7 +853,7 @@ require('lazy').setup({
         json = { 'prettierd' },
         markdown = { 'markdownlint' },
         css = { 'prettierd' },
-        go = { 'revive '}
+        go = { 'revive ' },
       },
     },
   },
