@@ -48,6 +48,9 @@ plugins=(
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Load brew on WSL
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Load autojump
 [ -f $HOME/.autojump/etc/profile.d/autojump.sh ] && . $HOME/.autojump/etc/profile.d/autojump.sh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
@@ -60,9 +63,10 @@ source <(fzf --zsh)
  
 # Load nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  
- 
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"  # This loads nvm
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"  
+
+
 # Load Deno 
 [ -f $HOME/.deno.env ] &&  . $HOME/.deno/env
 
@@ -76,8 +80,6 @@ prompt_context() {
 # One editor to rule them all
 export EDITOR='nvim'
 
-# Add nvim to path on WSL
-export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -130,10 +132,14 @@ alias gm="gitmoji -c"
 # Don't close terminal on ctrl+D
 set -o ignoreeof
 
-# WSL aliases to make life less miserable on Windows
+# WSL stuff to make life less miserable on Windows
+# Add nvim to path on WSL
+export PATH="$PATH:/opt/nvim-linux64/bin"
+ 
 
 # Edit ahk script on windows
 alias editahk="nvim /mnt/c/Users/CoredusK/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/Keys_*.ahk"
 # Cd to code on windows
 alias cdwincode="cd /mnt/c/Code"
+
 
