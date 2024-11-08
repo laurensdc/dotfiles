@@ -304,21 +304,6 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
-  -- 'github/copilot.vim',
-  {
-    'zbirenbaum/copilot.lua',
-    opts = {
-      suggestion = {
-        auto_trigger = true,
-        -- Remapping to tab deletes tab functionality -_- guess I keep it on enter
-        -- also it messes with cmp autocomplete
-        -- keymap = {
-        --   accept = '<Tab>',
-        -- },
-      },
-    },
-  },
-
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -328,8 +313,6 @@ require('lazy').setup({
   --  This is equivalent to:
   --    require('Comment').setup({})
 
-  -- "gc" to comment visual regions/lines
-  -- "gb" to comment blocks
   -- Can also use count & motion, e.g.
   -- gc[count](motion)
   {
