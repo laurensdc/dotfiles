@@ -135,7 +135,9 @@ set -o ignoreeof
 # WSL stuff to make life less miserable on Windows
 # Add nvim to path on WSL
 export PATH="$PATH:/opt/nvim-linux64/bin"
- 
+
+# VM nvim path
+export PATH="$PATH:~/nvim"
 
 # Edit ahk script on windows
 alias editahk="nvim /mnt/c/Users/CoredusK/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/Keys_*.ahk"
