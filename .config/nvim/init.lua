@@ -266,6 +266,9 @@ if vim.g.neovide then
   vim.api.nvim_set_keymap('n', '<D-->',
     ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.5)<CR>', { silent = true })
   vim.api.nvim_set_keymap('n', '<D-0>', ':lua vim.g.neovide_scale_factor = 1<CR>', { silent = true })
+
+  -- Option +hjk escapes properly, but option+l does not, bind it here
+  vim.api.nvim_set_keymap('i', '<M+l>', '<Esc>l', { silent = true, noremap = true })
 end
 
 -- [[ Basic Autocommands ]]
