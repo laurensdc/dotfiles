@@ -191,7 +191,7 @@ vim.keymap.set('n', '<leader>cr', function()
 
   -- If we’re inside a Git repository, compute the relative path
   if git_root and git_root ~= '' then
-    local file_path = vim.fn.expand '%:p' -- Absolute path of the current file
+    local file_path = vim.fn.expand '%:p'              -- Absolute path of the current file
     local relative_path = file_path:sub(#git_root + 2) -- Strip Git root path + '/' (1 extra character)
     vim.fn.setreg('+', relative_path)
     print('Copied relative path to clipboard: ' .. relative_path)
@@ -263,9 +263,14 @@ if vim.g.neovide then
   vim.g.neovide_remember_window_size = true
 
   -- Scale font with cmd+ and cmd-
-  vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  2)<CR>', { silent = true })
-  vim.api.nvim_set_keymap('n', '<D-->', ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.5)<CR>', { silent = true })
+  vim.api.nvim_set_keymap('n', '<D-=>',
+    ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  2)<CR>', { silent = true })
+  vim.api.nvim_set_keymap('n', '<D-->',
+    ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.5)<CR>', { silent = true })
   vim.api.nvim_set_keymap('n', '<D-0>', ':lua vim.g.neovide_scale_factor = 1<CR>', { silent = true })
+
+  -- Option +hjk escapes properly, but option+l does not, bind it here
+  vim.api.nvim_set_keymap('i', '<M+l>', '<Esc>l', { silent = true, noremap = true })
 end
 
 -- [[ Basic Autocommands ]]
@@ -306,21 +311,6 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
-  -- 'github/copilot.vim',
-  {
-    'zbirenbaum/copilot.lua',
-    opts = {
-      suggestion = {
-        auto_trigger = true,
-        -- Remapping to tab deletes tab functionality -_- guess I keep it on enter
-        -- also it messes with cmp autocomplete
-        -- keymap = {
-        --   accept = '<Tab>',
-        -- },
-      },
-    },
-  },
-
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -330,8 +320,6 @@ require('lazy').setup({
   --  This is equivalent to:
   --    require('Comment').setup({})
 
-  -- "gc" to comment visual regions/lines
-  -- "gb" to comment blocks
   -- Can also use count & motion, e.g.
   -- gc[count](motion)
   {
@@ -383,22 +371,22 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
       spec = {
-        { '<leader>c', group = '[C]opy / [C]omment' },
+        { '<leader>c',  group = '[C]opy / [C]omment' },
         { '<leader>c_', hidden = true },
-        { '<leader>f', group = '[F]ind' },
+        { '<leader>f',  group = '[F]ind' },
         { '<leader>f_', hidden = true },
-        { '<leader>g', group = '[G]oto / [G]it' },
+        { '<leader>g',  group = '[G]oto / [G]it' },
         { '<leader>g_', hidden = true },
-        { '<leader>r', group = '[R]ename' },
+        { '<leader>r',  group = '[R]ename' },
         { '<leader>r_', hidden = true },
-        { '<leader>t', group = '[T]oggle' },
+        { '<leader>t',  group = '[T]oggle' },
         { '<leader>t_', hidden = true },
-        { '<leader>w', group = '[W]orkspace' },
+        { '<leader>w',  group = '[W]orkspace' },
         { '<leader>w_', hidden = true },
       },
     },
@@ -433,7 +421,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Two important keymaps to use while in Telescope are:
@@ -588,11 +576,11 @@ require('lazy').setup({
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      { 'folke/neodev.nvim',       opts = {} },
     },
     config = function()
       -- Language Servers are external tools that must be installed separately from
@@ -728,6 +716,12 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local rust_exists = vim.fn.executable('cargo') == 1
+      local go_exists = vim.fn.executable('go') == 1
+      local deno_exists = vim.fn.executable('deno') == 1
+      local node_exists = vim.fn.executable('node') == 1
+
+
       local servers = {
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -735,24 +729,24 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {
+        ts_ls = node_exists and {
           -- Only load in projects with tsconfig.json
           root_dir = require('lspconfig').util.root_pattern 'package.json',
           single_file_support = false,
         },
-        denols = {
+        denols = deno_exists and {
           root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
         },
 
         cssls = {},
         css_variables = {},
         cssmodules_ls = {},
-        eslint = {}, -- eslint-lsp
-        eslint_d = {},
-        goimports = {},
-        gopls = {},
+        eslint = node_exists and {}, -- eslint-lsp
+        eslint_d = node_exists and {},
+        goimports = go_exists and {},
+        gopls = go_exists and {},
         html = {},
-        htmx = {},
+        htmx = rust_exists and {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -768,11 +762,11 @@ require('lazy').setup({
           },
         },
         markdownlint = {},
-        nilaway = {},
-        prettierd = {},
-        revive = {},
-        stylua = {},
-        terraformls = {},
+        nilaway = go_exists and {},
+        prettierd = node_exists and {},
+        revive = go_exists and {},
+        stylua = rust_exists and {},
+        terraformls = go_exists and {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -784,7 +778,11 @@ require('lazy').setup({
       require('mason').setup()
 
       local ensure_installed = vim.tbl_keys(servers or {})
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-tool-installer').setup {
+        ensure_installed = vim.tbl_filter(function(server)
+          return servers[server] -- Only add to the installer if the server is enabled
+        end, ensure_installed)
+      }
 
       require('mason-lspconfig').setup {
         handlers = {
