@@ -714,6 +714,7 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
       local rust_exists = vim.fn.executable 'cargo' == 1
       local go_exists = vim.fn.executable 'go' == 1
       local deno_exists = vim.fn.executable 'deno' == 1
@@ -728,7 +729,7 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = node_exists and {
           -- Only load in projects with tsconfig.json
-          root_dir = require('lspconfig').util.root_pattern 'package.json',
+          root_dir = require('lspconfig').util.root_pattern 'tsconfig.json',
           single_file_support = false,
         },
         denols = deno_exists and {
@@ -743,7 +744,9 @@ require('lazy').setup({
         goimports = go_exists and {},
         gopls = go_exists and {},
         html = {},
-        htmx = rust_exists and {},
+        htmx = rust_exists and {
+          filetypes = { 'html' },
+        },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
