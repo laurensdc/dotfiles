@@ -79,6 +79,9 @@ vim.opt.breakindent = true
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 
+-- Show folds
+vim.opt.foldcolumn = 'auto:2'
+
 -- Decrease update time
 vim.opt.updatetime = 250
 
