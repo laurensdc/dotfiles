@@ -47,10 +47,21 @@ return {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim', -- required
-      'sindrets/diffview.nvim', -- optional - Diff integration
+      {
+        'sindrets/diffview.nvim',
+        opts = {
+          keymaps = {
+            view = {
+              ['q'] = '<Cmd>DiffviewClose<CR>',
+            },
+          },
+        },
+      }, -- optional - Diff integration
       'nvim-telescope/telescope.nvim',
     },
-    config = true,
+    opts = {
+      kind = 'replace',
+    },
   },
   -- Disabling it for now
   -- { 'wakatime/vim-wakatime', lazy = false },
