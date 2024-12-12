@@ -601,29 +601,29 @@ require('lazy').setup({
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          local builtin = require 'telescope.builtin'
+          local telescope = require 'telescope.builtin'
 
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
+          map('gd', telescope.lsp_definitions, '[G]oto [D]efinition')
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
           -- TODO: Remap tot Goto [T]ype? But now gt is goto tab, so swap that to cmd+shift+]
-          map('gD', builtin.lsp_type_definitions, '[G]oto Type [D]efinition')
+          map('gD', telescope.lsp_type_definitions, '[G]oto Type [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', builtin.lsp_references, '[G]oto [R]eferences')
+          map('gr', telescope.lsp_references, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gI', builtin.lsp_implementations, '[G]oto [I]mplementation')
+          map('gI', telescope.lsp_implementations, '[G]oto [I]mplementation')
 
           -- Find symbols
-          map('<leader>fs', builtin.lsp_document_symbols, '[F]ind [S]ymbol in document')
-          map('<leader>fws', builtin.lsp_workspace_symbols, '[F]ind [W]orkspace [S]ymbols')
+          map('<leader>fs', telescope.lsp_document_symbols, '[F]ind [S]ymbol in document')
+          map('<leader>fws', telescope.lsp_workspace_symbols, '[F]ind [W]orkspace [S]ymbols')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.

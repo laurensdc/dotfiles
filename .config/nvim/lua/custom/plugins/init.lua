@@ -3,6 +3,8 @@
 --
 -- See the kickstart.nvim README for more information
 
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
 return {
   {
     'max397574/better-escape.nvim',
@@ -46,7 +48,6 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim', -- required
       'sindrets/diffview.nvim', -- optional - Diff integration
-
       'nvim-telescope/telescope.nvim',
     },
     config = true,
@@ -66,5 +67,18 @@ return {
       require('telescope').load_extension 'gitmoji'
     end,
     dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+  },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      delete_to_trash = true,
+      view_options = {
+        show_hidden = true,
+      },
+    },
+    -- Optional dependencies
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if prefer nvim-web-devicons
   },
 }
