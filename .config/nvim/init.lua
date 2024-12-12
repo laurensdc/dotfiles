@@ -141,24 +141,11 @@ vim.keymap.set('n', '<leader>p', function()
   vim.diagnostic.open_float()
 end, { desc = 'Show [P]roblems' })
 
--- -- Navigate buffers
--- vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', { noremap = true, silent = true, desc = '[B]uffer: [P]revious' })
--- vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true, desc = '[B]uffer: [N]ext' })
--- -- Close current buffer
--- vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true, desc = '[B]uffer: [D]elete' })
--- -- Close other buffers
--- vim.api.nvim_set_keymap('n', '<leader>bo', ':%bd|e#<CR>', { noremap = true, silent = true, desc = '[B]uffer: [O]nly' })
-
 -- Composite escape - not necessary as we're using the better_escape plugin
 -- vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
 
 -- D when text is selected won't send text to paste register
-
 vim.api.nvim_set_keymap('v', 'D', '"_d', { noremap = true })
-
--- NOTE: Disabling this, let's just use Telescope for now
---
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Jump to next diagnostic
 vim.keymap.set('n', ']p', vim.diagnostic.goto_next, { desc = 'Next [P]roblem' })
@@ -175,12 +162,20 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+--
+-- Option + hjkl to focus windows
+vim.keymap.set({ 'n' }, '<M-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set({ 'n' }, '<M-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set({ 'n' }, '<M-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set({ 'n' }, '<M-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Option + v/s to vsplit/split
+vim.keymap.set({ 'n' }, '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
+vim.keymap.set({ 'n' }, '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
 
 -- Open Neogit
 vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = '[G]oto Neo[G]it', silent = true })
@@ -211,15 +206,6 @@ vim.keymap.set('n', '<leader>cf', ':let @+=expand("%:t")<CR>', { desc = '[C]opy 
 vim.keymap.set({ 'i', 'c', 't' }, '<C-BS>', '<C-w>')
 -- Option + backspace deletes word
 vim.keymap.set({ 'i', 'c', 't' }, '<M-BS>', '<C-w>')
-
--- Option + hjkl to focus windows
-vim.keymap.set({ 'n' }, '<M-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set({ 'n' }, '<M-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set({ 'n' }, '<M-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set({ 'n' }, '<M-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
-vim.keymap.set({ 'n' }, '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
-vim.keymap.set({ 'n' }, '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
 
 -- Cmd + w to close window
 vim.keymap.set('n', '<D-w>', '<C-w><C-q>', { desc = 'Close window' })
@@ -292,7 +278,7 @@ local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
   vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-end ---@diagnostic disable-next-line: undefined-field
+end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
@@ -333,24 +319,6 @@ require('lazy').setup({
         -- Let's leave <leader>b open for now, probably will just use visual mode and leader cb it right
         -- If I put <leader>cb it's annoying because now it waits after <leader>c
         -- block = '<leader>b',
-      },
-    },
-  },
-
-  -- Here is a more advanced example where we pass configuration
-  -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
-  --    require('gitsigns').setup({ ... })
-  --
-  -- See `:help gitsigns` to understand what the configuration keys do
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
       },
     },
   },
@@ -423,10 +391,6 @@ require('lazy').setup({
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
-      -- Two important keymaps to use while in Telescope are:
-      --  - Insert mode: <c-/>
-      --  - Normal mode: ?
-
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
@@ -476,12 +440,6 @@ require('lazy').setup({
         },
       }
 
-      -- Enable Telescope extensions if they are installed
-      -- Does this even do anything? Let's try without?
-      -- pcall(require('telescope').load_extension, 'fzf')
-      -- pcall(require('telescope').load_extension, 'ui-select')
-      -- pcall(require('telescope').load_extension, 'gitmoji')
-
       local function get_git_root()
         return vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
       end
@@ -498,8 +456,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fa', builtin.builtin, { desc = '[F]ind [A]ll Telescope pickers' })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
-
-      -- TODO: Come back to this
       vim.keymap.set('n', '<leader>fl', builtin.resume, { desc = '[F]ind the [L]ast thing again' })
 
       -- Gitmoji!
@@ -651,15 +607,6 @@ require('lazy').setup({
           --    See `:help CursorHold` for information about when this is executed
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
-
-          -- -- Stop the ts language server when deno.json is detected
-          -- if client and require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc')(vim.fn.getcwd()) then
-          --   if client.name == 'ts_ls' then
-          --     client.stop()
-          --     return
-          --   end
-          -- end
-
           if client and client.server_capabilities.documentHighlightProvider then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -686,16 +633,6 @@ require('lazy').setup({
               end,
             })
           end
-
-          -- The following autocommand is used to enable inlay hints in your
-          -- code, if the language server you are using supports them
-          --
-          -- This may be unwanted, since they displace some of your code
-          -- if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-          --   map('<leader>th', function()
-          --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-          --   end, '[T]oggle Inlay [H]ints')
-          -- end
         end,
       })
 
@@ -723,11 +660,12 @@ require('lazy').setup({
 
       local servers = {
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
+
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
+        -- Either load ts_ls or denols, not both as it gets messy
         ts_ls = node_exists and {
           -- Only load in projects with tsconfig.json
           root_dir = require('lspconfig').util.root_pattern 'tsconfig.json',
@@ -854,7 +792,7 @@ require('lazy').setup({
         json = { 'prettierd' },
         markdown = { 'markdownlint' },
         css = { 'prettierd' },
-        go = { 'revive ' },
+        go = { 'revive' },
       },
     },
   },
@@ -1011,7 +949,7 @@ require('lazy').setup({
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
       -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
+      ---
       statusline.section_location = function()
         return '%2l:%-2v'
       end
