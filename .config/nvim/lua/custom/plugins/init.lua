@@ -49,13 +49,21 @@ return {
       'nvim-lua/plenary.nvim', -- required
       {
         'sindrets/diffview.nvim',
-        opts = {
-          keymaps = {
-            view = {
-              ['q'] = '<Cmd>DiffviewClose<CR>',
+        opts = function()
+          local actions = require 'diffview.actions'
+          return {
+            keymaps = {
+              view = {
+                ['q'] = '<Cmd>DiffviewClose<CR>',
+                ['\\'] = actions.toggle_files,
+              },
+              file_panel = {
+                ['q'] = actions.toggle_files,
+                ['\\'] = actions.toggle_files,
+              },
             },
-          },
-        },
+          }
+        end,
       }, -- optional - Diff integration
       'nvim-telescope/telescope.nvim',
     },
