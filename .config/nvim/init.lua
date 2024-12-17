@@ -282,6 +282,24 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Open terminal and put it nicely in the bottom in insert mode ✨
+vim.keymap.set('n', '<leader>t', function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd 'J'
+  vim.cmd.startinsert()
+  vim.api.nvim_win_set_height(0, 15)
+end, { desc = '[T]erminal' })
+
+-- Hide line numbers in terminal
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = vim.api.nvim_create_augroup('custom_term_open', { clear = true }),
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
