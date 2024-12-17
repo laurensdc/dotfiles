@@ -177,18 +177,28 @@ vim.keymap.set({ 'n' }, '<M-k>', '<C-w><C-k>', { desc = 'Move focus to the upper
 vim.keymap.set({ 'n' }, '<M-v>', '<C-w><C-v>', { desc = 'Vertical split window' })
 vim.keymap.set({ 'n' }, '<M-s>', '<C-w><C-s>', { desc = 'Horizontal split window' })
 
+-- Option + n/p for quickfix list navigation
+vim.keymap.set({ 'n' }, '<M-n>', '<CMD>cnext<CR>', { desc = 'Select next quickfix list item' })
+vim.keymap.set({ 'n' }, '<M-p>', '<CMD>cprev<CR>', { desc = 'Select previous quickfix list item' })
+
 -- Open Neogit
 vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = '[G]oto Neo[G]it', silent = true })
 
+local function get_git_root()
+  return vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
+end
+
+local function is_git_repo()
+  local git_root = get_git_root()
+  return vim.v.shell_error == 0 and git_root and git_root ~= ''
+end
+
 -- Copy file paths to clipboard
 vim.keymap.set('n', '<leader>cr', function()
-  -- Get the Git root directory
-  local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
-
   -- If we’re inside a Git repository, compute the relative path
-  if git_root and git_root ~= '' then
+  if is_git_repo() then
     local file_path = vim.fn.expand '%:p' -- Absolute path of the current file
-    local relative_path = file_path:sub(#git_root + 2) -- Strip Git root path + '/' (1 extra character)
+    local relative_path = file_path:sub(#get_git_root() + 2) -- Strip Git root path + '/' (1 extra character)
     vim.fn.setreg('+', relative_path)
     print('Copied relative path to clipboard: ' .. relative_path)
   else
@@ -440,15 +450,6 @@ require('lazy').setup({
         },
       }
 
-      local function get_git_root()
-        return vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
-      end
-
-      local function is_git_repo()
-        local git_root = get_git_root()
-        return vim.v.shell_error == 0 and git_root and git_root ~= ''
-      end
-
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
 
@@ -466,17 +467,19 @@ require('lazy').setup({
       -- Find files in git repo or cwd
       vim.keymap.set('n', '<leader>ff', function()
         if is_git_repo() then
-          builtin.git_files { show_untracked = true }
+          builtin.git_files { show_untracked = true, prompt_title = 'Find files in repo ' .. get_git_root() }
         else
-          builtin.find_files { hidden = true }
+          builtin.find_files { hidden = true, prompt_title = 'Find files in dir ' .. vim.fn.getcwd() }
         end
       end, { desc = '[F]ind [F]iles in git repo or cwd' })
 
       -- Grep in git repo or cwd
       vim.keymap.set('n', '<leader>fg', function()
         local project_root = is_git_repo() and get_git_root() or vim.fn.getcwd()
-
-        print('Grepping in ' .. project_root)
+        local prompt_title_word = ' dir '
+        if is_git_repo() then
+          prompt_title_word = ' repo '
+        end
         builtin.live_grep {
           cwd = project_root,
           -- Pass options to ripgrep:
@@ -485,6 +488,7 @@ require('lazy').setup({
           additional_args = function()
             return { '--hidden', '--glob=!**/.git/**' }
           end,
+          prompt_title = 'Grepping in' .. prompt_title_word .. project_root,
         }
       end, { desc = '[F]ind by [G]repping' })
 
