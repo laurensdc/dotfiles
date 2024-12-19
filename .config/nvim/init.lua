@@ -417,6 +417,10 @@ require('lazy').setup({
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      {
+        'olacin/telescope-gitmoji.nvim',
+        opts = {},
+      },
     },
     config = function()
       -- [[ Configure Telescope ]]
@@ -540,6 +544,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fc', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[F]ind Neovim [C]onfiguration files' })
+
+      require('telescope').load_extension 'fzf'
+      require('telescope').load_extension 'gitmoji'
     end,
   },
 
