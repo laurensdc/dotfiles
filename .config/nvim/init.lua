@@ -547,6 +547,7 @@ require('lazy').setup({
 
       require('telescope').load_extension 'fzf'
       require('telescope').load_extension 'gitmoji'
+      require('telescope').load_extension 'ui-select'
     end,
   },
 
