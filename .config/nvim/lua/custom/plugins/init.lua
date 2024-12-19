@@ -68,7 +68,8 @@ return {
       'nvim-telescope/telescope.nvim',
     },
     opts = {
-      kind = 'replace',
+      kind = 'replace', -- Open in same buffer instead of new tabpage
+      disable_insert_on_commit = true, -- Enter in normal mode so we can gitmoji 🚀
     },
   },
   -- Disabling it for now
