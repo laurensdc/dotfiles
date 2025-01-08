@@ -834,10 +834,7 @@
     "key": "ctrl+s",
     "command": "runCommands",
     "args": {
-      "commands": [
-        "workbench.action.files.save",
-        "vscode-neovim.escape"
-      ]
+      "commands": ["workbench.action.files.save", "vscode-neovim.escape"]
     }
   },
   {
@@ -848,10 +845,7 @@
     "key": "cmd+s",
     "command": "runCommands",
     "args": {
-      "commands": [
-        "workbench.action.files.save",
-        "vscode-neovim.escape"
-      ]
+      "commands": ["workbench.action.files.save", "vscode-neovim.escape"]
     }
   },
   // nvim/spacemacs-esque window management -- unbinds
@@ -1222,23 +1216,15 @@
     "key": "ctrl+shift+g",
     "command": "runCommands",
     "args": {
-      "commands": [
-        "workbench.view.scm",
-        "list.focusFirst",
-        "list.select",
-      ]
-    },
+      "commands": ["workbench.view.scm", "list.focusFirst", "list.select"]
+    }
   },
   {
     "key": "cmd+shift+g",
     "command": "runCommands",
     "args": {
-      "commands": [
-        "workbench.view.scm",
-        "list.focusFirst",
-        "list.select",
-      ]
-    },
+      "commands": ["workbench.view.scm", "list.focusFirst", "list.select"]
+    }
   },
   {
     "key": "cmd+shift+b",
