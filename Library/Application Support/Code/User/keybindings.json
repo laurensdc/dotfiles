@@ -1683,11 +1683,6 @@
     "command": "-workbench.action.newWindow"
   },
   {
-    "key": "shift+cmd+n",
-    "command": "openEditors.newUntitledFile",
-    "when": "editorTextFocus && neovim.mode != 'insert' && neovim.mode != 'replace'"
-  },
-  {
     "key": "alt+cmd+n",
     "command": "-extension.advancedNewFile"
   },
@@ -1718,11 +1713,6 @@
     "key": "shift+alt+h",
     "command": "workbench.action.compareEditor.previousChange",
     "when": "textCompareEditorVisible"
-  },
-  {
-    "key": "cmd+t",
-    "command": "openEditors.newUntitledFile",
-    "when": "editorTextFocus && neovim.mode != 'insert' && neovim.mode != 'replace'"
   },
   {
     "key": "cmd+t",
