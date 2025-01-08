@@ -1014,7 +1014,7 @@
   {
     "key": "h",
     "command": "editor.action.showHover",
-    "when": "editorHoverVisible",
+    "when": "editorHoverVisible"
   },
   {
     "key": "ctrl+d",
@@ -1294,33 +1294,21 @@
   },
   // -- Terminal panel
   {
-    "key": "ctrl+j",
-    "command": "-workbench.action.togglePanel"
-  },
-  {
-    "key": "ctrl+j",
+    "key": "ctrl+t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active && !inQuickOpen && !suggestWidgetVisible"
   },
   {
-    "key": "cmd+j",
-    "command": "-workbench.action.togglePanel"
-  },
-  {
-    "key": "cmd+j",
+    "key": "cmd+t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active && !inQuickOpen && !suggestWidgetVisible"
   },
   {
-    "key": "ctrl+alt+j",
+    "key": "ctrl+alt+t",
     "command": "workbench.action.toggleMaximizedPanel"
   },
   {
-    "key": "ctrl+alt+`",
-    "command": "workbench.action.toggleMaximizedPanel"
-  },
-  {
-    "key": "alt+cmd+j",
+    "key": "cmd+alt+t",
     "command": "workbench.action.toggleMaximizedPanel"
   },
   // -- File management
@@ -1808,5 +1796,10 @@
   {
     "key": "ctrl+shift+c",
     "command": "codeium.chatPanelView.focus"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "-workbench.action.search.toggleQueryDetails",
+    "when": "inSearchEditor || searchViewletFocus"
   }
 ]
