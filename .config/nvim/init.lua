@@ -82,6 +82,12 @@ vim.opt.signcolumn = 'yes'
 -- Show folds
 vim.opt.foldcolumn = 'auto:2'
 
+-- zC to close all folds (zc for all)
+vim.api.nvim_set_keymap('n', 'zC', 'zM', { noremap = true, silent = true })
+
+-- zO to open all folds (zo for all)
+vim.api.nvim_set_keymap('n', 'zO', 'zR', { noremap = true, silent = true })
+
 -- Decrease update time
 vim.opt.updatetime = 250
 
