@@ -300,6 +300,14 @@ vim.api.nvim_create_autocmd('TermOpen', {
   end,
 })
 
+vim.keymap.set('n', '<leader>dm', function()
+  local messages = vim.fn.execute 'messages'
+  vim.cmd 'new'
+  vim.bo.buftype = 'nofile'
+  vim.bo.swapfile = false
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(messages, '\n'))
+end, { desc = '[D]ebug [M]essages', noremap = true, silent = true })
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -379,8 +387,6 @@ require('lazy').setup({
         { '<leader>g_', hidden = true },
         { '<leader>r', group = '[R]ename' },
         { '<leader>r_', hidden = true },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>t_', hidden = true },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>w_', hidden = true },
       },
@@ -518,20 +524,22 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = '[F]ind [P]roblems' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind [.] Recent Files' })
 
-      vim.keymap.set('n', '<leader>ft', require('telescope.themes').get_dropdown, { desc = '[F]ind [T]hemes' })
+      vim.keymap.set('n', '<leader>ft', function()
+        require('telescope.builtin').colorscheme { enable_preview = true }
+      end, { desc = '[F]ind [T]hemes' })
 
       -- Slightly advanced example of overriding default behavior and theme
-      -- vim.keymap.set('n', '<leader>f/', function()
-      --   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-      --   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-      --     winblend = 30,
-      --     previewer = false,
-      --     layout_config = {
-      --       height = 30,
-      --       width = 80,
-      --     },
-      --   })
-      -- end, { desc = '[F]ind [/] fuzzily in current buffer' })
+      vim.keymap.set('n', '<leader>f/', function()
+        -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+          winblend = 30,
+          previewer = false,
+          layout_config = {
+            height = 30,
+            width = 80,
+          },
+        })
+      end, { desc = '[F]ind [/] fuzzily in current buffer' })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
