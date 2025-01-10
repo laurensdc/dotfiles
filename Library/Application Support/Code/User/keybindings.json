@@ -834,10 +834,7 @@
     "key": "ctrl+s",
     "command": "runCommands",
     "args": {
-      "commands": [
-        "workbench.action.files.save",
-        "vscode-neovim.escape"
-      ]
+      "commands": ["workbench.action.files.save", "vscode-neovim.escape"]
     }
   },
   {
@@ -848,10 +845,7 @@
     "key": "cmd+s",
     "command": "runCommands",
     "args": {
-      "commands": [
-        "workbench.action.files.save",
-        "vscode-neovim.escape"
-      ]
+      "commands": ["workbench.action.files.save", "vscode-neovim.escape"]
     }
   },
   // nvim/spacemacs-esque window management -- unbinds
@@ -1020,7 +1014,7 @@
   {
     "key": "h",
     "command": "editor.action.showHover",
-    "when": "editorHoverVisible",
+    "when": "editorHoverVisible"
   },
   {
     "key": "ctrl+d",
@@ -1222,23 +1216,15 @@
     "key": "ctrl+shift+g",
     "command": "runCommands",
     "args": {
-      "commands": [
-        "workbench.view.scm",
-        "list.focusFirst",
-        "list.select",
-      ]
-    },
+      "commands": ["workbench.view.scm", "list.focusFirst", "list.select"]
+    }
   },
   {
     "key": "cmd+shift+g",
     "command": "runCommands",
     "args": {
-      "commands": [
-        "workbench.view.scm",
-        "list.focusFirst",
-        "list.select",
-      ]
-    },
+      "commands": ["workbench.view.scm", "list.focusFirst", "list.select"]
+    }
   },
   {
     "key": "cmd+shift+b",
@@ -1308,104 +1294,23 @@
   },
   // -- Terminal panel
   {
-    "key": "ctrl+j",
-    "command": "-workbench.action.togglePanel"
-  },
-  {
-    "key": "ctrl+j",
+    "key": "ctrl+t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active && !inQuickOpen && !suggestWidgetVisible"
   },
   {
-    "key": "cmd+j",
-    "command": "-workbench.action.togglePanel"
-  },
-  {
-    "key": "cmd+j",
+    "key": "cmd+t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active && !inQuickOpen && !suggestWidgetVisible"
   },
   {
-    "key": "ctrl+alt+j",
+    "key": "ctrl+alt+t",
     "command": "workbench.action.toggleMaximizedPanel"
   },
   {
-    "key": "ctrl+alt+`",
+    "key": "cmd+alt+t",
     "command": "workbench.action.toggleMaximizedPanel"
   },
-  {
-    "key": "alt+cmd+j",
-    "command": "workbench.action.toggleMaximizedPanel"
-  },
-  // -- Git workflow
-  // {
-  //   "key": "space g m",
-  //   "command": "extension.showGitmoji",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g g",
-  //   "command": "extension.showGitmoji",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   // d for Diff
-  //   "key": "space g d",
-  //   "command": "git.openChange",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g o",
-  //   "command": "git.openAllChanges",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g -",
-  //   "command": "git.unstage",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g u",
-  //   "command": "git.unstage",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g =",
-  //   "command": "git.stage",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g r",
-  //   "command": "git.clean",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g a",
-  //   "command": "git.stage",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g shift+u",
-  //   "command": "git.unstageAll",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g shift+a",
-  //   "command": "git.stageAll",
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
-  // {
-  //   "key": "space g c",
-  //   "command": "runCommands",
-  //   "args": {
-  //     "commands": [
-  //       "workbench.view.scm",
-  //       "list.focusFirst",
-  //       "list.select",
-  //     ]
-  //   },
-  //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
-  // },
   // -- File management
   {
     "key": "cmd+r",
@@ -1683,11 +1588,6 @@
     "command": "-workbench.action.newWindow"
   },
   {
-    "key": "shift+cmd+n",
-    "command": "openEditors.newUntitledFile",
-    "when": "editorTextFocus && neovim.mode != 'insert' && neovim.mode != 'replace'"
-  },
-  {
     "key": "alt+cmd+n",
     "command": "-extension.advancedNewFile"
   },
@@ -1718,11 +1618,6 @@
     "key": "shift+alt+h",
     "command": "workbench.action.compareEditor.previousChange",
     "when": "textCompareEditorVisible"
-  },
-  {
-    "key": "cmd+t",
-    "command": "openEditors.newUntitledFile",
-    "when": "editorTextFocus && neovim.mode != 'insert' && neovim.mode != 'replace'"
   },
   {
     "key": "cmd+t",
@@ -1872,34 +1767,5 @@
     "key": "shift+cmd+space",
     "command": "-editor.action.triggerParameterHints",
     "when": "editorHasSignatureHelpProvider && editorTextFocus"
-  },
-  {
-    "key": "alt+cmd+c",
-    "command": "-workbench.action.terminal.toggleFindCaseSensitive",
-    "when": "terminalFindVisible && terminalHasBeenCreated || terminalFindVisible && terminalProcessSupported"
-  },
-  {
-    "key": "alt+cmd+c",
-    "command": "-search.action.copyPath",
-    "when": "fileMatchOrFolderMatchWithResourceFocus"
-  },
-  {
-    "key": "alt+cmd+c",
-    "command": "-toggleFindCaseSensitive",
-    "when": "editorFocus"
-  },
-  {
-    "key": "alt+cmd+c",
-    "command": "-toggleSearchCaseSensitive",
-    "when": "searchViewletFocus && !fileMatchOrFolderMatchFocus"
-  },
-  {
-    "key": "alt+cmd+c",
-    "command": "-toggleSearchEditorCaseSensitive",
-    "when": "inSearchEditor && searchInputBoxFocus"
-  },
-  {
-    "key": "ctrl+shift+c",
-    "command": "codeium.chatPanelView.focus"
   }
 ]

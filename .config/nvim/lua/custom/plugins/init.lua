@@ -68,7 +68,8 @@ return {
       'nvim-telescope/telescope.nvim',
     },
     opts = {
-      kind = 'replace',
+      kind = 'replace', -- Open in same buffer instead of new tabpage
+      disable_insert_on_commit = true, -- Enter in normal mode so we can gitmoji 🚀
     },
   },
   -- Disabling it for now
@@ -79,13 +80,6 @@ return {
       prompt_end = '%$ ',
       -- feedkeys_delay = 2,
     },
-  },
-  {
-    'olacin/telescope-gitmoji.nvim',
-    config = function()
-      require('telescope').load_extension 'gitmoji'
-    end,
-    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
   },
   {
     'stevearc/oil.nvim',
