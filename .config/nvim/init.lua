@@ -45,10 +45,10 @@ vim.opt.compatible = false
 -- syntax sugar plz
 vim.opt.syntax = 'on'
 
--- 2 spaces for tab
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
+-- 4 spaces for tab
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
 -- Insert spaces when tab is pressed
 vim.opt.expandtab = true
 
@@ -114,6 +114,9 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 3
+
+-- Color scheme / theme
+vim.cmd.colorscheme 'quiet'
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -306,6 +309,14 @@ vim.api.nvim_create_autocmd('TermOpen', {
   end,
 })
 
+vim.keymap.set('n', '<leader>dm', function()
+  local messages = vim.fn.execute 'messages'
+  vim.cmd 'new'
+  vim.bo.buftype = 'nofile'
+  vim.bo.swapfile = false
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(messages, '\n'))
+end, { desc = '[D]ebug [M]essages', noremap = true, silent = true })
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -385,8 +396,6 @@ require('lazy').setup({
         { '<leader>g_', hidden = true },
         { '<leader>r', group = '[R]ename' },
         { '<leader>r_', hidden = true },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>t_', hidden = true },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>w_', hidden = true },
       },
@@ -523,6 +532,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
       vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = '[F]ind [P]roblems' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind [.] Recent Files' })
+
+      vim.keymap.set('n', '<leader>ft', function()
+        require('telescope.builtin').colorscheme { enable_preview = true }
+      end, { desc = '[F]ind [T]hemes' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>f/', function()
@@ -941,17 +954,16 @@ require('lazy').setup({
     end,
   },
 
-  {
-    -- Colorscheme
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
-    end,
-  },
+  -- {
+  --   -- Colorscheme
+  --   'folke/tokyonight.nvim',
+  --   init = function()
+  --     vim.cmd.colorscheme 'tokyonight-night'
+  --
+  --     -- You can configure highlights by doing something like:
+  --     vim.cmd.hi 'Comment gui=none'
+  --   end,
+  -- },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
