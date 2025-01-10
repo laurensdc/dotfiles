@@ -716,7 +716,6 @@ require('lazy').setup({
         cssmodules_ls = {},
         eslint = node_exists and {}, -- eslint-lsp
         eslint_d = node_exists and {},
-        goimports = go_exists and {},
         gopls = go_exists and {},
         html = {},
         htmx = rust_exists and {
@@ -737,9 +736,7 @@ require('lazy').setup({
           },
         },
         markdownlint = {},
-        nilaway = go_exists and {},
         prettierd = node_exists and {},
-        revive = go_exists and {},
         stylua = rust_exists and {},
         terraformls = go_exists and {},
       }
@@ -760,6 +757,8 @@ require('lazy').setup({
       }
 
       require('mason-lspconfig').setup {
+        ensure_installed = servers,
+        automatic_installation = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
