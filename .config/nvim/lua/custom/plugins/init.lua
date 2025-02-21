@@ -90,6 +90,18 @@ return {
       view_options = {
         show_hidden = true,
       },
+      keymaps = {
+        ['<C-k>'] = { 'actions.parent', mode = 'n' },
+        ['<C-l>'] = {
+          callback = 'actions.select',
+          mode = 'n',
+        },
+        ['<C-j>'] = {
+          callback = 'actions.select',
+          mode = 'n',
+        },
+        ['q'] = { 'actions.close', mode = 'n' },
+      },
     },
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if prefer nvim-web-devicons
