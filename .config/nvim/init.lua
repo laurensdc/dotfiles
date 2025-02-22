@@ -45,6 +45,9 @@ vim.opt.compatible = false
 -- syntax sugar plz
 vim.opt.syntax = 'on'
 
+-- file name on top
+vim.opt.title = true
+
 -- 4 spaces for tab
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -120,7 +123,7 @@ vim.opt.sidescrolloff = 12
 vim.opt.wrap = false
 
 -- Color scheme / theme
-vim.cmd.colorscheme 'quiet'
+vim.cmd.colorscheme 'default'
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
