@@ -348,24 +348,6 @@ require('lazy').setup({
   --  This is equivalent to:
   --    require('Comment').setup({})
 
-  -- Can also use count & motion, e.g.
-  -- gc[count](motion)
-  {
-    'numToStr/Comment.nvim',
-    opts = {
-      toggler = {
-        line = '<leader>cc',
-        block = '<leader>cb',
-      },
-      opleader = {
-        line = '<leader>c',
-        -- Let's leave <leader>b open for now, probably will just use visual mode and leader cb it right
-        -- If I put <leader>cb it's annoying because now it waits after <leader>c
-        -- block = '<leader>b',
-      },
-    },
-  },
-
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -983,6 +965,8 @@ require('lazy').setup({
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
+
+      require('mini.comment').setup()
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
