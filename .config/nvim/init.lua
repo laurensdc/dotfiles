@@ -113,16 +113,21 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 3
+vim.opt.scrolloff = 6
+vim.opt.sidescrolloff = 12
+
+-- No wrap
+vim.opt.wrap = false
 
 -- Color scheme / theme
 vim.cmd.colorscheme 'quiet'
 
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
--- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- zz after page scrolls
@@ -151,7 +156,7 @@ vim.keymap.set('n', '<leader>p', function()
 end, { desc = 'Show [P]roblems' })
 
 -- Composite escape
-vim.keymap.set({ 'i', 'v' }, 'jl', '<esc>', { noremap = true })
+vim.keymap.set({ 'i' }, 'jl', '<esc>', { noremap = true })
 
 -- D when text is selected won't send text to paste register
 vim.keymap.set('v', 'D', '"_d', { noremap = true })
