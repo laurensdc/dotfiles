@@ -7,43 +7,6 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
 return {
   {
-    'max397574/better-escape.nvim',
-    opts = {
-      timeout = 100,
-      mappings = {
-        i = {
-          j = {
-            -- Disable default jk as too many Dutch words contain it
-            k = false,
-            l = '<Esc>',
-          },
-        },
-        c = {
-          j = {
-            k = false,
-            l = '<Esc>',
-          },
-        },
-        t = {
-          j = {
-            k = false,
-            l = '<C-\\><C-n>',
-          },
-        },
-        v = {
-          j = {
-            l = '<Esc>',
-          },
-        },
-        s = {
-          j = {
-            l = '<Esc>',
-          },
-        },
-      },
-    },
-  },
-  {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim', -- required

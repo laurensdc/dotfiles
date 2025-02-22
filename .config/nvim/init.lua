@@ -150,11 +150,11 @@ vim.keymap.set('n', '<leader>p', function()
   vim.diagnostic.open_float()
 end, { desc = 'Show [P]roblems' })
 
--- Composite escape - not necessary as we're using the better_escape plugin
--- vim.api.nvim_set_keymap('i', 'jl', '<esc>', { noremap = true })
+-- Composite escape
+vim.keymap.set({ 'i', 'v' }, 'jl', '<esc>', { noremap = true })
 
 -- D when text is selected won't send text to paste register
-vim.api.nvim_set_keymap('v', 'D', '"_d', { noremap = true })
+vim.keymap.set('v', 'D', '"_d', { noremap = true })
 
 -- Jump to next diagnostic
 vim.keymap.set('n', ']p', vim.diagnostic.goto_next, { desc = 'Next [P]roblem' })
@@ -168,6 +168,7 @@ vim.keymap.set('n', '[p', vim.diagnostic.goto_prev, { desc = 'Previous [P]roblem
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', 'jl', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
