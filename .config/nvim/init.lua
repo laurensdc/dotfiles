@@ -83,10 +83,10 @@ vim.opt.signcolumn = 'yes'
 vim.opt.foldcolumn = 'auto:2'
 
 -- zC to close all folds (big zc)
-vim.api.nvim_set_keymap('n', 'zC', 'zM', { noremap = true, silent = true })
+vim.keymap.set('n', 'zC', 'zM')
 
 -- zO to open all folds (big zo)
-vim.api.nvim_set_keymap('n', 'zO', 'zR', { noremap = true, silent = true })
+vim.keymap.set('n', 'zO', 'zR')
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -126,22 +126,22 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- zz after page scrolls
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-f>', '<C-f>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-b>', '<C-b>zz', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-f>', '<C-f>zz')
+vim.keymap.set('n', '<C-b>', '<C-b>zz')
 
 -- zz after finds
-vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
+vim.keymap.set('n', 'n', 'nzz')
+vim.keymap.set('n', 'N', 'Nzz')
 
 -- Don't x to clipboard
-vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true })
-vim.api.nvim_set_keymap('n', 'X', '"_X', { noremap = true })
+vim.keymap.set('n', 'x', '"_x', { noremap = true })
+vim.keymap.set('n', 'X', '"_X', { noremap = true })
 
 -- Q instead of q for macros
-vim.api.nvim_set_keymap('n', 'Q', 'q', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'q', '<Nop>', { noremap = true })
+vim.keymap.set('n', 'Q', 'q')
+vim.keymap.set('n', 'q', '<Nop>', { noremap = true })
 
 -- Diagnostic keymaps
 -- NOTE: Calling the open_float() function twice so that we immediately focus the floating window
@@ -270,12 +270,9 @@ if vim.g.neovide then
   vim.g.neovide_remember_window_size = true
 
   -- Scale font with cmd+ and cmd-
-  vim.api.nvim_set_keymap('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  2)<CR>', { silent = true })
-  vim.api.nvim_set_keymap('n', '<D-->', ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.5)<CR>', { silent = true })
-  vim.api.nvim_set_keymap('n', '<D-0>', ':lua vim.g.neovide_scale_factor = 1<CR>', { silent = true })
-
-  -- Option +hjk escapes properly, but option+l does not, bind it here
-  vim.api.nvim_set_keymap('i', '<M+l>', '<Esc>l', { silent = true, noremap = true })
+  vim.keymap.set('n', '<D-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  2)<CR>', { silent = true })
+  vim.keymap.set('n', '<D-->', ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.5)<CR>', { silent = true })
+  vim.keymap.set('n', '<D-0>', ':lua vim.g.neovide_scale_factor = 1<CR>', { silent = true })
 end
 
 -- [[ Basic Autocommands ]]
@@ -316,7 +313,7 @@ vim.keymap.set('n', '<leader>dm', function()
   vim.bo.buftype = 'nofile'
   vim.bo.swapfile = false
   vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(messages, '\n'))
-end, { desc = '[D]ebug [M]essages', noremap = true, silent = true })
+end, { desc = '[D]ebug [M]essages', silent = true })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
