@@ -64,6 +64,10 @@ return {
           mode = 'n',
         },
         ['q'] = { 'actions.close', mode = 'n' },
+        ['.'] = {
+          'actions.cd',
+          mode = 'n',
+        },
       },
     },
     -- Optional dependencies
