@@ -128,6 +128,15 @@ vim.cmd.colorscheme 'default'
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 
+-- Disable in-line diagnostic messages
+vim.diagnostic.config {
+  virtual_text = false, -- Disable in-line messages
+  signs = true, -- Show signs in the gutter
+  underline = true, -- Underline the problematic text
+  update_in_insert = true, -- Update diagnostics in insert mode
+  severity_sort = true, -- Sort diagnostics by severity
+}
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -153,10 +162,10 @@ vim.keymap.set('n', 'q', '<Nop>', { noremap = true })
 
 -- Diagnostic keymaps
 -- NOTE: Calling the open_float() function twice so that we immediately focus the floating window
-vim.keymap.set('n', '<leader>p', function()
+vim.keymap.set('n', '<leader>dd', function()
   vim.diagnostic.open_float()
   vim.diagnostic.open_float()
-end, { desc = 'Show [P]roblems' })
+end, { desc = '[D]ebug [D]iagnostic' })
 
 -- Composite escape
 vim.keymap.set({ 'i' }, 'jl', '<esc>', { noremap = true })
@@ -165,9 +174,9 @@ vim.keymap.set({ 'i' }, 'jl', '<esc>', { noremap = true })
 vim.keymap.set('v', 'D', '"_d', { noremap = true })
 
 -- Jump to next diagnostic
-vim.keymap.set('n', ']p', vim.diagnostic.goto_next, { desc = 'Next [P]roblem' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic' })
 -- Jump to previous diagnostic
-vim.keymap.set('n', '[p', vim.diagnostic.goto_prev, { desc = 'Previous [P]roblem' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [D]iagnostic' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -518,7 +527,7 @@ require('lazy').setup({
       end, { desc = '[F]ind by [G]repping' })
 
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
-      vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = '[F]ind [P]roblems' })
+      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostic' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind [.] Recent Files' })
 
       vim.keymap.set('n', '<leader>ft', function()
