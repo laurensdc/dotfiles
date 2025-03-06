@@ -315,15 +315,6 @@ vim.keymap.set('n', '<leader>t', function()
   vim.api.nvim_win_set_height(0, 15)
 end, { desc = '[T]erminal' })
 
--- Hide line numbers in terminal
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = vim.api.nvim_create_augroup('custom_term_open', { clear = true }),
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-  end,
-})
-
 vim.keymap.set('n', '<leader>dm', function()
   local messages = vim.fn.execute 'messages'
   vim.cmd 'new'
