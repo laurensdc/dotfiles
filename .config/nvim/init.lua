@@ -119,8 +119,8 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 6
 vim.opt.sidescrolloff = 12
 
--- No wrap
-vim.opt.wrap = false
+-- Wrap lines
+vim.opt.wrap = true
 
 -- Color scheme / theme
 vim.cmd.colorscheme 'default'
@@ -255,6 +255,9 @@ vim.keymap.set({ 'i', 'c', 't' }, '<D-v>', '<C-r>+')
 
 -- Cmd + C to copy
 vim.keymap.set({ 'v', 't' }, '<D-c>', 'y')
+
+-- Cmd + A to select all and yank it
+vim.keymap.set({ 'i', 'n', 'v' }, '<D-a>', '<Esc>msggVGy`szz')
 
 -- Cmd + Z to undo
 vim.keymap.set({ 'n', 'v', 'i', 'c', 't' }, '<D-z>', '<cmd>undo<CR>')
@@ -881,12 +884,8 @@ require('lazy').setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert' },
+        completion = { completeopt = 'menu,menuone,noinsert,preview' },
 
-        -- For an understanding of why these mappings were
-        -- chosen, you will need to read `:help ins-completion`
-        --
-        -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mapping = cmp.mapping.preset.insert {
           -- Select the [n]ext item
           ['<C-n>'] = cmp.mapping.select_next_item(),
