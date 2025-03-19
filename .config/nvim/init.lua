@@ -119,14 +119,23 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 6
 vim.opt.sidescrolloff = 12
 
--- No wrap
-vim.opt.wrap = false
+-- Wrap lines
+vim.opt.wrap = true
 
 -- Color scheme / theme
 vim.cmd.colorscheme 'default'
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
+
+-- Disable in-line diagnostic messages
+vim.diagnostic.config {
+  virtual_text = false, -- Disable in-line messages
+  signs = true, -- Show signs in the gutter
+  underline = true, -- Underline the problematic text
+  update_in_insert = true, -- Update diagnostics in insert mode
+  severity_sort = true, -- Sort diagnostics by severity
+}
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -153,10 +162,10 @@ vim.keymap.set('n', 'q', '<Nop>', { noremap = true })
 
 -- Diagnostic keymaps
 -- NOTE: Calling the open_float() function twice so that we immediately focus the floating window
-vim.keymap.set('n', '<leader>p', function()
+vim.keymap.set('n', '<leader>dd', function()
   vim.diagnostic.open_float()
   vim.diagnostic.open_float()
-end, { desc = 'Show [P]roblems' })
+end, { desc = '[D]ebug [D]iagnostic' })
 
 -- Composite escape
 vim.keymap.set({ 'i' }, 'jl', '<esc>', { noremap = true })
@@ -165,9 +174,9 @@ vim.keymap.set({ 'i' }, 'jl', '<esc>', { noremap = true })
 vim.keymap.set('v', 'D', '"_d', { noremap = true })
 
 -- Jump to next diagnostic
-vim.keymap.set('n', ']p', vim.diagnostic.goto_next, { desc = 'Next [P]roblem' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic' })
 -- Jump to previous diagnostic
-vim.keymap.set('n', '[p', vim.diagnostic.goto_prev, { desc = 'Previous [P]roblem' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [D]iagnostic' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -247,6 +256,9 @@ vim.keymap.set({ 'i', 'c', 't' }, '<D-v>', '<C-r>+')
 -- Cmd + C to copy
 vim.keymap.set({ 'v', 't' }, '<D-c>', 'y')
 
+-- Cmd + A to select all and yank it
+vim.keymap.set({ 'i', 'n', 'v' }, '<D-a>', '<Esc>msggVGy`szz')
+
 -- Cmd + Z to undo
 vim.keymap.set({ 'n', 'v', 'i', 'c', 't' }, '<D-z>', '<cmd>undo<CR>')
 -- Cmd + Shift + Z to redo
@@ -305,15 +317,6 @@ vim.keymap.set('n', '<leader>t', function()
   vim.cmd.startinsert()
   vim.api.nvim_win_set_height(0, 15)
 end, { desc = '[T]erminal' })
-
--- Hide line numbers in terminal
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = vim.api.nvim_create_augroup('custom_term_open', { clear = true }),
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-  end,
-})
 
 vim.keymap.set('n', '<leader>dm', function()
   local messages = vim.fn.execute 'messages'
@@ -518,7 +521,7 @@ require('lazy').setup({
       end, { desc = '[F]ind by [G]repping' })
 
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
-      vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = '[F]ind [P]roblems' })
+      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostic' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind [.] Recent Files' })
 
       vim.keymap.set('n', '<leader>ft', function()
@@ -881,12 +884,8 @@ require('lazy').setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert' },
+        completion = { completeopt = 'menu,menuone,noinsert,preview' },
 
-        -- For an understanding of why these mappings were
-        -- chosen, you will need to read `:help ins-completion`
-        --
-        -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mapping = cmp.mapping.preset.insert {
           -- Select the [n]ext item
           ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -975,8 +974,6 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
-      require('mini.comment').setup()
-
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
@@ -988,9 +985,9 @@ require('lazy').setup({
       -- default behavior. For example, here we set the section for
       -- cursor location to LINE:COLUMN
       ---
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
+      -- statusline.section_location = function()
+      --   return '%2l:%-2v'
+      -- end
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
@@ -1017,7 +1014,6 @@ require('lazy').setup({
 
       -- Prefer git instead of curl in order to improve connectivity in some environments
       require('nvim-treesitter.install').prefer_git = true
-      ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
 
       -- There are additional nvim-treesitter modules that you can use to interact
@@ -1029,15 +1025,6 @@ require('lazy').setup({
     end,
   },
 
-  -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
-  -- init.lua. If you want these files, they are in the repository, so you can just download them and
-  -- place them in the correct locations.
-
-  -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
-  --
-  --  Here are some example plugins that I've included in the Kickstart repository.
-  --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-  --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint', -- Linting with LSP now

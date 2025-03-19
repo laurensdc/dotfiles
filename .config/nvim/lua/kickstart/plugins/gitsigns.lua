@@ -48,12 +48,11 @@ return {
         end, { desc = '[G]it [H]unk [R]eset' })
 
         -- normal mode
-        map('n', '<leader>ghs', gitsigns.stage_hunk, { desc = '[G]it [H]unk [S]tage' })
+        map('n', '<leader>ghs', gitsigns.stage_hunk, { desc = '[G]it [H]unk (Un-)[S]tage' })
         map('n', '<leader>ghr', gitsigns.reset_hunk, { desc = '[G]it [H]unk [R]eset' })
-        map('n', '<leader>ghu', gitsigns.undo_stage_hunk, { desc = '[G]it [H]unk [U]ndo stage' })
 
-        map('n', '<leader>gd', gitsigns.diffthis, { desc = '[G]it [D]iff' })
         map('n', '<leader>gs', gitsigns.stage_buffer, { desc = '[G]it [S]tage current buffer' })
+        map('n', '<leader>gu', gitsigns.reset_buffer_index, { desc = '[G]it [U]nstage current buffer' })
         map('n', '<leader>grr', gitsigns.reset_buffer, { desc = '[G]it [R]eally [R]eset buffer' })
 
         map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[G]it [P]review changes' })
