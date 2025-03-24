@@ -307,7 +307,7 @@
       "command": "vscode-neovim.escape"
     }
   },
-  "workbench.colorTheme": "Omni",
+  "workbench.colorTheme": "SIMPLE DARK",
   "github.copilot.editor.enableAutoCompletions": true,
   "codeium.enableCodeLens": false,
   "vscode-neovim.statusLineSeparator": " | ",
