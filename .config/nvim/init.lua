@@ -178,6 +178,8 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic'
 -- Jump to previous diagnostic
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [D]iagnostic' })
 
+vim.keymap.set('n', '<leader>bD', ':%bd!|e#<CR>', { desc = '[B]uffer [D]elete all' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -211,6 +213,7 @@ vim.keymap.set({ 'n' }, '<M-p>', '<CMD>cprev<CR>', { desc = 'Select previous qui
 -- Open Neogit
 vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = '[G]oto Neo[G]it', silent = true })
 
+-- Copy file paths to clipboard
 local function get_git_root()
   return vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
 end
@@ -220,7 +223,6 @@ local function is_git_repo()
   return vim.v.shell_error == 0 and git_root and git_root ~= ''
 end
 
--- Copy file paths to clipboard
 vim.keymap.set('n', '<leader>cr', function()
   -- If we’re inside a Git repository, compute the relative path
   if is_git_repo() then
@@ -379,6 +381,8 @@ require('lazy').setup({
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
       spec = {
+        { '<leader>b', group = '[B]uffer' },
+        { '<leader>b_', hidden = true },
         { '<leader>c', group = '[C]opy / [C]omment' },
         { '<leader>c_', hidden = true },
         { '<leader>f', group = '[F]ind' },
@@ -629,8 +633,7 @@ require('lazy').setup({
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>.', vim.lsp.buf.code_action, 'Code Action (like VSCode cmd+.)')
-
+          vim.keymap.set({ 'n', 'v' }, '<leader>.', vim.lsp.buf.code_action, { buffer = event.buf, desc = 'LSP: Code Action (like VSCode cmd+.)' })
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
