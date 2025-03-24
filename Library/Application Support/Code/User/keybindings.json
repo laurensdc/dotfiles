@@ -1211,6 +1211,7 @@
   //   "command": "bookmarks.toggle",
   //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   // },
+
   // -- Sidebar toggles
   {
     "key": "ctrl+shift+g",
@@ -1221,10 +1222,7 @@
   },
   {
     "key": "cmd+shift+g",
-    "command": "runCommands",
-    "args": {
-      "commands": ["workbench.view.scm", "list.focusFirst", "list.select"]
-    }
+    "command": "magit.status",
   },
   {
     "key": "cmd+shift+b",
@@ -1463,10 +1461,6 @@
   {
     "key": "shift+cmd+a",
     "command": "atlascode.views.bb.pullrequestsTreeView.focus"
-  },
-  {
-    "key": "shift+cmd+e",
-    "command": "workbench.files.action.showActiveFileInExplorer"
   },
   {
     "key": "shift+cmd+e",
@@ -1767,5 +1761,9 @@
     "key": "shift+cmd+space",
     "command": "-editor.action.triggerParameterHints",
     "when": "editorHasSignatureHelpProvider && editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+e",
+    "command": "workbench.files.action.showActiveFileInExplorer"
   }
 ]
