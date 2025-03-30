@@ -1,6 +1,6 @@
 [user]
-	email = laurens.decock@inthepocket.com
-	name = Laurens
+	email = coding@laurensdc.com
+	name = Laurens DC
 	signingkey = /Users/laurens/.ssh/id_ed25519.pub
 [pull]
 	rebase = false
@@ -18,3 +18,4 @@
 	format = ssh
 [commit]
 	gpgsign = true
+
