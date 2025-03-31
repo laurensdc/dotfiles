@@ -12,9 +12,8 @@
 	defaultBranch = main
 [url "https://github.com/"]
 	insteadOf = git://github.com/
-[safe]
-	directory = /Applications/XAMPP/xamppfiles/htdocs
 [rerere]
 	enabled = true
 [rebase]
 	updateRefs = true
+
