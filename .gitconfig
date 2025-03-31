@@ -14,7 +14,3 @@
 	insteadOf = git://github.com/
 [safe]
 	directory = /Applications/XAMPP/xamppfiles/htdocs
-[gpg]
-	format = ssh
-[commit]
-	gpgsign = true
