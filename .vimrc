@@ -18,6 +18,15 @@ set nocompatible
 " syntax sugar plz
 syntax on
 
+if !isdirectory(expand('~/.vim/tmp'))
+    call mkdir(expand('~/.vim/tmp'), 'p')
+endif
+
+" set swapfile dir, don't flood working directory with swapfiles
+set dir=~/.vim/tmp
+set undodir=~/.vim/tmp
+set backupdir=~/.vim/tmp
+
 " Composite escape - not necessary as we're using the better_escape plugin
 " inoremap jl <esc> 
 

@@ -12,14 +12,8 @@
 	defaultBranch = main
 [url "https://github.com/"]
 	insteadOf = git://github.com/
-[safe]
-	directory = /Applications/XAMPP/xamppfiles/htdocs
-[gpg]
-	format = ssh
-[commit]
-	gpgsign = true
-
 [rerere]
 	enabled = true
 [rebase]
 	updateRefs = true
+
