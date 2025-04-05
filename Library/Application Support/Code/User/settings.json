@@ -218,7 +218,7 @@
   "security.workspace.trust.enabled": false,
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
-  "editor.glyphMargin": false,
+  "editor.glyphMargin": true,
   "explorer.autoReveal": true,
   "git.openDiffOnClick": false,
   "cSpell.language": "nl,en-GB",
@@ -259,5 +259,6 @@
   "scm.diffDecorationsGutterPattern": {
     "added": true
   },
-  "vim.showMarksInGutter": true
+  "vim.showMarksInGutter": true,
+  "workbench.activityBar.location": "hidden"
 }
