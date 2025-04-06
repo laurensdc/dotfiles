@@ -1,7 +1,6 @@
 [user]
-	email = laurens.decock@inthepocket.com
+	email = coding@laurensdc.com
 	name = Laurens
-	signingkey = /Users/laurens/.ssh/id_ed25519.pub
 [pull]
 	rebase = false
 [push]
