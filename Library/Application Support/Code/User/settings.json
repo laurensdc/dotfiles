@@ -7,6 +7,7 @@
   "typescript.tsserver.maxTsServerMemory": 8192,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.editor.showTabs": "single",
   // Code format
   "files.eol": "\n",
   "eslint.format.enable": true,
@@ -32,6 +33,8 @@
     "strings": false
   },
   "editor.minimap.size": "fill",
+  "editor.minimap.enabled": false,
+  "editor.linkedEditing": true,
   // Git
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -98,13 +101,6 @@
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.enableExperiments": false,
   "telemetry.telemetryLevel": "all",
-  "redhat.telemetry.enabled": false,
-  // Schemas and yaml settings
-  "yaml.format.enable": false,
-  "yaml.schemas": {
-    "file:///Users/laurens/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
-  },
-  "openapi.securityAuditToken": "CiAXp/Uvj0yNQm4ye4FTanEioxNHSFuWFKmRdyS/bjLfEBIYj5qEeY7BsyeL0WNLK2FgVGC+NCWfCWckGn+A/jKWVE2rlsctt22IWt6Zu1pTs+5s5EPlQkjcNExuVW1NDrNkJjg7QKqIVKYI+LIBoPIfF2zVqEbk9BhDwBq6xxaZlYRRXrhn1y8hzzzqDerPEktqYzwf7rNQDOsOCiMQMAfh+RgwPopXnz8JK6vur9UytmDfXKO6D0dCMKrx",
   "json.schemas": [
     {
       "fileMatch": [
@@ -188,36 +184,6 @@
       "url": "./packages/id-tools-build/id-build-tools/src/es-build/esbuildconfig-schema.json"
     }
   ],
-  "yaml.customTags": [
-    "!And",
-    "!And sequence",
-    "!If",
-    "!If sequence",
-    "!Not",
-    "!Not sequence",
-    "!Equals",
-    "!Equals sequence",
-    "!Or",
-    "!Or sequence",
-    "!FindInMap",
-    "!FindInMap sequence",
-    "!Base64",
-    "!Join",
-    "!Join sequence",
-    "!Cidr",
-    "!Ref",
-    "!Sub",
-    "!Sub sequence",
-    "!GetAtt",
-    "!GetAZs",
-    "!ImportValue",
-    "!ImportValue sequence",
-    "!Select",
-    "!Split sequence",
-    "!Split",
-    "!Split sequence",
-    "!reference sequence"
-  ],
   // Terminal
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.external.windowsExec": "c:\\windows\\system32\\wsl.exe",
@@ -229,17 +195,6 @@
     }
   },
   // Extensions
-  // Gitlens
-  "gitlens.currentLine.enabled": false,
-  "gitlens.hovers.currentLine.over": "line",
-  "gitlens.codeLens.scopes": [
-    "document"
-  ],
-  "gitlens.codeLens.authors.command": "gitlens.openFileOnRemote",
-  "gitlens.codeLens.recentChange.command": "gitlens.copyRemoteFileUrl",
-  "gitlens.codeLens.recentChange.enabled": false,
-  "gitlens.hovers.enabled": false,
-  "gitlens.views.fileHistory.files.compact": false,
   "codemetrics.basics.CodeLensEnabled": false,
   // VSCode-neovim
   "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
@@ -249,7 +204,6 @@
   },
   // Other
   "settingsSync.keybindingsPerPlatform": false,
-  "editor.linkedEditing": true,
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.external.osxExec": "Warp.app",
   "keyboard.dispatch": "keyCode",
@@ -258,28 +212,17 @@
   "editor.fontFamily": "'Comic Code Ligatures', 'Fira Code', Consolas, 'Courier New', monospace",
   "editor.codeLensFontFamily": "'Comic Code Ligatures'",
   "markdown.preview.fontFamily": "'Iosevka Aile', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
-  "editor.minimap.enabled": false,
   "breadcrumbs.symbolPath": "last",
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "workbench.editor.empty.hint": "hidden",
   "security.workspace.trust.enabled": false,
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
-  "editor.glyphMargin": false,
-  "workbench.editor.showTabs": "single",
+  "editor.glyphMargin": true,
   "explorer.autoReveal": true,
   "git.openDiffOnClick": false,
   "cSpell.language": "nl,en-GB",
-  "elmLS.elmReviewDiagnostics": "warning",
   "security.promptForLocalFileProtocolHandling": false,
-  "svelte.enable-ts-plugin": true,
-  "powermode.enabled": true,
-  "powermode.combo.location": "off",
-  "powermode.combo.threshold": 50,
-  "powermode.shake.intensity": 30,
-  "powermode.explosions.duration": 2000,
-  "powermode.explosions.frequency": 5,
-  "powermode.explosions.maxExplosions": 10,
   "cSpell.userWords": [
     "anymore",
     "Bonnencel",
@@ -307,10 +250,15 @@
       "command": "vscode-neovim.escape"
     }
   },
-  "workbench.colorTheme": "SIMPLE DARK",
+  "workbench.colorTheme": "Simple BW Dark",
   "github.copilot.editor.enableAutoCompletions": true,
   "codeium.enableCodeLens": false,
   "vscode-neovim.statusLineSeparator": " | ",
   "debug.javascript.autoAttachFilter": "disabled",
+  "diffEditor.renderGutterMenu": false,
+  "scm.diffDecorationsGutterPattern": {
+    "added": true
+  },
+  "vim.showMarksInGutter": true,
   "workbench.activityBar.location": "hidden"
 }

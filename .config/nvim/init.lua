@@ -276,10 +276,10 @@ if vim.g.neovide then
 
   -- Eye candy and beautiful Neovim
   vim.g.neovide_window_blurred = true
-  vim.g.neovide_transparency = 0.8
+  vim.g.neovide_opacity = 0.8
   vim.g.neovide_scroll_animation_length = 0.10
-  vim.g.neovide_position_animation_length = 0.02
-  vim.g.neovide_cursor_animation_length = 0.02
+  vim.g.neovide_position_animation_length = 0.4
+  vim.g.neovide_cursor_animation_length = 0.05
   vim.g.neovide_cursor_smooth_blink = true
 
   -- Usability
