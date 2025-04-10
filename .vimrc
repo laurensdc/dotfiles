@@ -15,6 +15,9 @@ set ignorecase
 " modern vim only
 set nocompatible
 
+" highlight searches
+set hlsearch
+
 " syntax sugar plz
 syntax on
 
