@@ -188,6 +188,7 @@ vim.keymap.set('n', '<leader>bD', ':%bd!|e#<CR>', { desc = '[B]uffer [D]elete al
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('t', 'jl', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<D-v>', '<C-\\><C-n>"+pi', { desc = 'Paste in terminal mode (and fzf-lua)' })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -435,6 +436,14 @@ require('lazy').setup({
             ['ctrl-d'] = 'preview-page-down',
           },
         },
+        grep = {
+          -- git_icons = true,
+          hidden = false,
+
+          -- action = {
+          --   ['ctrl-r'] = { require('fzf-lua').actions.toggle_ignore },
+          -- },
+        },
       }
       local fzfl = require 'fzf-lua'
 
@@ -451,7 +460,7 @@ require('lazy').setup({
 
       vim.keymap.set('n', '<leader>fg', function()
         local project_root = is_git_repo() and get_git_root() or vim.fn.getcwd()
-        fzfl.live_grep { cwd = project_root }
+        fzfl.live_grep_glob { cwd = project_root }
       end, { desc = '[F]ind by [G]repping' })
 
       vim.keymap.set('n', '<leader>fc', function()
@@ -834,7 +843,6 @@ require('lazy').setup({
         json = { 'prettierd' },
         markdown = { 'markdownlint' },
         css = { 'prettierd' },
-        go = { 'revive' },
       },
     },
   },
