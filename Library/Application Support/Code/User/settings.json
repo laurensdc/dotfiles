@@ -22,7 +22,7 @@
   "editor.tabSize": 2,
   "editor.lineHeight": 0,
   "editor.matchBrackets": "always",
-  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.enabled": false,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.wordWrap": "on",
   "editor.cursorBlinking": "smooth",
@@ -250,7 +250,7 @@
       "command": "vscode-neovim.escape"
     }
   },
-  "workbench.colorTheme": "Simple BW Dark",
+  "workbench.colorTheme": "Tokyo Night",
   "github.copilot.editor.enableAutoCompletions": true,
   "codeium.enableCodeLens": false,
   "vscode-neovim.statusLineSeparator": " | ",
@@ -260,5 +260,8 @@
     "added": true
   },
   "vim.showMarksInGutter": true,
+  "vim.foldfix": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 100,
   "workbench.activityBar.location": "hidden"
 }
