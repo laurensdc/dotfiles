@@ -404,85 +404,7 @@ require('lazy').setup({
   -- you do for a plugin at the top level, you can do for a dependency.
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
-  {
-    'zakissimo/smoji.nvim',
-    cmd = 'Smoji',
-    keys = {
-      { '<leader>gm', '<cmd>Smoji<cr>', desc = 'Git[e]moji', mode = 'n' },
-    },
-    config = function()
-      require 'smoji'
-    end,
-  },
-  {
-    'ibhagwan/fzf-lua',
-    -- optional for icon support
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    -- or if using mini.icons/mini.nvim
-    -- dependencies = { "echasnovski/mini.icons" },
 
-    config = function()
-      require('fzf-lua').setup {
-        winopts = {
-          fullscreen = true,
-        },
-        keymap = {
-          builtin = {
-            ['<C-u>'] = 'preview-page-up',
-            ['<C-d>'] = 'preview-page-down',
-          },
-          fzf = {
-            ['ctrl-u'] = 'preview-page-up',
-            ['ctrl-d'] = 'preview-page-down',
-          },
-        },
-        grep = {
-          -- git_icons = true,
-          hidden = false,
-
-          -- action = {
-          --   ['ctrl-r'] = { require('fzf-lua').actions.toggle_ignore },
-          -- },
-        },
-      }
-      local fzfl = require 'fzf-lua'
-
-      -- Search everything there is to search!
-      vim.keymap.set('n', '<leader>fa', fzfl.builtin, { desc = '[F]ind [A]ll Builtin FzfLua pickers' })
-
-      vim.keymap.set('n', '<leader>ff', function()
-        if is_git_repo() then
-          fzfl.git_files { show_untracked = true, prompt_title = 'Find files in repo ' .. get_git_root() }
-        else
-          fzfl.files { hidden = true, prompt_title = 'Find files in dir ' .. vim.fn.getcwd() }
-        end
-      end, { desc = '[F]ind [F]iles in git repo or cwd' })
-
-      vim.keymap.set('n', '<leader>fg', function()
-        local project_root = is_git_repo() and get_git_root() or vim.fn.getcwd()
-        fzfl.live_grep_glob { cwd = project_root }
-      end, { desc = '[F]ind by [G]repping' })
-
-      vim.keymap.set('n', '<leader>fc', function()
-        fzfl.files { cwd = '~/.config/nvim' }
-      end, { desc = '[F]ind [C]onfig' })
-      vim.keymap.set('n', '<leader>fh', fzfl.helptags, { desc = '[F]ind [H]elp' })
-      vim.keymap.set('n', '<leader>fl', fzfl.resume, { desc = '[F]ind the [L]ast thing again' })
-
-      vim.keymap.set('n', '<leader>fb', fzfl.buffers, { desc = '[F]ind [B]uffers' })
-      vim.keymap.set('n', '<leader>f.', fzfl.oldfiles, { desc = '[F]ind [.] Recent Files' })
-
-      -- LSP stuff
-      vim.keymap.set('n', '<leader>fd', fzfl.diagnostics_document, { desc = '[F]ind [D]iagnostics' })
-      vim.keymap.set('n', '<leader>fd', fzfl.diagnostics_document, { desc = '[F]ind [D]iagnostics' })
-      vim.keymap.set('n', '<leader>fs', fzfl.lsp_document_symbols, { desc = '[F]ind [S]ymbol in document' })
-      vim.keymap.set('n', '<leader>fS', fzfl.lsp_workspace_symbols, { desc = '[F]ind [S]ymbol in workspace' })
-
-      vim.keymap.set('n', '<leader>ft', function()
-        require('telescope.builtin').colorschemes { enable_preview = true }
-      end, { desc = '[F]ind [T]hemes' })
-    end,
-  },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -561,10 +483,82 @@ require('lazy').setup({
         },
       }
 
-      -- -- Gitmoji!
-      -- vim.keymap.set('n', '<leader>gm', function()
-      --   require('telescope').extensions.gitmoji.gitmoji()
-      -- end, { desc = '[G]it [M]oji picker!' })
+      -- See `:help telescope.builtin`
+      local builtin = require 'telescope.builtin'
+
+      -- Search the search!
+      vim.keymap.set('n', '<leader>fa', builtin.builtin, { desc = '[F]ind [A]ll Telescope pickers' })
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
+      vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
+      vim.keymap.set('n', '<leader>fl', builtin.resume, { desc = '[F]ind the [L]ast thing again' })
+
+      -- Gitmoji!
+      vim.keymap.set('n', '<leader>gm', function()
+        require('telescope').extensions.gitmoji.gitmoji()
+      end, { desc = '[G]it [M]oji picker!' })
+
+      -- Find files in git repo or cwd
+      vim.keymap.set('n', '<leader>ff', function()
+        if is_git_repo() then
+          builtin.git_files { show_untracked = true, prompt_title = 'Find files in repo ' .. get_git_root() }
+        else
+          builtin.find_files { hidden = true, prompt_title = 'Find files in dir ' .. vim.fn.getcwd() }
+        end
+      end, { desc = '[F]ind [F]iles in git repo or cwd' })
+
+      -- Grep in git repo or cwd
+      vim.keymap.set('n', '<leader>fg', function()
+        local project_root = is_git_repo() and get_git_root() or vim.fn.getcwd()
+        local prompt_title_word = ' dir '
+        if is_git_repo() then
+          prompt_title_word = ' repo '
+        end
+        builtin.live_grep {
+          cwd = project_root,
+          -- Pass options to ripgrep:
+          --  search files and directories starting with a dot
+          --  but don't search in .git directories
+          additional_args = function()
+            return { '--hidden', '--glob=!**/.git/**' }
+          end,
+          prompt_title = 'Grepping in' .. prompt_title_word .. project_root,
+        }
+      end, { desc = '[F]ind by [G]repping' })
+
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
+      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostic' })
+      vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind [.] Recent Files' })
+
+      vim.keymap.set('n', '<leader>ft', function()
+        require('telescope.builtin').colorscheme { enable_preview = true }
+      end, { desc = '[F]ind [T]hemes' })
+
+      -- Slightly advanced example of overriding default behavior and theme
+      vim.keymap.set('n', '<leader>f/', function()
+        -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+          winblend = 30,
+          previewer = false,
+          layout_config = {
+            height = 30,
+            width = 80,
+          },
+        })
+      end, { desc = '[F]ind [/] fuzzily in current buffer' })
+
+      -- It's also possible to pass additional configuration options.
+      --  See `:help telescope.builtin.live_grep()` for information about particular keys
+      -- vim.keymap.set('n', '<leader>f/', function()
+      --   builtin.live_grep {
+      --     grep_open_files = true,
+      --     prompt_title = 'Live Grep in Open Files',
+      --   }
+      -- end, { desc = '[F]ind [/] in Open Files' })
+
+      -- Shortcut for searching your Neovim configuration files
+      vim.keymap.set('n', '<leader>fc', function()
+        builtin.find_files { cwd = vim.fn.stdpath 'config' }
+      end, { desc = '[F]ind Neovim [C]onfiguration files' })
 
       require('telescope').load_extension 'fzf'
       require('telescope').load_extension 'gitmoji'
@@ -608,29 +602,29 @@ require('lazy').setup({
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          local fzfl = require 'fzf-lua'
+          local telescope = require 'telescope.builtin'
 
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('gd', fzfl.lsp_definitions, '[G]oto [D]efinition')
+          map('gd', telescope.lsp_definitions, '[G]oto [D]efinition')
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
           -- TODO: Remap tot Goto [T]ype? But now gt is goto tab, so swap that to cmd+shift+]
-          map('gD', fzfl.lsp_typedefs, '[G]oto Type [D]efinition')
+          map('gD', telescope.lsp_type_definitions, '[G]oto Type [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', fzfl.lsp_references, '[G]oto [R]eferences')
+          map('gr', telescope.lsp_references, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gI', fzfl.lsp_implementations, '[G]oto [I]mplementation')
+          map('gI', telescope.lsp_implementations, '[G]oto [I]mplementation')
 
           -- Find symbols
-          -- map('<leader>fs', telescope.lsp_document_symbols, '[F]ind [S]ymbol in document')
-          -- map('<leader>fws', telescope.lsp_workspace_symbols, '[F]ind [W]orkspace [S]ymbols')
+          map('<leader>fs', telescope.lsp_document_symbols, '[F]ind [S]ymbol in document')
+          map('<leader>fws', telescope.lsp_workspace_symbols, '[F]ind [W]orkspace [S]ymbols')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
@@ -640,9 +634,7 @@ require('lazy').setup({
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          -- vim.keymap.set({ 'n', 'v' }, '<leader>.', vim.lsp.buf.code_action, { buffer = event.buf, desc = 'LSP: Code Action (like VSCode cmd+.)' })
-          vim.keymap.set({ 'n', 'v' }, '<leader>.', fzfl.lsp_code_actions, { desc = 'LSP: Code Action (like VSCode cmd+.)' })
-
+          vim.keymap.set({ 'n', 'v' }, '<leader>.', vim.lsp.buf.code_action, { buffer = event.buf, desc = 'LSP: Code Action (like VSCode cmd+.)' })
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
