@@ -35,6 +35,7 @@
   "editor.minimap.size": "fill",
   "editor.minimap.enabled": false,
   "editor.linkedEditing": true,
+  "editor.formatOnSave": true,
   // Git
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -209,7 +210,7 @@
   "keyboard.dispatch": "keyCode",
   "git.autofetch": true,
   "diffEditor.renderIndicators": false,
-  "editor.fontFamily": "'Comic Code Ligatures', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Comic Code Ligatures', 'Fira Code', Consolas, 'Courier New', monospace",
   "editor.codeLensFontFamily": "'Comic Code Ligatures'",
   "markdown.preview.fontFamily": "'Iosevka Aile', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
   "breadcrumbs.symbolPath": "last",
@@ -251,7 +252,6 @@
     }
   },
   "workbench.colorTheme": "Tokyo Night",
-  "github.copilot.editor.enableAutoCompletions": true,
   "codeium.enableCodeLens": false,
   "vscode-neovim.statusLineSeparator": " | ",
   "debug.javascript.autoAttachFilter": "disabled",
@@ -263,5 +263,13 @@
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.duration": 100,
-  "workbench.activityBar.location": "hidden"
+  "vim.useSystemClipboard": true,
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-s>": false,
+    "<C-z>": false
+  },
+  "github.copilot.enable": {
+    "*": false,
+  },
 }

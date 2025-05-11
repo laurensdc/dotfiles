@@ -834,7 +834,7 @@
     "key": "ctrl+s",
     "command": "runCommands",
     "args": {
-      "commands": ["workbench.action.files.save", "vscode-neovim.escape"]
+      "commands": ["workbench.action.files.save", "extension.vim_escape"]
     }
   },
   {
@@ -845,7 +845,7 @@
     "key": "cmd+s",
     "command": "runCommands",
     "args": {
-      "commands": ["workbench.action.files.save", "vscode-neovim.escape"]
+      "commands": ["workbench.action.files.save", "extension.vim_escape"]
     }
   },
   // nvim/spacemacs-esque window management -- unbinds
@@ -1220,9 +1220,15 @@
       "commands": ["workbench.view.scm", "list.focusFirst", "list.select"]
     }
   },
+
+  // -- Magit
   {
     "key": "cmd+shift+g",
     "command": "magit.status",
+  },
+  {
+    "key": "k",
+    "command": "-magit.discard-at-point"
   },
   {
     "key": "cmd+shift+b",
@@ -1765,5 +1771,13 @@
   {
     "key": "shift+cmd+e",
     "command": "workbench.files.action.showActiveFileInExplorer"
+  },
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "workbench.panel.chat.view.copilot.focus"
   }
 ]
