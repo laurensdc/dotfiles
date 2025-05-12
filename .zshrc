@@ -120,6 +120,9 @@ alias REBASE='BRANCH=$(git status | grep "On branch" | sed "s/On branch \(.*\)/\
 # List git commits
 alias log="git log --oneline -12"
 
+# Open Neogit
+alias g="nvim -c \"Neogit\""
+
 # nvim alias
 alias v=nvim
 
