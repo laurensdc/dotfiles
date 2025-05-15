@@ -62,9 +62,13 @@ source $ZSH/oh-my-zsh.sh
 source <(fzf --zsh)
  
 # Load nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"  # This loads nvm
-[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"  
+if [ -d "$(brew --prefix nvm 2>/dev/null)" ]; then
+  . "$(brew --prefix nvm)/nvm.sh"
+  . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+else
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+fi
 
 
 # Load Deno 
