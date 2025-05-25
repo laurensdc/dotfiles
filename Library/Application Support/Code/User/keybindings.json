@@ -834,7 +834,10 @@
     "key": "ctrl+s",
     "command": "runCommands",
     "args": {
-      "commands": ["workbench.action.files.save", "extension.vim_escape"]
+      "commands": [
+        "workbench.action.files.save",
+        "extension.vim_escape"
+      ]
     }
   },
   {
@@ -845,7 +848,10 @@
     "key": "cmd+s",
     "command": "runCommands",
     "args": {
-      "commands": ["workbench.action.files.save", "extension.vim_escape"]
+      "commands": [
+        "workbench.action.files.save",
+        "extension.vim_escape"
+      ]
     }
   },
   // nvim/spacemacs-esque window management -- unbinds
@@ -1110,32 +1116,32 @@
   },
   // Vimify dropdowns and hover menus
   {
-    "key": "ctrl+j",
+    "key": "ctrl+n",
     "command": "selectNextCodeAction",
     "when": "codeActionMenuVisible"
   },
   {
-    "key": "ctrl+k",
+    "key": "ctrl+p",
     "command": "selectPrevCodeAction",
     "when": "codeActionMenuVisible"
   },
   {
-    "key": "ctrl+j",
+    "key": "ctrl+n",
     "command": "selectNextSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
   },
   {
-    "key": "ctrl+k",
+    "key": "ctrl+p",
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
   },
   {
-    "key": "ctrl+j",
+    "key": "ctrl+n",
     "command": "workbench.action.quickOpenSelectNext",
     "when": "inQuickOpen"
   },
   {
-    "key": "ctrl+k",
+    "key": "ctrl+p",
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
@@ -1211,16 +1217,18 @@
   //   "command": "bookmarks.toggle",
   //   "when": "editorTextFocus && neovim.mode != insert && neovim.mode != replace"
   // },
-
   // -- Sidebar toggles
   {
     "key": "ctrl+shift+g",
     "command": "runCommands",
     "args": {
-      "commands": ["workbench.view.scm", "list.focusFirst", "list.select"]
+      "commands": [
+        "workbench.view.scm",
+        "list.focusFirst",
+        "list.select"
+      ]
     }
   },
-
   // -- Magit
   {
     "key": "cmd+shift+g",
@@ -1592,10 +1600,6 @@
     "command": "-extension.advancedNewFile"
   },
   {
-    "key": "cmd+n",
-    "command": "newFile.createNewFile"
-  },
-  {
     "key": "alt+cmd+n",
     "command": "-newFile.createNewFile"
   },
@@ -1779,5 +1783,32 @@
   {
     "key": "shift+cmd+c",
     "command": "workbench.panel.chat.view.copilot.focus"
+  },
+  {
+    "key": "shift+ctrl+c",
+    "command": "workbench.panel.chat.view.copilot.focus"
+  },
+  {
+    "key": "cmd+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "cmd+d",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+d",
+    "command": "-notebook.addFindMatchToSelection",
+    "when": "config.notebook.multiCursor.enabled && notebookCellEditorFocused && activeEditor == 'workbench.editor.notebook'"
+  },
+  {
+    "key": "cmd+d",
+    "command": "editor.action.marker.next",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+n",
+    "command": "fileutils.newFile"
   }
 ]
