@@ -313,13 +313,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Open terminal and put it nicely in the bottom in insert mode ✨
-vim.keymap.set('n', '<leader>t', function()
+local function open_term()
   vim.cmd.vnew()
   vim.cmd.term()
   vim.cmd.wincmd 'J'
   vim.cmd.startinsert()
   vim.api.nvim_win_set_height(0, 15)
-end, { desc = '[T]erminal' })
+end
+
+vim.keymap.set('n', '<leader>t', open_term, { desc = '[T]erminal' })
+vim.keymap.set('n', '<D-t>', open_term, { desc = '[T]erminal' })
 
 vim.keymap.set('n', '<leader>dm', function()
   local messages = vim.fn.execute 'messages'
@@ -712,7 +715,7 @@ require('lazy').setup({
         -- Either load ts_ls or denols, not both as it gets messy
         ts_ls = node_exists and {
           -- Only load in projects with tsconfig.json
-          root_dir = require('lspconfig').util.root_pattern 'tsconfig.json',
+          root_dir = require('lspconfig').util.root_pattern('tsconfig.json', 'package.json'),
           single_file_support = false,
         },
         denols = deno_exists and {
