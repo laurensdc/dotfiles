@@ -187,6 +187,8 @@ vim.keymap.set('n', '<leader>bD', ':%bd!|e#<CR>', { desc = '[B]uffer [D]elete al
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<C-c>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<C-x>', '<C-c>', { desc = 'Send kill signal' })
 vim.keymap.set('t', 'jl', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('t', '<D-v>', '<C-\\><C-n>"+pi', { desc = 'Paste in terminal mode (and fzf-lua)' })
 
