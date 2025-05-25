@@ -101,7 +101,7 @@
   "update.mode": "start",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.enableExperiments": false,
-  "telemetry.telemetryLevel": "all",
+  "telemetry.telemetryLevel": "off",
   "json.schemas": [
     {
       "fileMatch": [
@@ -188,11 +188,33 @@
   // Terminal
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.external.windowsExec": "c:\\windows\\system32\\wsl.exe",
-  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
   "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
     "C:\\Program Files\\Git\\bin\\bash.exe (migrated)": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": []
+    },
+    "Ubuntu (WSL)": {
+      "path": "C:\\Windows\\System32\\wsl.exe",
+      "args": [
+        "-d",
+        "Ubuntu"
+      ]
     }
   },
   // Extensions
@@ -209,8 +231,7 @@
   "terminal.external.osxExec": "Warp.app",
   "keyboard.dispatch": "keyCode",
   "git.autofetch": true,
-  "diffEditor.renderIndicators": false,
-  "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Comic Code Ligatures', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Comic Code Ligatures', 'Fira Code', Consolas, 'Courier New', monospace",
   "editor.codeLensFontFamily": "'Comic Code Ligatures'",
   "markdown.preview.fontFamily": "'Iosevka Aile', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
   "breadcrumbs.symbolPath": "last",
@@ -218,7 +239,6 @@
   "workbench.editor.empty.hint": "hidden",
   "security.workspace.trust.enabled": false,
   "window.commandCenter": false,
-  "workbench.layoutControl.enabled": false,
   "editor.glyphMargin": true,
   "explorer.autoReveal": true,
   "git.openDiffOnClick": false,
@@ -251,7 +271,7 @@
       "command": "vscode-neovim.escape"
     }
   },
-  "workbench.colorTheme": "Tokyo Night",
+  "workbench.colorTheme": "Material Theme Ocean High Contrast",
   "codeium.enableCodeLens": false,
   "vscode-neovim.statusLineSeparator": " | ",
   "debug.javascript.autoAttachFilter": "disabled",
@@ -259,6 +279,7 @@
   "scm.diffDecorationsGutterPattern": {
     "added": true
   },
+  // Vim plugin
   "vim.showMarksInGutter": true,
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
@@ -269,7 +290,43 @@
     "<C-s>": false,
     "<C-z>": false
   },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "I"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        // "editor.action.showHover"
+        "editor.action.showDefinitionPreviewHover",
+      ],
+    }
+  ],
   "github.copilot.enable": {
     "*": false,
   },
+  "chat.agent.enabled": true,
+  "github.copilot.editor.enableCodeActions": false,
+  "chat.commandCenter.enabled": false,
+  "terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono'",
+  "workbench.activityBar.location": "hidden",
+  "workbench.layoutControl.enabled": false,
+  "editor.guides.indentation": false,
 }
