@@ -46,27 +46,6 @@
     LC_TIME = "nl_BE.UTF-8";
   };
 
-  # services.jack = {
-  #   jackd.enable = true;
-  #
-  #   # support ALSA only programs via ALSA JACK PCM plugin
-  #   alsa.enable = false;
-  #
-  #   # support ALSA only programs via loopback device (supports programs like Steam)
-  #   loopback = {
-  #     enable = true;
-  #     # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
-  #     #dmixConfig = ''
-  #     #  period_size 2048
-  #     #'';
-  #   };
-  # };
-  #
-  # users.extraUsers.laurens.extraGroups = [ "jackaudio" ];
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
@@ -118,8 +97,14 @@
     variant = "euro";
   };
 
+  # services.keyd.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable automatic login for the user.
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "laurens";
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -137,12 +122,34 @@
     #media-session.enable = true;
   };
 
-  # Plex fixes?
-  xdg.portal.enable = true;
-  xdg.portal.xdgOpenUsePortal = true;
+  # services.jack = {
+  #   jackd.enable = true;
+  #
+  #   # support ALSA only programs via ALSA JACK PCM plugin
+  #   alsa.enable = false;
+  #
+  #   # support ALSA only programs via loopback device (supports programs like Steam)
+  #   loopback = {
+  #     enable = true;
+  #     # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
+  #     #dmixConfig = ''
+  #     #  period_size 2048
+  #     #'';
+  #   };
+  # };
+  #
+  # users.extraUsers.laurens.extraGroups = [ "jackaudio" ];
+
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  # Plex fixes?
+  xdg.portal.enable = true;
+  xdg.portal.xdgOpenUsePortal = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.laurens = {
@@ -155,10 +162,6 @@
 
     shell = pkgs.zsh;
   };
-
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "laurens";
 
   # Install firefox.
   programs.firefox.enable = true;
