@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Set custom because it'd point to a nix store path 
+export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -54,7 +57,8 @@ source $ZSH/oh-my-zsh.sh
 # Load autojump
 [ -f $HOME/.autojump/etc/profile.d/autojump.sh ] && . $HOME/.autojump/etc/profile.d/autojump.sh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
- 
+[ -r /nix/store/dbcvs9awpkm0y55lzjrqjfl5aviixyhz-autojump-22.5.3/etc/profile.d/autojump.sh ] && source /nix/store/dbcvs9awpkm0y55lzjrqjfl5aviixyhz-autojump-22.5.3/etc/profile.d/autojump.sh
+
 # Load p10k - To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
