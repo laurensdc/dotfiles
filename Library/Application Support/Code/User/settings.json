@@ -7,7 +7,6 @@
   "typescript.tsserver.maxTsServerMemory": 8192,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "workbench.editor.showTabs": "single",
   // Code format
   "files.eol": "\n",
   "eslint.format.enable": true,
@@ -64,8 +63,11 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "[prisma]": {
+    "editor.formatOnSave": false
+  },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "editor.wordWrap": "on",
@@ -241,7 +243,6 @@
   "window.commandCenter": false,
   "editor.glyphMargin": true,
   "explorer.autoReveal": true,
-  "git.openDiffOnClick": false,
   "cSpell.language": "nl,en-GB",
   "security.promptForLocalFileProtocolHandling": false,
   "cSpell.userWords": [
@@ -271,16 +272,13 @@
       "command": "vscode-neovim.escape"
     }
   },
-  "workbench.colorTheme": "Material Theme Ocean High Contrast",
+  "workbench.colorTheme": "Dracula At Night",
   "codeium.enableCodeLens": false,
   "vscode-neovim.statusLineSeparator": " | ",
   "debug.javascript.autoAttachFilter": "disabled",
   "diffEditor.renderGutterMenu": false,
-  "scm.diffDecorationsGutterPattern": {
-    "added": true
-  },
   // Vim plugin
-  "vim.showMarksInGutter": true,
+"vim.showMarksInGutter": true,
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.duration": 100,
@@ -326,7 +324,14 @@
   "github.copilot.editor.enableCodeActions": false,
   "chat.commandCenter.enabled": false,
   "terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono'",
-  "workbench.activityBar.location": "hidden",
   "workbench.layoutControl.enabled": false,
   "editor.guides.indentation": false,
+  "scm.diffDecorationsGutterPattern": {
+    "added": true
+  },
+  "workbench.activityBar.location": "hidden",
+  "zenMode.hideLineNumbers": false,
+  "zenMode.showTabs": "none",
+  "workbench.editor.showTabs": "none",
+  "git.blame.editorDecoration.enabled": false,
 }

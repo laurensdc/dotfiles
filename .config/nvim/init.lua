@@ -122,9 +122,6 @@ vim.opt.sidescrolloff = 12
 -- Wrap lines
 vim.opt.wrap = true
 
--- Color scheme / theme
-vim.cmd.colorscheme 'default'
-
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 
@@ -949,17 +946,16 @@ require('lazy').setup({
       }
     end,
   },
-
   {
-    -- Colorscheme
-    'folke/tokyonight.nvim',
-    init = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+    'maxmx03/dracula.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'dracula'
     end,
   },
+  { 'nyoom-engineering/oxocarbon.nvim' },
+  { 'folke/tokyonight.nvim' },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
