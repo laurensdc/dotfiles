@@ -948,13 +948,15 @@ require('lazy').setup({
   },
   {
     'maxmx03/dracula.nvim',
+  },
+  {
+    'nyoom-engineering/oxocarbon.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'dracula'
+      vim.cmd.colorscheme 'oxocarbon'
     end,
   },
-  { 'nyoom-engineering/oxocarbon.nvim' },
   { 'folke/tokyonight.nvim' },
 
   -- Highlight todo, notes, etc in comments
