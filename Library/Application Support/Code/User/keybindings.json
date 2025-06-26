@@ -1502,7 +1502,7 @@
     "when": "editorFocus"
   },
   {
-    "key": "cmd+h",
+    "key": "shift+cmd+d",
     "command": "editor.action.marker.prev",
     "when": "editorFocus"
   },
@@ -1810,5 +1810,24 @@
   {
     "key": "cmd+n",
     "command": "fileutils.newFile"
+  },
+  {
+    "key": "shift+cmd+]",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "shift+cmd+[",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "-workbench.view.debug",
+    "when": "viewContainer.workbench.view.debug.enabled"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm"
   }
 ]
