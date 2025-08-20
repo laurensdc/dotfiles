@@ -16,3 +16,5 @@
 [rebase]
 	updateRefs = true
 
+[maintenance]
+	repo = /Users/laurens/code/alice
