@@ -278,7 +278,7 @@
   "debug.javascript.autoAttachFilter": "disabled",
   "diffEditor.renderGutterMenu": false,
   // Vim plugin
-"vim.showMarksInGutter": true,
+  "vim.showMarksInGutter": true,
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.duration": 100,
@@ -329,9 +329,17 @@
   "scm.diffDecorationsGutterPattern": {
     "added": true
   },
-  "workbench.activityBar.location": "hidden",
   "zenMode.hideLineNumbers": false,
   "zenMode.showTabs": "none",
   "workbench.editor.showTabs": "none",
   "git.blame.editorDecoration.enabled": false,
+  "vscode-neovim.neovimClean": true,
+  "vscode-neovim.afterInitConfig": [
+    "nnoremap <silent> gI <Cmd>call VSCodeNotify('editor.action.goToImplementation')<CR>",
+    "nnoremap <silent> gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>",
+    "set ignorecase",
+    "set clipboard=unnamedplus",
+    "set smartcase"
+  ],
+  "workbench.activityBar.location": "hidden",
 }

@@ -836,6 +836,9 @@
     "args": {
       "commands": [
         "workbench.action.files.save",
+        // Neovim extension
+        // "vscode-neovim.escape"
+        // Vim extension
         "extension.vim_escape"
       ]
     }
@@ -850,6 +853,9 @@
     "args": {
       "commands": [
         "workbench.action.files.save",
+        // Neovim extension
+        // "vscode-neovim.escape"
+        // Vim extension
         "extension.vim_escape"
       ]
     }
@@ -1502,11 +1508,6 @@
     "when": "editorFocus"
   },
   {
-    "key": "shift+cmd+d",
-    "command": "editor.action.marker.prev",
-    "when": "editorFocus"
-  },
-  {
     "key": "alt+h",
     "command": "-testing.toggleTestingPeekHistory",
     "when": "testing.isPeekVisible"
@@ -1829,5 +1830,19 @@
   {
     "key": "shift+cmd+g",
     "command": "workbench.view.scm"
-  }
+  },
+  {
+    "key": "q",
+    "command": "editor.action.hideHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "q",
+    "command": "closeReferenceSearch",
+    "when": "referenceSearchVisible"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "workbench.view.debug"
+  },
 ]
