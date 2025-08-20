@@ -625,8 +625,8 @@ require('lazy').setup({
           map('gI', telescope.lsp_implementations, '[G]oto [I]mplementation')
 
           -- Find symbols
-          map('<leader>fs', telescope.lsp_document_symbols, '[F]ind [S]ymbol in document')
-          map('<leader>fws', telescope.lsp_workspace_symbols, '[F]ind [W]orkspace [S]ymbols')
+          map('<leader>fls', telescope.lsp_document_symbols, '[F]ind [L]ocal [S]ymbols in document')
+          map('<leader>fs', telescope.lsp_workspace_symbols, '[F]ind Workspace [S]ymbols')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
@@ -946,17 +946,17 @@ require('lazy').setup({
       }
     end,
   },
-  {
-    'maxmx03/dracula.nvim',
-  },
-  {
-    'nyoom-engineering/oxocarbon.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'oxocarbon'
-    end,
-  },
+  -- {
+  --   'maxmx03/dracula.nvim',
+  -- },
+  -- {
+  --   'nyoom-engineering/oxocarbon.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'oxocarbon'
+  --   end,
+  -- },
   { 'folke/tokyonight.nvim' },
 
   -- Highlight todo, notes, etc in comments
