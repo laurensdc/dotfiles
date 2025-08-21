@@ -9,3 +9,6 @@ end, { desc = "Toggle Terminal (Root Dir)" })
 vim.keymap.set("t", "<c-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 vim.keymap.set("t", "<c-\\>", "<c-\\><c-n>", { desc = "Escape Terminal mode" })
+
+vim.keymap.set({ "i", "t" }, "<c-bs>", "<c-w>", { desc = "Delete word back" })
+vim.keymap.set({ "i", "t" }, "<m-bs>", "<c-w>", { desc = "Delete word back" })
