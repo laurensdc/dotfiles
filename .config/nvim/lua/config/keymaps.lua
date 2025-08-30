@@ -12,3 +12,7 @@ vim.keymap.set("t", "<c-\\>", "<c-\\><c-n>", { desc = "Escape Terminal mode" })
 
 vim.keymap.set({ "i", "t" }, "<c-bs>", "<c-w>", { desc = "Delete word back" })
 vim.keymap.set({ "i", "t" }, "<m-bs>", "<c-w>", { desc = "Delete word back" })
+
+vim.keymap.set({ "i", "c" }, "<D-v>", "<C-r>+", { desc = "Paste from system clipboard" })
+vim.keymap.set("n", "<D-v>", "p", { desc = "Paste from system clipboard" })
+vim.keymap.set("t", "<D-v>", '<c-\\><c-n>"+pi', { desc = "Paste from system clipboard" })
