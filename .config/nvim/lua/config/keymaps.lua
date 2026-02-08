@@ -21,3 +21,13 @@ vim.keymap.set("t", "<D-v>", '<c-\\><c-n>"+pi', { desc = "Paste from system clip
 -- Disable bufferline H and L to navigate open buffers
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
+
+-- Disable open file explorer
+vim.keymap.del("n", "<leader>e")
+
+-- Open Netrw instead
+vim.keymap.set("n", "<leader>e", ":Lexplore %:p:h<CR>", { desc = "Netrw Tree" })
+
+-- Q instead of q for macros
+vim.keymap.set("n", "Q", "q")
+vim.keymap.set("n", "q", "<Nop>", { noremap = true })

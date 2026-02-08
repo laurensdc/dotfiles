@@ -6,6 +6,21 @@ vim.g.snacks_animate = false
 
 vim.lsp.inlay_hint.enable(false)
 
+-- Netrw list view
+vim.g.netrw_liststyle = 3
+
+-- Don't open new window when selecting target
+vim.g.netrw_browse_split = 0
+
+-- Hide banner
+vim.g.netrw_banner = 1
+
+-- Netrw size
+vim.g.netrw_winsize = 25
+
+-- Follow dir of buffer in netrw
+vim.g.netrw_keepdir = 0
+
 -- [[ Neovide configuration ]]
 if vim.g.neovide then
   -- vim.o.guifont = 'Comic Code Ligatures,FiraCode Nerd Font Mono:h14'

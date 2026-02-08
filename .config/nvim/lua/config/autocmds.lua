@@ -8,29 +8,27 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 --
 
--- The fkin way to swap these keybinds
-local group = vim.api.nvim_create_augroup("CoredusKLspKeymaps", { clear = true })
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = group,
+-- Fix window navigation in netrw
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
   callback = function()
-    local Keys = require("lazyvim.plugins.lsp.keymaps").get()
+    vim.keymap.set("n", "<C-h>", "<C-w>h", { buffer = true, desc = "Go to Left Window" })
+    vim.keymap.set("n", "<C-j>", "<C-w>j", { buffer = true, desc = "Go to Lower Window" })
+    vim.keymap.set("n", "<C-k>", "<C-w>k", { buffer = true, desc = "Go to Upper Window" })
+    vim.keymap.set("n", "<C-l>", "<C-w>l", { buffer = true, desc = "Go to Right Window" })
+    --
+    -- Map 'ctrl+r' to refresh instead of default <C-l>
+    vim.keymap.set("n", "<C-r>", "<Plug>NetrwRefresh", { buffer = true })
+  end,
+})
 
-    Keys[#Keys + 1] = {
-      "<leader>ss",
-      function()
-        Snacks.picker.lsp_workspace_symbols()
-      end,
-      desc = "LSP Workspace Symbols",
-      has = "documentSymbol",
-    }
-
-    Keys[#Keys + 1] = {
-      "<leader>sS",
-      function()
-        Snacks.picker.lsp_symbols()
-      end,
-      desc = "LSP Symbols",
-      has = "workspace/symbols",
-    }
+-- Stop creating NetrwTreeListing files when netrw marked buffer as "modified"
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+    vim.opt_local.modifiable = false
+    vim.opt_local.buftype = "nowrite"
+    vim.opt_local.bufhidden = "delete"
+    vim.g.netrw_dirhistmax = 0
   end,
 })
