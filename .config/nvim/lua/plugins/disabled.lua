@@ -18,8 +18,4 @@ return {
       { "fE", false },
     },
   },
-  {
-    "nvim-lualine/lualine.nvim",
-    enabled = false,
-  },
 }

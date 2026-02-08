@@ -118,10 +118,37 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
-        theme = "ayu",
-      },
-    },
+    opts = function(_, opts)
+      -- Add macro recording status
+      local function macro_status()
+        local reg = vim.fn.reg_recording()
+        return reg ~= "" and "Recording @" .. reg or ""
+      end
+
+      table.insert(opts.sections.lualine_y, 3, {
+        macro_status,
+        cond = nil,
+      })
+
+      -- Auto-refresh statusline when recording starts/stops
+      vim.api.nvim_create_autocmd("RecordingEnter", {
+        callback = function()
+          require("lualine").refresh()
+        end,
+      })
+      vim.api.nvim_create_autocmd("RecordingLeave", {
+        callback = function()
+          require("lualine").refresh()
+        end,
+      })
+
+      opts.sections.lualine_a = {}
+      opts.sections.lualine_b = { { "filename", path = 1 } }
+      opts.sections.lualine_c = { { "navic", color_correction = "dynamic", icons = { enabled = true } } }
+      opts.sections.lualine_x = {}
+      opts.sections.lualine_y =
+        { "searchcount", "selectioncount", macro_status, "diagnostics", "lsp_status", "progress" }
+      opts.sections.lualine_z = {}
+    end,
   },
 }
