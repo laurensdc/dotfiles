@@ -44,7 +44,7 @@
   ],
   // Language settings
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "vscode.json-language-features",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
   },
@@ -272,7 +272,7 @@
       "command": "vscode-neovim.escape"
     }
   },
-  "workbench.colorTheme": "Dracula At Night",
+  "workbench.colorTheme": "Sunbather Dark",
   "codeium.enableCodeLens": false,
   "vscode-neovim.statusLineSeparator": " | ",
   "debug.javascript.autoAttachFilter": "disabled",
