@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Performance measurement (1/2)
+# zmodload zsh/zprof
+
 # Set custom because it'd point to a nix store path 
 export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
@@ -57,25 +60,26 @@ source $ZSH/oh-my-zsh.sh
 # Load autojump
 [ -f $HOME/.autojump/etc/profile.d/autojump.sh ] && . $HOME/.autojump/etc/profile.d/autojump.sh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-[ -r /nix/store/dbcvs9awpkm0y55lzjrqjfl5aviixyhz-autojump-22.5.3/etc/profile.d/autojump.sh ] && source /nix/store/dbcvs9awpkm0y55lzjrqjfl5aviixyhz-autojump-22.5.3/etc/profile.d/autojump.sh
 
 # Load p10k - To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Load fzf key bindings and fuzzy completion
 source <(fzf --zsh)
- 
+
 # Load nvm
-if [ -d "$(brew --prefix nvm 2>/dev/null)" ]; then
-  . "$(brew --prefix nvm)/nvm.sh"
-  . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
-else
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-fi
+# if [ -d "/opt/homebrew/opt/nvm" ]; then
+#   . "/opt/homebrew/opt/nvm/nvm.sh"
+#   . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+# else
+#   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+#   [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+# fi
 
+# Load fnm instead of nvm
+eval "$(fnm env --use-on-cd --shell zsh)"
 
-# Load Deno 
+# Load Deno
 [ -f $HOME/.deno.env ] &&  . $HOME/.deno/env
 
 # No idea what this does anymore
@@ -87,7 +91,6 @@ prompt_context() {
 
 # One editor to rule them all
 export EDITOR='nvim'
-
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -102,15 +105,13 @@ export PATH=~/.local/bin:$PATH
 export PATH=~/bin:$PATH
 
 # Add go to path
-export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:$HOME/go/bin
 
 # Suppress login message
 touch ~/.hushlogin
 
 # Prints `git checkout -b [BRANCH_NAME]`
 alias branch="git status | grep 'On branch' |  sed 's/On branch \(.*\)/git checkout \1/'"
-
-alias tf=terraform
 
 # Copy to clipboard for MacOS and x11 Linux 
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -127,6 +128,9 @@ alias REBASE='BRANCH=$(git status | grep "On branch" | sed "s/On branch \(.*\)/\
 
 # List git commits
 alias log="git log --oneline -12"
+
+# Print a jj log without interactive mode
+alias jjl="jj log -n 10 --no-pager"
 
 # Open Neogit
 alias g="nvim -c \"Neogit\""
@@ -167,8 +171,6 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/laurens/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
+
+# Performance measurement (2/2)
+# zprof
