@@ -1,0 +1,169 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "buffer_line_height": "comfortable",
+  "outline_panel": {
+    "button": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "proxy": "",
+  "disable_ai": true,
+  "calls": {
+    "mute_on_join": true
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_user_picture": true,
+    "show_user_menu": true,
+    "show_sign_in": false,
+    "show_onboarding_banner": false,
+    "show_project_items": true,
+    "show_branch_name": false,
+    "show_branch_status_icon": false
+  },
+  "debugger": {
+    "button": false
+  },
+  "diagnostics": {
+    "button": false
+  },
+  "status_bar": {
+    "show_active_file": false,
+    "cursor_position_button": true,
+    "active_language_button": true,
+  },
+  "search": {
+    "button": false,
+    "center_on_match": false
+  },
+  "prettier": {
+    "allowed": false
+  },
+  "use_system_path_prompts": false,
+  "use_system_prompts": false,
+  "vim": {
+    "toggle_relative_line_numbers": false
+  },
+  "use_system_window_tabs": false,
+  "preview_tabs": {
+    "enabled": false,
+  },
+  "buffer_font_weight": 500.0,
+  "agent_buffer_font_size": 13.0,
+  "agent_ui_font_size": 14.0,
+  "cli_default_open_behavior": "new_window",
+  "git_panel": {
+    "button": false,
+    "show_count_badge": false,
+    "diff_stats": true,
+    "folder_icons": true,
+    "file_icons": true,
+    "tree_view": true,
+    "sort_by_path": false,
+    "status_style": "icon",
+    "dock": "right",
+  },
+  "terminal": {
+    "button": false,
+    "font_family": "Comic Code Ligatures",
+    "font_fallbacks": [
+      "FiraCode Nerd Font Mono"
+    ]
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+  },
+  "project_panel": {
+    "default_width": 320.0,
+    "indent_size": 12.0,
+    "git_status": true,
+    "folder_icons": true,
+    "file_icons": true,
+    "entry_spacing": "comfortable",
+    "button": false,
+    "dock": "left",
+    "auto_reveal_entries": true,
+  },
+  "git": {
+    "enable_diff": true,
+    "enable_status": true,
+    "git_gutter": "hide",
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+  "base_keymap": "VSCode",
+  "agent": {
+    "tool_permissions": {
+      "default": "deny",
+      "tools": {}
+    },
+    "enabled": true,
+    "button": false,
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "tab_bar": {
+    "show_tab_bar_buttons": true,
+    "show_nav_history_buttons": false,
+    "show_pinned_tabs_in_separate_row": false,
+    "show": false,
+  },
+  "global_lsp_settings": {
+    "button": false
+  },
+  "relative_line_numbers": "enabled",
+  "gutter": {
+    "line_numbers": true,
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "toolbar": {
+    "quick_actions": false,
+  },
+  "hover_popover_delay": 100,
+  "cursor_blink": true,
+  "buffer_font_fallbacks": [
+    "Fira Code",
+    "Consolas",
+    "Courier New",
+    "monospace",
+  ],
+  "buffer_font_family": "Comic Code Ligatures",
+  "file_types": {
+    "html": [
+      "*.twig",
+      "*.blade.php"
+    ],
+  },
+  "colorize_brackets": false,
+  "linked_edits": true,
+  "indent_guides": {
+    "enabled": false,
+  },
+  "soft_wrap": "editor_width",
+  "tab_size": 2,
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "vim_mode": true,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 12.0,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Oscura",
+  },
+}
