@@ -342,4 +342,8 @@
     "set smartcase"
   ],
   "workbench.activityBar.location": "hidden",
+  "telemetry.editStats.enabled": false,
+  "telemetry.feedback.enabled": false,
+  "update.showReleaseNotes": false,
+  "chat.viewSessions.orientation": "stacked",
 }
