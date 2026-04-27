@@ -54,20 +54,20 @@ return {
         --   enabled = true,
         -- },
 
-        vtsls = {
-          settings = {
-            typescript = {
-              tsserver = {
-                maxTsServerMemory = 8192,
-              },
-            },
-            javascript = {
-              tsserver = {
-                maxTsServerMemory = 8192,
-              },
-            },
-          },
-        },
+        -- vtsls = {
+        --   settings = {
+        --     typescript = {
+        --       tsserver = {
+        --         maxTsServerMemory = 8192,
+        --       },
+        --     },
+        --     javascript = {
+        --       tsserver = {
+        --         maxTsServerMemory = 8192,
+        --       },
+        --     },
+        --   },
+        -- },
       },
     },
   },
