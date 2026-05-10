@@ -67,18 +67,6 @@ source $ZSH/oh-my-zsh.sh
 # Load fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# Load nvm
-# if [ -d "/opt/homebrew/opt/nvm" ]; then
-#   . "/opt/homebrew/opt/nvm/nvm.sh"
-#   . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-# else
-#   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-#   [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-# fi
-
-# Load fnm instead of nvm
-eval "$(fnm env --use-on-cd --shell zsh)"
-
 # Load Deno
 [ -f $HOME/.deno.env ] &&  . $HOME/.deno/env
 
@@ -174,3 +162,11 @@ function y() {
 
 # Performance measurement (2/2)
 # zprof
+
+# fnm
+FNM_PATH="/home/laurens/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
+

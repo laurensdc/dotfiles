@@ -1,6 +1,5 @@
-
 Install keyd
-https://github.com/rvaiya/keyd
+<https://github.com/rvaiya/keyd>
 
 Then symlink the config files to the expected location
 
@@ -10,6 +9,4 @@ sudo ln -s ~/dotfiles/.config/keyd/logitech-keyboard.conf /etc/keyd/logitech-key
 sudo systemctl restart keyd
 ```
 
-
-
-
+On Fedora, use keyboard layout Apple | Apple Aluminium (ANSI) and map right control to composite key, caps lock disabled, caps lock as ctrl
