@@ -7,17 +7,34 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "buffer_line_height": "comfortable",
+  // Hide clutter
+  "word_diff_enabled": true,
+  "lsp_highlight_debounce": 50,
+  "inlay_hints": {
+    "show_value_hints": false,
+    "show_parameter_hints": false,
+  },
+  "inline_code_actions": false,
+  "vim": {
+    "use_smartcase_find": false,
+  },
+  "semantic_tokens": "off",
+  "scrollbar": {
+    "axes": {
+      "vertical": true,
+      "horizontal": true,
+    },
+    "search_results": true,
+    "git_diff": true,
+    "cursors": true,
+    "show": "auto",
+  },
+  "diff_view_style": "split",
   "outline_panel": {
-    "button": false
+    "button": false,
   },
   "collaboration_panel": {
-    "button": false
-  },
-  "proxy": "",
-  "disable_ai": true,
-  "calls": {
-    "mute_on_join": true
+    "button": false,
   },
   "title_bar": {
     "show_menus": false,
@@ -27,13 +44,18 @@
     "show_onboarding_banner": false,
     "show_project_items": true,
     "show_branch_name": false,
-    "show_branch_status_icon": false
+    "show_branch_status_icon": false,
   },
   "debugger": {
-    "button": false
+    "dock": "bottom",
+    "button": false,
   },
   "diagnostics": {
-    "button": false
+    "lsp_pull_diagnostics": {
+      "enabled": true,
+      "debounce_ms": 50,
+    },
+    "button": false,
   },
   "status_bar": {
     "show_active_file": false,
@@ -42,25 +64,10 @@
   },
   "search": {
     "button": false,
-    "center_on_match": false
+    "center_on_match": false,
   },
-  "prettier": {
-    "allowed": false
-  },
-  "use_system_path_prompts": false,
-  "use_system_prompts": false,
-  "vim": {
-    "toggle_relative_line_numbers": false
-  },
-  "use_system_window_tabs": false,
-  "preview_tabs": {
-    "enabled": false,
-  },
-  "buffer_font_weight": 500.0,
-  "agent_buffer_font_size": 13.0,
-  "agent_ui_font_size": 14.0,
-  "cli_default_open_behavior": "new_window",
   "git_panel": {
+    "fallback_branch_name": "main",
     "button": false,
     "show_count_badge": false,
     "diff_stats": true,
@@ -72,12 +79,53 @@
     "dock": "right",
   },
   "terminal": {
+    "scrollbar": {
+      "show": "auto",
+    },
     "button": false,
     "font_family": "Comic Code Ligatures",
-    "font_fallbacks": [
-      "FiraCode Nerd Font Mono"
-    ]
+    "font_fallbacks": ["FiraCode Nerd Font Mono"],
   },
+  "agent": {
+    "tool_permissions": {
+      "default": "deny",
+      "tools": {},
+    },
+    "enabled": true,
+    "button": false,
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "tab_bar": {
+    "show_tab_bar_buttons": true,
+    "show_nav_history_buttons": false,
+    "show_pinned_tabs_in_separate_row": false,
+    "show": false,
+  },
+  // "global_lsp_settings": {
+  //   "button": false
+  // },
+  // Other stuff
+  "buffer_line_height": "comfortable",
+  "proxy": "",
+  // "auto_signature_help": true,
+  "disable_ai": true,
+  "calls": {
+    "mute_on_join": false,
+  },
+  "prettier": {
+    "allowed": true,
+  },
+  "use_system_path_prompts": false,
+  "use_system_prompts": false,
+  "use_system_window_tabs": false,
+  "preview_tabs": {
+    "enabled": false,
+  },
+  "buffer_font_weight": 500.0,
+  "agent_buffer_font_size": 13.0,
+  "agent_ui_font_size": 14.0,
+  "cli_default_open_behavior": "new_window",
   "telemetry": {
     "diagnostics": true,
     "metrics": false,
@@ -96,33 +144,43 @@
   "git": {
     "enable_diff": true,
     "enable_status": true,
-    "git_gutter": "hide",
+    "git_gutter": "tracked_files",
     "inline_blame": {
       "enabled": false,
     },
   },
-  "base_keymap": "VSCode",
-  "agent": {
-    "tool_permissions": {
-      "default": "deny",
-      "tools": {}
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": { "tsserver": { "maxTsServerMemory": 12000 } },
+        "javascript": { "tsserver": { "maxTsServerMemory": 8000 } },
+      },
     },
-    "enabled": true,
-    "button": false,
-    "favorite_models": [],
-    "model_parameters": [],
+
+    "eslint": {
+      "settings": {
+        "onIgnoredFiles": "off",
+      },
+    },
+    // "typescript-language-server": {
+    //   "initialization_options": {
+    //     "preferences": {
+    //       "includeInlayParameterNameHints": "all",
+    //       "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+    //       "includeInlayFunctionParameterTypeHints": true,
+    //       "includeInlayVariableTypeHints": true,
+    //       "includeInlayVariableTypeHintsWhenTypeMatchesName": true,
+    //       "includeInlayPropertyDeclarationTypeHints": true,
+    //       "includeInlayFunctionLikeReturnTypeHints": true,
+    //       "includeInlayEnumMemberValueHints": true,
+    //     },
+    //   },
+    // },
   },
-  "tab_bar": {
-    "show_tab_bar_buttons": true,
-    "show_nav_history_buttons": false,
-    "show_pinned_tabs_in_separate_row": false,
-    "show": false,
-  },
-  "global_lsp_settings": {
-    "button": false
-  },
+  "base_keymap": "VSCode",
   "relative_line_numbers": "enabled",
   "gutter": {
+    "runnables": false,
     "line_numbers": true,
   },
   "minimap": {
@@ -141,10 +199,7 @@
   ],
   "buffer_font_family": "Comic Code Ligatures",
   "file_types": {
-    "html": [
-      "*.twig",
-      "*.blade.php"
-    ],
+    "html": ["*.twig", "*.blade.php"],
   },
   "colorize_brackets": false,
   "linked_edits": true,
@@ -154,16 +209,26 @@
   "soft_wrap": "editor_width",
   "tab_size": 2,
   "icon_theme": {
-    "mode": "system",
+    "mode": "light",
     "light": "Zed (Default)",
-    "dark": "Zed (Default)"
+    "dark": "Catppuccin Frappé",
   },
   "vim_mode": true,
   "ui_font_size": 14.0,
   "buffer_font_size": 12.0,
   "theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "One Light",
     "dark": "Oscura",
+  },
+  "languages": {
+    "Prisma": {
+      "format_on_save": "off",
+    },
+    "TypeScript": {
+      "language_servers": ["tsgo", "!vtsls"],
+      // "language_servers": ["typescript-language-server", "!vtsls"],
+      // "language_servers": ["!tailwindcss-language-server"],
+    },
   },
 }

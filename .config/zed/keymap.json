@@ -223,5 +223,17 @@
         ]
       ]
     }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g shift-r": "editor::Rename"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "g r n": "editor::Rename"
+    }
   }
 ]
