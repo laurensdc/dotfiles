@@ -15,9 +15,8 @@ setopt histignorealldups
 setopt interactivecomments
 
 # Fast completion initialization
-# The -C flag skips the slow `compaudit` security checks you saw in your zprof dump
-# autoload -Uz compinit
-# compinit -C
+autoload -Uz compinit
+compinit -C
 
 # Load brew (macOS / WSL)
 [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -103,6 +102,9 @@ alias preview="qlmanage -p"
 
 # Gitmoji alias
 alias gm="gitmoji -c"
+
+alias ..="cd .."
+alias ...="cd ../.."
 
 # Windows 
 alias editahk="nvim /mnt/c/Users/CoredusK/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/Keys_*.ahk"
