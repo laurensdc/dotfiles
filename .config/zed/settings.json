@@ -225,10 +225,10 @@
     "Prisma": {
       "format_on_save": "off",
     },
-    "TypeScript": {
-      "language_servers": ["tsgo", "!vtsls"],
-      // "language_servers": ["typescript-language-server", "!vtsls"],
-      // "language_servers": ["!tailwindcss-language-server"],
-    },
+    // "TypeScript": {
+    //   "language_servers": ["tsgo", "!vtsls"],
+    // "language_servers": ["typescript-language-server", "!vtsls"],
+    // "language_servers": ["!tailwindcss-language-server"],
+    // },
   },
 }

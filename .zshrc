@@ -43,7 +43,25 @@ source ~/dotfiles/powerlevel10k/powerlevel10k.zsh-theme
 
 # --- ENVIRONMENT VARIABLES ---
 # One editor to rule them all
-export EDITOR='nvim'
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# Load Zsh line editing function
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+bindkey '^xe' edit-command-line
+
+# Bash-like word boundaries
+autoload -Uz select-word-style
+select-word-style bash
+
+# Enable case-insensitive, smart-case, and partial-word completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# ctrl+p and ctrl+n for prev/next commands
+bindkey '^P' up-line-or-history
+bindkey '^N' down-line-or-history
 
 # Language environment
 export LANG=en_US.UTF-8
