@@ -1,0 +1,13 @@
+
+[[language]]
+name = "typescript"
+auto-format = true
+language-servers = [ "typescript-language-server" ]
+formatter = { command = "prettierd", args = ["--stdin-filepath", "file.ts"] }
+
+
+[[language]]
+name = "javascript"
+auto-format = true
+language-servers = [ "typescript-language-server" ]
+formatter = { command = "prettierd", args = ["--stdin-filepath", "file.js"] }
