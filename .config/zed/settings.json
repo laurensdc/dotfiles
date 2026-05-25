@@ -152,8 +152,8 @@
   "lsp": {
     "vtsls": {
       "settings": {
-        "typescript": { "tsserver": { "maxTsServerMemory": 12000 } },
-        "javascript": { "tsserver": { "maxTsServerMemory": 8000 } },
+        "typescript": { "tsserver": { "maxTsServerMemory": 8192 } },
+        "javascript": { "tsserver": { "maxTsServerMemory": 8192 } },
       },
     },
 
@@ -225,10 +225,10 @@
     "Prisma": {
       "format_on_save": "off",
     },
-    // "TypeScript": {
-    //   "language_servers": ["tsgo", "!vtsls"],
-    // "language_servers": ["typescript-language-server", "!vtsls"],
-    // "language_servers": ["!tailwindcss-language-server"],
-    // },
+    "TypeScript": {
+      //   "language_servers": ["tsgo", "!vtsls"],
+      "language_servers": ["typescript-language-server", "!vtsls"],
+      // "language_servers": ["!tailwindcss-language-server"],
+    },
   },
 }
