@@ -54,20 +54,32 @@ return {
         --   enabled = true,
         -- },
 
-        -- vtsls = {
-        --   settings = {
-        --     typescript = {
-        --       tsserver = {
-        --         maxTsServerMemory = 8192,
-        --       },
-        --     },
-        --     javascript = {
-        --       tsserver = {
-        --         maxTsServerMemory = 8192,
-        --       },
-        --     },
-        --   },
-        -- },
+        vtsls = {
+          settings = {
+            typescript = {
+              tsserver = {
+                maxTsServerMemory = 8192,
+                useSeparateSyntaxServer = false,
+              },
+              preferences = {
+                includePackageJsonAutoImports = "off",
+              },
+            },
+            javascript = {
+              tsserver = {
+                maxTsServerMemory = 8192,
+              },
+            },
+            vtsls = {
+              experimental = {
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                  entriesLimit = 50,
+                },
+              },
+            },
+          },
+        },
       },
     },
   },
@@ -150,5 +162,11 @@ return {
         { "searchcount", "selectioncount", macro_status, "diagnostics", "lsp_status", "progress" }
       opts.sections.lualine_z = {}
     end,
+  },
+  {
+    "SmiteshP/nvim-navic",
+    opts = {
+      lazy_update_context = true, -- Stops updating on every single cursor movement
+    },
   },
 }

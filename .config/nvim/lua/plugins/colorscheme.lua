@@ -12,7 +12,7 @@ return {
     priority = 1000,
     config = function()
       -- require("koda").setup({ styles = { functions = { bold = false } } })
-      vim.cmd("colorscheme koda")
+      vim.cmd("colorscheme koda-moss")
     end,
   },
 }
