@@ -57,3 +57,7 @@ if vim.g.neovide then
   )
   vim.keymap.set("n", "<D-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
 end
+
+-- Performance
+vim.g.lazyvim_foldexpr = false
+vim.o.foldmethod = "indent"

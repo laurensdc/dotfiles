@@ -57,19 +57,18 @@ return {
         vtsls = {
           settings = {
             typescript = {
-              tsserver = {
-                maxTsServerMemory = 8192,
-                useSeparateSyntaxServer = false,
-              },
+              -- tsserver = {
+              --   maxTsServerMemory = 8192,
+              -- },
               preferences = {
                 includePackageJsonAutoImports = "off",
               },
             },
-            javascript = {
-              tsserver = {
-                maxTsServerMemory = 8192,
-              },
-            },
+            -- javascript = {
+            --   tsserver = {
+            --     maxTsServerMemory = 8192,
+            --   },
+            -- },
             vtsls = {
               experimental = {
                 completion = {
@@ -110,6 +109,33 @@ return {
         desc = "Select Scratch Buffer",
       },
     },
+    opts = {
+      picker = {
+        -- This block targets the preview generation logic directly
+        previewers = {
+          file = {
+            ft = "", -- Strips filetype recognition ONLY inside the preview window
+          },
+        },
+        win = {
+          preview = {
+            wo = {
+              foldenable = false,
+              foldmethod = "manual",
+            },
+          },
+        },
+      },
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy", -- { "BufReadPost", "BufNewFile" },
+    -- lazy = true,
+    -- opts = {
+    --   ensure_installed = {},
+    --   auto_install = false,
+    -- },
   },
   {
     "saghen/blink.cmp",
@@ -160,7 +186,7 @@ return {
       opts.sections.lualine_x = {}
       opts.sections.lualine_y =
         { "searchcount", "selectioncount", macro_status, "diagnostics", "lsp_status", "progress" }
-      opts.sections.lualine_z = {}
+      opts.sections.lualine_ = {}
     end,
   },
   {
