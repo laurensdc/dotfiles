@@ -123,7 +123,7 @@ alias gm="gitmoji -c"
 
 alias ..="cd .."
 alias ...="cd ../.."
-alias l="ls -lah"
+alias l="ls -lah --color=auto"
 
 # Windows 
 alias editahk="nvim /mnt/c/Users/CoredusK/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/Keys_*.ahk"
