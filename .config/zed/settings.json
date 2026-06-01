@@ -209,7 +209,7 @@
   "soft_wrap": "editor_width",
   "tab_size": 2,
   "icon_theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "Zed (Default)",
     "dark": "Catppuccin Frappé",
   },
@@ -217,7 +217,7 @@
   "ui_font_size": 14.0,
   "buffer_font_size": 12.0,
   "theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "One Light",
     "dark": "Oscura",
   },
