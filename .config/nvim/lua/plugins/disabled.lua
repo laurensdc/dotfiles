@@ -19,7 +19,7 @@ return {
 
   -- UI
   -- Unfortunately, treesitter is just way too slow, increasing nvim launch time by 200ms
-  -- { "nvim-treesitter/nvim-treesitter", enabled = false },
+  { "nvim-treesitter/nvim-treesitter", enabled = false },
   { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
   { "windwp/nvim-ts-autotag", enabled = false },
   { "folke/noice.nvim", enabled = false },
