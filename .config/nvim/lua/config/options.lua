@@ -21,6 +21,17 @@ vim.g.netrw_winsize = 25
 -- Follow dir of buffer in netrw
 vim.g.netrw_keepdir = 0
 
+-- :find search in subfolders
+vim.opt.path:append("**")
+vim.opt.wildignore:append({
+  "*/node_modules/*",
+  "*/.git/*",
+  "*/build/*",
+  "*/dist/*",
+})
+
+vim.g.snacks_animate = false
+
 -- [[ Neovide configuration ]]
 if vim.g.neovide then
   -- vim.o.guifont = 'Comic Code Ligatures,FiraCode Nerd Font Mono:h14'

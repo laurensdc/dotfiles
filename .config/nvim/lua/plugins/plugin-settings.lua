@@ -128,15 +128,16 @@ return {
       },
     },
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy", -- { "BufReadPost", "BufNewFile" },
-    -- lazy = true,
-    -- opts = {
-    --   ensure_installed = {},
-    --   auto_install = false,
-    -- },
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   -- event = { "LazyFile", "VeryLazy" },
+  --   opts = {
+  --     -- ensure_installed = {},
+  --     -- auto_install = false,
+  --     folds = { enabled = false },
+  --     indent = { enable = false },
+  --   },
+  -- },
   {
     "saghen/blink.cmp",
     opts = {

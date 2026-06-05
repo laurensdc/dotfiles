@@ -18,7 +18,8 @@ return {
   { "folke/todo-comments.nvim", enabled = false },
 
   -- UI
-  { "nvim-treesitter/nvim-treesitter", enabled = false },
+  -- Unfortunately, treesitter is just way too slow, increasing nvim launch time by 200ms
+  -- { "nvim-treesitter/nvim-treesitter", enabled = false },
   { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
   { "windwp/nvim-ts-autotag", enabled = false },
   { "folke/noice.nvim", enabled = false },
@@ -26,9 +27,11 @@ return {
 
   -- Util
   { "folke/persistence.nvim", enabled = false },
-  -- { "folke/snacks.nvim", opts = {
-  --   picker = {
-  --     enabled = false,
-  --   },
-  -- } },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = { enabled = false },
+      -- picker = { enabled = false, },
+    },
+  },
 }
