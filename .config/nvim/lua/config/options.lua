@@ -2,35 +2,12 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-vim.g.snacks_animate = false
-
-vim.lsp.inlay_hint.enable(false)
-
--- Netrw list view
-vim.g.netrw_liststyle = 3
-
--- Don't open new window when selecting target
-vim.g.netrw_browse_split = 0
-
--- Hide banner
-vim.g.netrw_banner = 1
-
--- Netrw size
-vim.g.netrw_winsize = 25
-
--- Follow dir of buffer in netrw
-vim.g.netrw_keepdir = 0
-
--- :find search in subfolders
-vim.opt.path:append("**")
-vim.opt.wildignore:append({
-  "*/node_modules/*",
-  "*/.git/*",
-  "*/build/*",
-  "*/dist/*",
-})
-
-vim.g.snacks_animate = false
+-- Netrw
+vim.g.netrw_liststyle = 3 -- Netrw list view
+vim.g.netrw_browse_split = 0 -- Don't open new window when selecting target
+vim.g.netrw_banner = 1 -- Hide banner
+vim.g.netrw_winsize = 25 -- Netrw size
+vim.g.netrw_keepdir = 0 -- Follow dir of buffer in netrw
 
 -- [[ Neovide configuration ]]
 if vim.g.neovide then
@@ -71,4 +48,12 @@ end
 
 -- Performance
 vim.g.lazyvim_foldexpr = false
-vim.o.foldmethod = "indent"
+vim.o.foldmethod = "manual"
+vim.o.foldenable = false
+vim.lsp.log.set_level("off")
+vim.lsp.inlay_hint.enable(false)
+vim.g.snacks_animate = false
+vim.g.matchparen_timeout = 20
+vim.g.matchparen_insert_timeout = 20
+vim.opt.spell = false
+vim.g.snacks_animate = false
