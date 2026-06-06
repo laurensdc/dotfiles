@@ -22,5 +22,6 @@ select = "underline"
 
 [editor]
 default-yank-register = "+"
+line-number = "relative"
 
 
