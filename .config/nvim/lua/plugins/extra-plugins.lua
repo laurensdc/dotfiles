@@ -2,8 +2,8 @@ return {
   "neogitorg/neogit",
   dependencies = {
     -- Only one of these is needed.
-    -- "sindrets/diffview.nvim", -- optional
-    "esmuellert/codediff.nvim", -- optional
+    "sindrets/diffview.nvim", -- optional
+    -- "esmuellert/codediff.nvim", -- optional
 
     -- -- For a custom log pager
     -- "m00qek/baleia.nvim", -- optional
