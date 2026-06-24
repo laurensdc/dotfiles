@@ -32,13 +32,6 @@ source <(fzf --zsh)
 # Load Deno
 [ -f $HOME/.deno.env ] &&  . $HOME/.deno/env
 
-# fnm
-FNM_PATH="/home/laurens/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env --shell zsh --version-file-strategy=recursive)"
-fi
-
 # p10k
 source ~/dotfiles/powerlevel10k/powerlevel10k.zsh-theme
 

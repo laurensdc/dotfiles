@@ -34,51 +34,59 @@ return {
         },
         -- tsserver = { enabled = false },
         -- vtsls = { enabled = false },
-        -- tsgo = {
-        --   cmd = { "tsgo", "--lsp", "--stdio" },
-        --   filetypes = {
-        --     "javascript",
-        --     "javascriptreact",
-        --     "javascript.jsx",
-        --     "typescript",
-        --     "typescriptreact",
-        --     "typescript.tsx",
-        --   },
-        --   root_markers = {
-        --     "tsconfig.json",
-        --     "jsconfig.json",
-        --     "package.json",
-        --     ".git",
-        --     "tsconfig.base.json",
-        --   },
-        --   enabled = true,
-        -- },
-
-        vtsls = {
+        tsgo = {
+          -- explicitly add default filetypes, so that we can extend
+          -- them in related extras
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+          },
           settings = {
             typescript = {
-              -- tsserver = {
-              --   maxTsServerMemory = 8192,
-              -- },
-              preferences = {
-                includePackageJsonAutoImports = "off",
-              },
-            },
-            -- javascript = {
-            --   tsserver = {
-            --     maxTsServerMemory = 8192,
-            --   },
-            -- },
-            vtsls = {
-              experimental = {
-                completion = {
-                  enableServerSideFuzzyMatch = true,
-                  entriesLimit = 50,
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = false },
+                parameterNames = {
+                  enabled = "literals",
+                  suppressWhenArgumentMatchesName = true,
                 },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = false },
               },
             },
           },
         },
+
+        -- vtsls = {
+        --   settings = {
+        --     typescript = {
+        --       -- tsserver = {
+        --       --   maxTsServerMemory = 8192,
+        --       -- },
+        --       preferences = {
+        --         includePackageJsonAutoImports = "off",
+        --       },
+        --     },
+        --     -- javascript = {
+        --     --   tsserver = {
+        --     --     maxTsServerMemory = 8192,
+        --     --   },
+        --     -- },
+        --     vtsls = {
+        --       experimental = {
+        --         completion = {
+        --           enableServerSideFuzzyMatch = true,
+        --           entriesLimit = 50,
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
       },
     },
   },

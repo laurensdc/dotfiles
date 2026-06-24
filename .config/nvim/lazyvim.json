@@ -2,7 +2,8 @@
   "extras": [
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.editor.navic",
-    "lazyvim.plugins.extras.formatting.prettier"
+    "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.lang.typescript.tsgo"
   ],
   "install_version": 8,
   "news": {
